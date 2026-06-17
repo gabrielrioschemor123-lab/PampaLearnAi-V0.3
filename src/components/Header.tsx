@@ -109,8 +109,8 @@ export const Header: React.FC<HeaderProps> = ({
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
-            <GraduationCap className="h-3.5 w-3.5 md:h-4 md:w-4 text-pampa-gold animate-bounce" style={{ animationDuration: '3s' }} />
-            Cursos Premium
+            <GraduationCap className="h-3.5 w-3.5 md:h-4 md:w-4 text-pampa-bright animate-bounce" style={{ animationDuration: '3s' }} />
+            Cursos Libres
           </button>
         </div>
 
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-2 md:gap-3 rounded-lg md:rounded-2xl border border-slate-200 dark:border-pampa-dark-border bg-white/90 dark:bg-pampa-dark-card/90 p-1 pr-2 md:p-1.5 md:pr-4 shadow-sm hover:shadow-md dark:shadow-black/40 transition-all duration-350">
               <div className="relative">
                 {/* Visual Avatar Ring represent student classification */}
-                <span className="absolute -top-1 -right-1 flex h-3 w-3 md:h-3.5 md:w-3.5 items-center justify-center rounded-full bg-pampa-gold text-[7px] md:text-[8px] font-black text-black ring-1 md:ring-2 ring-white dark:ring-pampa-dark">
+                <span className="absolute -top-1 -right-1 flex h-3 w-3 md:h-3.5 md:w-3.5 items-center justify-center rounded-full bg-pampa-bright text-[7px] md:text-[8px] font-black text-black ring-1 md:ring-2 ring-white dark:ring-pampa-dark">
                   ★
                 </span>
                 <div className="flex h-7 w-7 md:h-9 md:w-9 items-center justify-center rounded-lg md:rounded-xl bg-pampa-deep text-pampa-bright border border-pampa-bright/30 font-black uppercase text-xs md:text-sm">
@@ -152,8 +152,8 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="inline-flex items-center rounded bg-pampa-bright/10 px-1 py-0.5 text-[7px] md:text-[8px] font-bold text-pampa-bright uppercase tracking-widest">
                     Estudiante
                   </span>
-                  <span className="inline-flex items-center rounded bg-pampa-gold/10 px-1 py-0.5 text-[7px] md:text-[8px] font-bold text-pampa-gold uppercase tracking-widest">
-                    PRO
+                  <span className="inline-flex items-center rounded bg-[#22C55E]/10 px-1 py-0.5 text-[7px] md:text-[8px] font-bold text-[#22C55E] uppercase tracking-widest">
+                    Libre
                   </span>
                 </div>
               </div>

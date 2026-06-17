@@ -26,7 +26,8 @@ export const LibraryTab: React.FC = () => {
         b.category === "Terror" ||
         b.category === "Crepúsculo" ||
         b.category === "Juego de Tronos" ||
-        b.category === "Narnia"
+        b.category === "Narnia" ||
+        b.category === "Kiss Me"
     );
   });
   const [loading] = useState(false);
@@ -71,6 +72,8 @@ export const LibraryTab: React.FC = () => {
       text = `¡Mirá este libro gratis de Disney ('${book.title}') que encontré en PampaLearn AI! Accedé acá: ${shareUrl}`;
     } else if (book.category === "50 Sombras") {
       text = `¡Mirá este libro gratis de E. L. James ('${book.title}') que encontré en PampaLearn AI! Accedé acá: ${shareUrl}`;
+    } else if (book.category === "Kiss Me") {
+      text = `¡Mirá este libro gratis de Elle Kennedy ('${book.title}') de la saga Kiss Me que encontré en PampaLearn AI! Accedé acá: ${shareUrl}`;
     } else if (book.category === "Harry Potter") {
       text = `¡Mirá este libro gratis de J. K. Rowling ('${book.title}') que encontré en PampaLearn AI! Accedé acá: ${shareUrl}`;
     } else {
@@ -101,6 +104,10 @@ export const LibraryTab: React.FC = () => {
 
   const greyBooks = useMemo(() => {
     return books.filter((b) => b.category === "50 Sombras");
+  }, [books]);
+
+  const kissMeBooks = useMemo(() => {
+    return books.filter((b) => b.category === "Kiss Me");
   }, [books]);
 
   const bridgertonBooks = useMemo(() => {
@@ -173,7 +180,7 @@ export const LibraryTab: React.FC = () => {
       const matchesCategory =
         selectedCategory === "All" ||
         (selectedCategory === "Sagas de Éxito Mundial" &&
-          ["50 Sombras", "Bridgerton", "Harry Potter", "Crepúsculo", "Juego de Tronos", "Narnia"].includes(book.category)) ||
+          ["50 Sombras", "Bridgerton", "Harry Potter", "Crepúsculo", "Juego de Tronos", "Narnia", "Kiss Me"].includes(book.category)) ||
         book.category === selectedCategory ||
         (selectedCategory === "Brian Tracy" && book.category === "Colección Éxito: Brian Tracy");
       
@@ -183,7 +190,7 @@ export const LibraryTab: React.FC = () => {
       } else if (selectedPill === "magia") {
         matchesPill = book.category === "Disney" || book.category === "Harry Potter" || book.category === "Narnia";
       } else if (selectedPill === "interes") {
-        matchesPill = book.category === "50 Sombras" || book.category === "Bridgerton" || book.category === "Crepúsculo" || book.category === "Terror" || book.category === "Juego de Tronos";
+        matchesPill = book.category === "50 Sombras" || book.category === "Bridgerton" || book.category === "Crepúsculo" || book.category === "Terror" || book.category === "Juego de Tronos" || book.category === "Kiss Me";
       } else if (selectedPill === "favorites") {
         matchesPill = favorites.includes(book.id);
       } else if (selectedPill === "saved-later") {
@@ -553,6 +560,33 @@ export const LibraryTab: React.FC = () => {
 
           <BookGrid
             books={greyBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* KISS ME SAGA - HIGH-FIDELITY FEATURED ROW ON TOP */}
+      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && kissMeBooks.length > 0 && (
+        <div className="space-y-3 text-left">
+          <div className="flex items-center justify-between border-b border-rose-200/60 dark:border-rose-950/60 pb-1.5 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-rose-50 dark:bg-rose-500/10 border border-rose-150 dark:border-rose-500/20 text-[8px] md:text-[9px] font-extrabold text-rose-600 dark:text-rose-400 px-1.5 py-0.5 uppercase tracking-wider">
+                  Saga de Romance
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-755 dark:text-gray-300 uppercase tracking-tight flex items-center gap-1">
+                  ❤️ Saga de Éxito Mundial: Kiss Me (Elle Kennedy)
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal font-sans">
+                La adictiva serie de romance universitario y hockey sobre hielo de Elle Kennedy que conquistó corazones en todo el mundo.
+              </p>
+            </div>
+          </div>
+
+          <BookGrid
+            books={kissMeBooks}
             onSelectBook={handleSelectBookInternal}
             isLoading={false}
           />

@@ -815,6 +815,42 @@ export const initialBooks: Book[] = [
     category: "Disney",
     description: "Un huérfano criado por gorilas en la selva africana descubre sus orígenes humanos tras la llegada de un grupo de expedicionarios y la encantadora Jane.",
     pages: 128
+  },
+  {
+    id: "kiss-me-1",
+    title: "Kiss Me 1: Prohibido Enamorarse",
+    author: "Elle Kennedy",
+    driveId: "1VdEPmr_nWSYhG5ZNXPZFJggrrUxsdwic",
+    coverUrl: "https://i.postimg.cc/kXb3nZFy/images.jpg",
+    cover_url: "https://i.postimg.cc/kXb3nZFy/images.jpg",
+    category: "Kiss Me",
+    description: "La aclamada primera entrega de la serie Off-Campus. Un pacto inesperado entre una universitaria centrada y el popular capitán del equipo de hockey sobre hielo desencadena una innegable atracción.",
+    pages: 380,
+    keywords: ["kiss me", "elle kennedy", "romance", "hockey", "prohibido enamorarse", "the deal", "universidades"]
+  },
+  {
+    id: "kiss-me-2",
+    title: "Kiss Me 2: Error de Cálculo",
+    author: "Elle Kennedy",
+    driveId: "1Hb2rabXDAJ4vNxcEneHotP9easdG3l6v",
+    coverUrl: "https://i.postimg.cc/YCBcj3dv/images.jpg",
+    cover_url: "https://i.postimg.cc/YCBcj3dv/images.jpg",
+    category: "Kiss Me",
+    description: "La segunda apasionante novela de la saga. Un deportista estrella acostumbra a conseguir todo lo que quiere, pero esta vez tendrá que esforzarse en serio para convencer a la chica de sus sueños de que vale la pena.",
+    pages: 360,
+    keywords: ["kiss me", "elle kennedy", "romance", "hockey", "error de calculo", "the mistake", "universidades"]
+  },
+  {
+    id: "kiss-me-3",
+    title: "Kiss Me 3: Inmune a ti",
+    author: "Elle Kennedy",
+    driveId: "1vFrzuTiawHl8XPoZ7QARFL21ozrj9bYs",
+    coverUrl: "https://i.postimg.cc/766djQZ3/images.jpg",
+    cover_url: "https://i.postimg.cc/766djQZ3/images.jpg",
+    category: "Kiss Me",
+    description: "La chispeante y seductora tercera entrega de la serie de Elle Kennedy. Dean es el chico que siempre lo tiene todo bajo control, hasta que se cruza con Allie y sus mundos chocan intensamente.",
+    pages: 410,
+    keywords: ["kiss me", "elle kennedy", "romance", "hockey", "inmune a ti", "the score", "universidades"]
   }
 ];
 

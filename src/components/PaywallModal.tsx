@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Course } from "../types";
-import { Sparkles, Shield, Trophy, FileBadge, PlayCircle, Loader2, CreditCard } from "lucide-react";
+import { Sparkles, Heart, Copy, Check, Coffee, Gift, Users, Mail } from "lucide-react";
 import { motion } from "motion/react";
 
 interface PaywallModalProps {
@@ -15,31 +15,24 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
   course,
   isTotalAccess = false,
   onClose,
-  onSimulatePurchase,
-  isProcessing,
 }) => {
-  const [success, setSuccess] = useState(false);
+  const [copiedAlias, setCopiedAlias] = useState(false);
+  const [copiedCbu, setCopiedCbu] = useState(false);
+  const [copiedCrypto, setCopiedCrypto] = useState(false);
 
-  const handlePayment = async () => {
-    try {
-      if (isTotalAccess) {
-        await onSimulatePurchase("total-access");
-      } else if (course) {
-        await onSimulatePurchase(course.id);
-      }
-      setSuccess(true);
-    } catch (err) {
-      console.error(err);
+  const handleCopy = (text: string, type: "alias" | "cbu" | "crypto") => {
+    navigator.clipboard.writeText(text);
+    if (type === "alias") {
+      setCopiedAlias(true);
+      setTimeout(() => setCopiedAlias(false), 2000);
+    } else if (type === "cbu") {
+      setCopiedCbu(true);
+      setTimeout(() => setCopiedCbu(false), 2000);
+    } else if (type === "crypto") {
+      setCopiedCrypto(true);
+      setTimeout(() => setCopiedCrypto(false), 2000);
     }
   };
-
-  const currentTitle = isTotalAccess ? "Pase Total Vitalicio" : course?.title || "Programa Premium";
-  const currentHeadline = isTotalAccess 
-    ? "Acceso ilimitado para siempre a todas las especialidades actuales y futuras." 
-    : course?.headline || "";
-  const currentThumbnail = isTotalAccess 
-    ? "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" 
-    : course?.thumbnail || "";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
@@ -49,151 +42,165 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
         className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-pampa-dark-border bg-pampa-dark-card shadow-2xl ring-1 ring-pampa-bright/10 text-left"
       >
         {/* Decorative Brand Accent Row */}
-        <div className="h-2 w-full bg-gradient-to-r from-pampa-deep via-pampa-bright to-pampa-gold" />
+        <div className="h-2 w-full bg-gradient-to-r from-rose-500 via-pampa-bright to-pampa-gold" />
 
         {/* Hero Header */}
-        <div className="relative aspect-video w-full overflow-hidden bg-slate-900 md:h-52">
-          {currentThumbnail && (
-            <img
-              src={currentThumbnail}
-              alt={currentTitle}
-              referrerPolicy="no-referrer"
-              className="h-full w-full object-cover opacity-60"
-            />
-          )}
+        <div className="relative aspect-video w-full overflow-hidden bg-slate-900 md:h-48">
+          <img
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80"
+            alt="Donación y Colaboración Comunitaria"
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-cover opacity-35"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-pampa-dark-card via-pampa-dark-card/50 to-transparent" />
           
           <div className="absolute bottom-5 left-6 right-6">
-            <span className="inline-block rounded bg-pampa-bright px-2.5 py-1 text-[10px] font-bold uppercase text-[#040D0A] tracking-wider">
-              {isTotalAccess ? "ACCESO TOTAL ILIMITADO" : "Acceso Vitalicio Garantizado"}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/20 border border-rose-500/40 px-2.5 py-1 text-[10px] font-bold uppercase text-rose-400 tracking-wider">
+              ❤️ Sostén el Portal Libre y Gratuito
             </span>
             <h3 className="mt-2 text-2xl font-black text-white leading-tight">
-              {currentTitle}
+              Colabora con PampaLearn AI
             </h3>
-            <p className="text-xs text-slate-300 font-medium">{currentHeadline}</p>
+            <p className="text-xs text-slate-300 font-medium">Nacimos para democratizar las especializaciones técnicas tradicionales y el interés cultural.</p>
           </div>
         </div>
 
         {/* Body content */}
-        <div className="p-6 md:p-8 space-y-6">
-          {!success ? (
-            <>
-              {/* Value Pitch */}
-              <div className="space-y-4">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-                  {isTotalAccess ? "¿Qué incluye tu Pase Total VIP?" : "¿Qué incluye tu matrícula única?"}
-                </h4>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="flex gap-3 rounded-xl border border-pampa-dark-border bg-pampa-dark/60 p-3">
-                    <PlayCircle className="h-5 w-5 shrink-0 text-pampa-bright" />
-                    <div>
-                      <h5 className="text-xs font-bold text-white">
-                        {isTotalAccess ? "Todos los Cursos" : "Video-Lecciones HD"}
-                      </h5>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
-                        {isTotalAccess ? "Capacitación en Oficios, Idiomas, Música y Meta Ads." : "Módulos prácticos explicados detalladamente."}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 rounded-xl border border-pampa-dark-border bg-pampa-dark/60 p-3">
-                    <Sparkles className="h-5 w-5 shrink-0 text-pampa-gold" />
-                    <div>
-                      <h5 className="text-xs font-bold text-white">Tutor de IA Integrado</h5>
-                      <p className="text-[11px] text-slate-400 mt-0.5">Asistente Gemini 3.5 para tus dudas en tiempo real.</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 rounded-xl border border-pampa-dark-border bg-pampa-dark/60 p-3">
-                    <FileBadge className="h-5 w-5 shrink-0 text-pampa-bright" />
-                    <div>
-                      <h5 className="text-xs font-bold text-white">
-                        {isTotalAccess ? "Certificados Múltiples" : "Certificado Oficial"}
-                      </h5>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
-                        {isTotalAccess ? "Obtén certificados aprobados por cada especialidad." : "Acredita tus habilidades al finalizar."}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 rounded-xl border border-pampa-dark-border bg-pampa-dark/60 p-3">
-                    <Shield className="h-5 w-5 shrink-0 text-pampa-gold" />
-                    <div>
-                      <h5 className="text-xs font-bold text-white">Actualizaciones de por Vida</h5>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
-                        {isTotalAccess ? "Acceso gratuito a cualquier nuevo curso lanzado en el futuro." : "Estudia a tu propio ritmo sin mensualidades vagas."}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="p-6 md:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+          {/* Mission statement */}
+          <div className="space-y-2">
+            <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal">
+              Hemos retirado la monetización comercial: **PampaLearn AI es ahora 100% gratuito**. 
+              Nuestras video-lecciones, libros y tutorías integradas están abiertas a toda la comunidad de forma libre. 
+              Si este material te ha servido en el trabajo, estudio o vida personal, considera apoyarnos para mantener el servidor web y seguir sumando material académico.
+            </p>
+          </div>
 
-              {/* Informant Sandbox Check */}
-              <div className="rounded-xl border border-pampa-bright/35 bg-pampa-deep/10 p-4 text-xs text-pampa-bright">
-                <span className="font-bold flex items-center gap-1">
-                  <CreditCard className="h-4 w-4" /> ENTORNO INTEGRADO DE PRUEBAS
-                </span>
-                <p className="mt-1 text-slate-300">
-                  Haz clic en el botón de abajo para simular una pasarela segura (Stripe). Una vez procesado, el sistema registrará los derechos de acceso en tu documento de <strong className="text-white">Cloud Firestore</strong>.
-                </p>
-              </div>
+          {/* Payment & Donation Channels */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-pampa-gold flex items-center gap-1">
+              <Gift className="h-4 w-4" /> Formas de Apoyar
+            </h4>
 
-              {/* Action pricing strip */}
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-pampa-dark-border/60 pt-6">
-                <div>
-                  <span className="text-xs text-slate-400 block font-semibold uppercase font-mono">Inversión Total Única:</span>
-                  <div className="flex items-baseline gap-1.5 mt-0.5">
-                    <span className="text-3xl font-black text-white">
-                      {isTotalAccess ? "$4.999" : "$1.500"}
+            <div className="grid gap-4 sm:grid-cols-1">
+              {/* Opción 1: Mercado Pago / Transferencia (Argentina) */}
+              <div className="rounded-2xl border border-pampa-dark-border bg-pampa-dark/60 p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-pampa-bright/10 text-pampa-bright">
+                      ☕
                     </span>
-                    <span className="text-xs text-slate-500 font-mono">ARS</span>
-                    <span className="text-xs text-pampa-bright bg-pampa-bright/10 px-2 py-0.5 rounded-md font-bold ml-2">Ahorro Máximo</span>
+                    <div>
+                      <h5 className="text-xs font-bold text-white">Transferencia / Mercado Pago (Argentina)</h5>
+                      <p className="text-[10px] text-slate-400">Apóyanos simulando un café o aporte libre</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="grid gap-2 sm:grid-cols-2 text-xs">
+                  {/* Alias Row */}
+                  <div className="flex items-center justify-between rounded-xl bg-[#091512] border border-pampa-bright/10 p-2.5">
+                    <div>
+                      <p className="text-[9px] text-slate-500 uppercase font-mono tracking-wider">ALIAS MERCADOPAGO</p>
+                      <p className="font-mono font-bold text-white mt-0.5">pampalearn.mp</p>
+                    </div>
+                    <button
+                      onClick={() => handleCopy("pampalearn.mp", "alias")}
+                      className="rounded-lg p-1.5 hover:bg-slate-800 text-pampa-bright hover:text-white transition-all cursor-pointer"
+                      title="Copiar Alias"
+                    >
+                      {copiedAlias ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    </button>
+                  </div>
+
+                  {/* CBU Row */}
+                  <div className="flex items-center justify-between rounded-xl bg-[#091512] border border-pampa-bright/10 p-2.5">
+                    <div>
+                      <p className="text-[9px] text-slate-500 uppercase font-mono tracking-wider">CBU TRANSFERENCIA</p>
+                      <p className="font-mono font-bold text-white mt-0.5">0000003100028392019283</p>
+                    </div>
+                    <button
+                      onClick={() => handleCopy("0000003100028392019283", "cbu")}
+                      className="rounded-lg p-1.5 hover:bg-slate-800 text-pampa-bright hover:text-white transition-all cursor-pointer"
+                      title="Copiar CBU"
+                    >
+                      {copiedCbu ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Opción 2: Criptomonedas (Internacional) */}
+              <div className="rounded-2xl border border-pampa-dark-border bg-pampa-dark/60 p-4 space-y-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-pampa-gold/10 text-pampa-gold font-bold">
+                    ₿
+                  </span>
+                  <div>
+                    <h5 className="text-xs font-bold text-white">Criptomonedas (USDT / BTC / ETH)</h5>
+                    <p className="text-[10px] text-slate-400">Dirección Multired (BSC Binance Smart Chain / TRC20)</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between rounded-xl bg-[#0e171b] border border-pampa-gold/10 p-2.5 text-xs">
+                  <div className="truncate mr-2">
+                    <p className="text-[9px] text-slate-500 uppercase font-mono tracking-wider">DIRECCIÓN DE DEPÓSITO</p>
+                    <p className="font-mono text-white mt-0.5 truncate select-all">0x7a83B3dB6beF6BC1f3A2199b5E22B0beA8C3B880</p>
+                  </div>
                   <button
-                    onClick={onClose}
-                    className="rounded-xl border border-pampa-dark-border bg-transparent px-5 py-3 text-xs font-bold text-slate-400 hover:text-white hover:bg-slate-800/30 transition-all font-sans cursor-pointer"
+                    onClick={() => handleCopy("0x7a83B3dB6beF6BC1f3A2199b5E22B0beA8C3B880", "crypto")}
+                    className="shrink-0 rounded-lg p-1.5 hover:bg-slate-800 text-pampa-gold hover:text-white transition-all cursor-pointer"
+                    title="Copiar Dirección"
                   >
-                    Volver Atrás
-                  </button>
-                  <button
-                    onClick={handlePayment}
-                    disabled={isProcessing}
-                    className="flex items-center gap-2 rounded-xl bg-pampa-bright px-6 py-3 text-xs font-bold text-white shadow-lg shadow-pampa-bright/25 hover:shadow-pampa-bright/40 hover:scale-[1.02] transition-all disabled:opacity-50 uppercase tracking-wider cursor-pointer"
-                  >
-                    {isProcessing ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" /> Procesando Pago...
-                      </>
-                    ) : (
-                      <>
-                        <Trophy className="h-4 w-4 text-white" /> {isTotalAccess ? "Activar Pase Completo" : "Adquirir Ahora"}
-                      </>
-                    )}
+                    {copiedCrypto ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
-            </>
-          ) : (
-            <div className="py-8 text-center space-y-4">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-pampa-deep/20 border border-pampa-bright/50">
-                <Trophy className="h-7 w-7 text-pampa-bright" />
+
+              {/* Opción 3: Colaboraciones Académicas */}
+              <div className="rounded-2xl border border-pampa-dark-border bg-pampa-dark/60 p-4 flex gap-3 items-start">
+                <Mail className="h-5 w-5 shrink-0 text-indigo-400 mt-0.5" />
+                <div>
+                  <h5 className="text-xs font-bold text-white flex items-center gap-1">
+                    ¿Te gustaría aportar Material de Estudio?
+                  </h5>
+                  <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+                    Si eres creador, profesor o tienes guías, novelas o material técnico que te gustaría añadir al portal de forma libre y gratuita para todos, escríbenos a: <strong className="text-indigo-300 font-mono">colaboraciones@pampalearn.ai</strong>
+                  </p>
+                </div>
               </div>
-              <h4 className="text-2xl font-black text-white">
-                {isTotalAccess ? "¡Pase Total VIP Activado!" : "¡Matrícula Confirmada con Éxito!"}
-              </h4>
-              <p className="text-sm text-slate-300 max-w-sm mx-auto">
-                {isTotalAccess 
-                  ? "Felicitaciones, has desbloqueado la totalidad del catálogo académico de por vida en nuestro servidor de Cloud Firestore."
-                  : `Registramos tus credenciales para ${currentTitle} en Firestore. El reproductor y el tutor Gemini están listos.`}
-              </p>
-              <button
-                onClick={onClose}
-                className="mt-6 rounded-xl bg-pampa-bright px-6 py-3 text-xs font-bold text-white hover:scale-105 transition-all uppercase tracking-wider cursor-pointer"
-              >
-                Comenzar a Estudiar
-              </button>
             </div>
-          )}
+          </div>
+
+          {/* Slogans value propositions */}
+          <div className="grid gap-3 sm:grid-cols-3 text-center">
+            <div className="rounded-xl bg-[#091114] border border-pampa-dark-border/40 p-3">
+              <Users className="h-4 w-4 mx-auto text-rose-400" />
+              <h6 className="text-[10px] font-bold text-slate-200 mt-1 uppercase">100% Comunitario</h6>
+              <p className="text-[9px] text-slate-400 mt-0.5">Crece y se expande gracias al apoyo voluntario de hispanohablantes.</p>
+            </div>
+            <div className="rounded-xl bg-[#091114] border border-pampa-dark-border/40 p-3">
+              <Sparkles className="h-4 w-4 mx-auto text-pampa-gold" />
+              <h6 className="text-[10px] font-bold text-slate-200 mt-1 uppercase">Tutor Inteligente</h6>
+              <p className="text-[9px] text-slate-400 mt-0.5">Tutoría con I.A. Gemini integrada gratis para consultas académicas.</p>
+            </div>
+            <div className="rounded-xl bg-[#091114] border border-pampa-dark-border/40 p-3">
+              <Heart className="h-4 w-4 mx-auto text-pampa-bright animate-pulse" />
+              <h6 className="text-[10px] font-bold text-slate-200 mt-1 uppercase">Tu Ayuda Importa</h6>
+              <p className="text-[9px] text-slate-400 mt-0.5">Cada colaboración mantiene activa la plataforma para miles de personas.</p>
+            </div>
+          </div>
+
+          {/* Footer details & Action */}
+          <div className="flex items-center justify-between border-t border-pampa-dark-border/60 pt-5">
+            <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider block">PampaLearn AI · Proyecto Comunitario</span>
+            <button
+              onClick={onClose}
+              className="rounded-xl bg-[#22C55E] hover:bg-[#16a34a] text-white px-5 py-2.5 text-xs font-bold transition-all hover:scale-[1.02] cursor-pointer"
+            >
+              Cerrar y Estudiar Gratis
+            </button>
+          </div>
         </div>
       </motion.div>
     </div>

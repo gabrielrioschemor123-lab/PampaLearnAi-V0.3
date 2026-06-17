@@ -105,30 +105,28 @@ export const CoursesTab: React.FC<CoursesTabProps> = ({
         </div>
       </div>
 
-      {/* 2.5 BANNER "PASO TOTAL VIP" (Glow Banner) */}
-      {!hasTotalAccess && (
-        <div 
-          id="vip-glow-banner"
-          className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#091512] border-2 border-pampa-gold/40 p-4 md:p-8 shadow-[0_0_20px_rgba(245,158,11,0.08)] flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 transition-all duration-300 hover:border-pampa-gold/60 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-pampa-deep/10 via-pampa-gold/5 to-transparent pointer-events-none" />
-          <div className="relative space-y-2 text-left">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-pampa-gold/15 border border-pampa-gold/30 px-2.5 py-0.5 text-[9px] md:px-3.5 md:py-1 md:text-[10px] font-extrabold text-pampa-gold uppercase tracking-widest leading-none">
-              ★ OPORTUNIDAD VITALICIA
-            </span>
-            <div className="text-xs md:text-sm font-semibold text-slate-200">
-              <span className="text-white font-extrabold text-pampa-bright">¡Acceso Total Pampeano Vitalicio!</span> Libera TODOS los cuentos actuales y futuros (Mecánica, Idiomas, DJ, Marketing) por un solo pago de <span className="font-mono font-bold text-white bg-pampa-gold/25 px-1.5 py-0.5 rounded border border-pampa-gold/30">$4.999 ARS</span>.
-            </div>
+      {/* 2.5 BANNER "APOYO COMUNITARIO VOLUNTARIO" (Glow Banner) */}
+      <div 
+        id="donation-glow-banner"
+        className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#091512] border-2 border-rose-500/30 p-4 md:p-8 shadow-[0_0_20px_rgba(239,68,68,0.06)] flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 transition-all duration-300 hover:border-rose-500/50 hover:shadow-[0_0_30px_rgba(239,68,68,0.12)]"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-pampa-deep/10 via-rose-500/5 to-transparent pointer-events-none" />
+        <div className="relative space-y-2 text-left">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 px-2.5 py-0.5 text-[9px] md:px-3.5 md:py-1 md:text-[10px] font-extrabold text-rose-400 uppercase tracking-widest leading-none">
+            ★ PROYECTO 100% GRATUITO Y COMUNITARIO
+          </span>
+          <div className="text-xs md:text-sm font-semibold text-slate-200 leading-relaxed max-w-2xl">
+            <span className="text-white font-extrabold text-pampa-bright">¡Libre de Costos y Publicidad!</span> Si estas capacitaciones te sirven, considera realizar una <span className="font-extrabold text-rose-400">colaboración voluntaria</span> para ayudarnos a mantener los servidores independientes y seguir expandiendo el catálogo para todos.
           </div>
-          <button
-            onClick={onOpenTotalAccessPaywall}
-            id="btn-activate-total-access"
-            className="relative shrink-0 overflow-hidden rounded-xl bg-pampa-gold hover:bg-[#d97706] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 px-4 md:px-6 py-2.5 md:py-4 text-[10px] md:text-xs font-black text-[#040D0A] uppercase tracking-wider shadow-lg shadow-pampa-gold/25 flex items-center gap-2 cursor-pointer w-full md:w-auto justify-center"
-          >
-            Activar Pase Completo
-          </button>
         </div>
-      )}
+        <button
+          onClick={onOpenTotalAccessPaywall}
+          id="btn-open-donations"
+          className="relative shrink-0 overflow-hidden rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 px-4 md:px-6 py-2.5 md:py-4 text-[10px] md:text-xs font-black text-white uppercase tracking-wider shadow-lg shadow-rose-500/20 flex items-center gap-2 cursor-pointer w-full md:w-auto justify-center"
+        >
+          ❤️ Colaborar o Donar
+        </button>
+      </div>
 
       {/* 3. BARRA DE FILTRADO (Categorías Inferiores) */}
       <div className="flex flex-col space-y-2 md:space-y-4">

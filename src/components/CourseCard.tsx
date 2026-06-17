@@ -65,11 +65,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           )}
         </div>
 
-        {/* gold-Colored Premium Label */}
+        {/* Gratuito Label */}
         <div className="absolute top-4 right-4 flex items-center gap-1">
-          <span className="flex items-center gap-1 rounded bg-pampa-gold/10 border border-pampa-gold/40 px-2.5 py-1 text-[10px] font-extrabold text-pampa-gold uppercase tracking-wider shadow-sm backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-pampa-gold animate-pulse" />
-            Premium
+          <span className="flex items-center gap-1 rounded bg-pampa-bright/20 border border-pampa-bright/50 px-2.5 py-1 text-[10px] font-extrabold text-pampa-bright uppercase tracking-wider shadow-sm backdrop-blur-md">
+            <Sparkles className="h-3 w-3 text-pampa-bright animate-pulse" />
+            100% Gratis
           </span>
         </div>
 
@@ -84,54 +84,42 @@ export const CourseCard: React.FC<CourseCardProps> = ({
         </div>
       </div>
 
-      {/* Main Text Content */}
-      <div className="p-6 text-left flex-1 flex flex-col justify-between">
-        <div className="space-y-2">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white transition-colors leading-snug flex items-center gap-2 group-hover:text-pampa-bright">
-            {isMetaAds && <Megaphone className="h-4 w-4 text-pampa-bright flex-shrink-0" />}
-            {isDJ && <Headphones className="h-4 w-4 text-pampa-bright flex-shrink-0" />}
-            {isMotos && <Wrench className="h-4 w-4 text-pampa-gold flex-shrink-0" />}
-            {course.title}
-          </h3>
-          <p className="text-xs text-slate-700 dark:text-gray-400 leading-relaxed line-clamp-2">
-            {course.description}
+    {/* Main Text Content */}
+    <div className="p-6 text-left flex-1 flex flex-col justify-between">
+      <div className="space-y-2">
+        <h3 className="text-lg font-bold text-slate-900 dark:text-white transition-colors leading-snug flex items-center gap-2 group-hover:text-pampa-bright">
+          {isMetaAds && <Megaphone className="h-4 w-4 text-pampa-bright flex-shrink-0" />}
+          {isDJ && <Headphones className="h-4 w-4 text-pampa-bright flex-shrink-0" />}
+          {isMotos && <Wrench className="h-4 w-4 text-pampa-gold flex-shrink-0" />}
+          {course.title}
+        </h3>
+        <p className="text-xs text-slate-700 dark:text-gray-400 leading-relaxed line-clamp-2">
+          {course.description}
+        </p>
+      </div>
+
+      {/* Trigger and Price Block */}
+      <div className="mt-6 flex items-center justify-between border-t border-slate-200/80 dark:border-pampa-dark-border/60 pt-4">
+        <div className="text-left">
+          <p className="text-[10px] font-mono text-slate-500 dark:text-gray-500 uppercase tracking-widest leading-none">Matrícula</p>
+          <p className="text-xs font-bold text-pampa-bright mt-1">
+            Libre / Gratuito
           </p>
         </div>
 
-        {/* Trigger and Price Block */}
-        <div className="mt-6 flex items-center justify-between border-t border-slate-200/80 dark:border-pampa-dark-border/60 pt-4">
-          <div className="text-left">
-            <p className="text-[10px] font-mono text-slate-500 dark:text-gray-500 uppercase tracking-widest leading-none">Matrícula</p>
-            <p className="text-sm font-black text-slate-900 dark:text-white mt-1">
-              $1.500 ARS
-            </p>
-          </div>
-
-          <div>
-            {isOwned ? (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleCardClick();
-                }}
-                className="flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold bg-pampa-deep/10 dark:bg-pampa-deep/20 border border-pampa-bright/30 text-pampa-bright hover:bg-pampa-deep/30 transition-all cursor-pointer"
-              >
-                <Play className="h-3 w-3 fill-current text-pampa-bright" /> Ingresar
-              </button>
-            ) : (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpenPaywall(course);
-                }}
-                className="flex items-center gap-1.5 rounded-xl font-bold bg-pampa-bright hover:bg-emerald-600 text-white shadow-[0_0_15px_rgba(34,197,94,0.3)] border border-pampa-bright/40 px-4 py-2.5 text-xs hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
-              >
-                <Lock className="h-3.5 w-3.5" /> Adquirir por $1.500
-              </button>
-            )}
-          </div>
+        <div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCardClick();
+            }}
+            className="flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold bg-pampa-deep/10 dark:bg-pampa-deep/20 border border-pampa-bright/30 text-pampa-bright hover:bg-pampa-deep/30 transition-all cursor-pointer"
+          >
+            <Play className="h-3 w-3 fill-current text-pampa-bright" /> Ingresar
+          </button>
         </div>
       </div>
+    </div>
     </motion.div>
   );
 };
