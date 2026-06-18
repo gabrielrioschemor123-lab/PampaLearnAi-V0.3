@@ -2,6 +2,7 @@ import React from "react";
 import { AppUser } from "../types";
 import { LogOut, Sparkles, LogIn, BookOpen, GraduationCap, Sun, Moon } from "lucide-react";
 import { PampaLogo } from "./PampaLogo";
+import { motion } from "motion/react";
 
 interface HeaderProps {
   user: AppUser | null;
@@ -88,29 +89,48 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Tab Selection: Notion & Stripe Inspired Minimal Buttons */}
-        <div className="flex items-center rounded-lg md:rounded-2xl bg-slate-100/80 dark:bg-pampa-dark/95 p-0.5 md:p-1 border border-slate-200/80 dark:border-pampa-dark-border transition-all duration-300">
+        {/* Tab Selection: Notion & Stripe Inspired Premium Animated Buttons */}
+        <div className="flex items-center rounded-xl md:rounded-2xl bg-slate-100/90 dark:bg-pampa-dark/95 p-1 border border-slate-200/80 dark:border-pampa-dark-border/80 transition-all duration-300 shadow-inner relative">
           <button
             onClick={() => setActiveTab("library")}
-            className={`flex items-center gap-1 md:gap-2 rounded-md md:rounded-xl px-2 py-0.5 sm:px-3 sm:py-1 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-              activeTab === "library"
-                ? "bg-pampa-bright text-white shadow-[0_0_15px_rgba(34,197,94,0.4)] scale-[1.01] font-extrabold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-            }`}
+            className="relative flex items-center gap-1.5 md:gap-2.5 rounded-lg md:rounded-xl px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-3 text-[10px] md:text-xs font-black uppercase tracking-wider transition-all duration-350 cursor-pointer overflow-hidden"
           >
-            <BookOpen className="h-3 w-3 md:h-4 md:w-4" />
-            Librería Gratis
+            {activeTab === "library" && (
+              <motion.div
+                layoutId="active-tab-indicator"
+                className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 shadow-[0_0_20px_rgba(34,197,94,0.45)] border border-green-400/30"
+                transition={{ type: "spring", stiffness: 350, damping: 26 }}
+              />
+            )}
+            <span className={`relative z-10 flex items-center gap-1.5 md:gap-2 transition-all duration-300 ${activeTab === "library" ? "text-white scale-[1.06] font-black" : "text-slate-600 dark:text-slate-400 hover:text-slate-905 dark:hover:text-slate-200"}`}>
+              <BookOpen className={`h-3.5 w-3.5 md:h-4.5 md:w-4.5 transition-all ${activeTab === "library" ? "animate-pulse stroke-[2.5]" : ""}`} />
+              Librería Gratis
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+              </span>
+            </span>
           </button>
+
           <button
             onClick={() => setActiveTab("courses")}
-            className={`flex items-center gap-1 md:gap-2 rounded-md md:rounded-xl px-2 py-0.5 sm:px-3 sm:py-1 md:px-5 md:py-2.5 text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-              activeTab === "courses"
-                ? "bg-pampa-deep text-pampa-bright border border-pampa-bright/35 shadow-[0_0_15px_rgba(15,61,46,0.3)] scale-[1.01] font-extrabold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-            }`}
+            className="relative flex items-center gap-1.5 md:gap-2.5 rounded-lg md:rounded-xl px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-3 text-[10px] md:text-xs font-black uppercase tracking-wider transition-all duration-350 cursor-pointer overflow-hidden"
           >
-            <GraduationCap className="h-3.5 w-3.5 md:h-4 md:w-4 text-pampa-bright animate-bounce" style={{ animationDuration: '3s' }} />
-            Cursos Libres
+            {activeTab === "courses" && (
+              <motion.div
+                layoutId="active-tab-indicator"
+                className="absolute inset-0 bg-gradient-to-r from-pampa-deep via-[#114536] to-[#0A3629] shadow-[0_0_20px_rgba(15,61,46,0.45)] border border-pampa-bright/30"
+                transition={{ type: "spring", stiffness: 350, damping: 26 }}
+              />
+            )}
+            <span className={`relative z-10 flex items-center gap-1.5 md:gap-2 transition-all duration-300 ${activeTab === "courses" ? "text-pampa-bright font-black scale-[1.06]" : "text-slate-600 dark:text-slate-400 hover:text-slate-905 dark:hover:text-slate-200"}`}>
+              <GraduationCap className={`h-4 w-4 md:h-5 md:w-5 transition-all ${activeTab === "courses" ? "animate-bounce stroke-[2.5]" : ""}`} style={{ animationDuration: '2s' }} />
+              Cursos Libres
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pampa-gold opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-pampa-gold"></span>
+              </span>
+            </span>
           </button>
         </div>
 

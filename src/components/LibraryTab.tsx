@@ -227,125 +227,124 @@ export const LibraryTab: React.FC = () => {
         />
       </div>
 
-      {/* Visual Header Banner */}
+      {/* Visual Header Banner - Compact & Stylized */}
       <div 
-        className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-slate-250 dark:border-slate-800 shadow-xl text-white p-4 md:p-12 text-left transition-all duration-300 bg-cover bg-center"
+        className="relative overflow-hidden rounded-xl md:rounded-2xl border border-slate-250 dark:border-slate-800 shadow-lg text-white p-3.5 md:py-6 md:px-8 text-left transition-all duration-300 bg-cover bg-center"
         style={{ 
-          backgroundImage: "linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 100%), url('https://i.postimg.cc/R0yq6j21/trnava-university-sd8u-Jsf4XM4-unsplash.jpg')" 
+          backgroundImage: "linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.61) 100%), url('https://i.postimg.cc/R0yq6j21/trnava-university-sd8u-Jsf4XM4-unsplash.jpg')" 
         }}
         id="pampalearn-library-banner"
       >
-        <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-emerald-500/15 blur-3xl animate-pulse" />
+        <div className="absolute top-0 right-0 h-32 w-32 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-emerald-500/10 blur-3xl animate-pulse pointer-events-none" />
         
         <div className="relative grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Columna Izquierda: Título y Párrafo */}
-          <div className="space-y-1 md:space-y-4">
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-0.5 md:px-3.5 md:py-1 text-[10px] md:text-xs font-bold text-emerald-400 border border-emerald-550 dark:border-emerald-500/20 uppercase tracking-wider backdrop-blur-sm">
+          <div className="space-y-1 md:space-y-2">
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-0.5 text-[9px] md:text-xs font-bold text-emerald-400 border border-emerald-550 dark:border-emerald-500/20 uppercase tracking-wider backdrop-blur-sm">
               <Sparkles className="h-3 w-3 animate-pulse" /> Biblioteca Técnica Virtual
             </span>
-            <h2 className="text-lg md:text-4xl font-extrabold tracking-tight text-white leading-tight font-sans">
-              <span className="md:hidden">Biblioteca Abierta</span>
-              <span className="hidden md:inline">Librería Abierta de <span className="text-emerald-400 font-bold">PampaLearn AI</span></span>
+            <h2 className="text-[12px] sm:text-sm md:text-xl lg:text-2xl font-extrabold tracking-wide text-white leading-snug font-sans uppercase">
+              <span>Leé, aprendé y mejorá todos los días — </span>
+              <span className="text-emerald-405 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500 font-extrabold animate-pulse">
+                gratis
+              </span>
             </h2>
-            <p className="hidden sm:block text-xs md:text-base text-slate-200 leading-relaxed font-normal">
-              Potencia tu formación técnica y crecimiento personal con nuestra colección de manuales de oficios, guías prácticas y Best-Sellers seleccionados para impulsar tu autonomía y éxito profesional.
+            <p className="hidden sm:block text-xs md:text-xs text-slate-400 leading-relaxed font-normal max-w-md">
+              Potencia tu formación técnica y crecimiento personal con manuales de oficios, guías prácticas y Best-Sellers seleccionados.
             </p>
           </div>
-
+ 
           {/* Columna Derecha: Barra de búsqueda estilizada de estética premium */}
-          <div className="w-full relative max-w-md md:max-w-none">
+          <div className="w-full relative max-w-sm md:max-w-none">
             <div className="relative group">
-              <Search className="absolute top-2.5 md:top-4 left-3 md:left-4 h-3.5 w-3.5 md:h-5 md:w-5 text-emerald-400 group-focus-within:animate-pulse transition-all" />
+              <Search className="absolute top-2.5 md:top-3.5 left-3 md:left-4 h-3.5 w-3.5 md:h-4.5 md:w-4.5 text-emerald-400 group-focus-within:animate-pulse transition-all" />
               <input
                 type="text"
-                placeholder="Buscar por título, autor o palabra clave... (ej: hábitos)"
+                placeholder="Buscar por título, autor o palabra clave..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-lg md:rounded-2xl bg-[#0f172a]/60 border border-slate-800 focus:border-emerald-500 pl-8.5 md:pl-12 pr-3 md:pr-4 py-2 md:py-4 text-[11px] md:text-sm text-white placeholder-slate-450 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 shadow-[0_0_25px_rgba(0,0,0,0.4)]"
+                className="w-full rounded-lg md:rounded-xl bg-[#0f172a]/70 border border-slate-750 dark:border-slate-805 focus:border-emerald-500 pl-8.5 md:pl-11 pr-3 py-2 md:py-3 text-[11px] md:text-xs text-white placeholder-slate-450 focus:outline-none focus:ring-1 focus:ring-emerald-500/20 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
               />
-            </div>
-            <div className="hidden sm:block absolute -bottom-5 md:bottom-auto md:top-1/2 md:translate-y-6 right-2 text-[9px] md:text-[10px] text-slate-400 font-mono">
-              Búsqueda en tiempo real
             </div>
           </div>
         </div>
       </div>
 
       {/* BARRA DE FILTROS POR CATEGORÍA (Pills Selector) */}
-      <div className="flex gap-2 md:gap-3 overflow-x-auto pb-2 md:pb-4 scrollbar-none transition-all">
+      <div className="flex gap-1.5 md:gap-2 overflow-x-auto pb-1.5 md:pb-2.5 scrollbar-none transition-all">
         <button
           onClick={() => setSelectedPill("all")}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "all"
-               ? "bg-gradient-to-r from-[#22C55E] to-[#4ADE80] text-white border-transparent shadow-[0_0_20px_rgba(34,197,94,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "all" ? "scale-110 rotate-3" : "group-hover:rotate-6"}`}>🌐</span> 
+          <span className="text-xs transition-transform duration-200">🌐</span> 
           <span>Todos</span>
         </button>
         <button
           onClick={() => setSelectedPill("exito")}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-202 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "exito"
-               ? "bg-gradient-to-r from-[#22C55E] to-[#4ADE80] text-white border-transparent shadow-[0_0_20px_rgba(34,197,94,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "exito" ? "scale-110" : ""}`}>🧠</span> 
+          <span className="text-xs transition-transform duration-200">🧠</span> 
           <span>Éxito Personal</span>
         </button>
         <button
           onClick={() => setSelectedPill("magia")}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-202 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "magia"
-               ? "bg-gradient-to-r from-[#22C55E] to-[#4ADE80] text-white border-transparent shadow-[0_0_20px_rgba(34,197,94,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "magia" ? "scale-110" : ""}`}>🏰</span> 
+          <span className="text-xs transition-transform duration-200">🏰</span> 
           <span>Magia Infantil</span>
         </button>
         <button
           onClick={() => setSelectedPill("interes")}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-202 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "interes"
-               ? "bg-gradient-to-r from-[#22C55E] to-[#4ADE80] text-white border-transparent shadow-[0_0_20px_rgba(34,197,94,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "interes" ? "scale-110" : ""}`}>📰</span> 
+          <span className="text-xs transition-transform duration-200">📰</span> 
           <span>Interés General</span>
         </button>
-
+ 
         <button
           onClick={() => {
             setSelectedPill("favorites");
             setSelectedCategory("All");
           }}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-202 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "favorites"
-               ? "bg-gradient-to-r from-rose-500 to-rose-400 text-white border-transparent shadow-[0_0_20px_rgba(244,63,94,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-rose-500/11 text-rose-450 text-rose-400 border-rose-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "favorites" ? "scale-110 rotate-3" : ""}`}>❤️</span> 
+          <span className="text-xs transition-transform duration-200">❤️</span> 
           <span>Favoritos ({favoriteBooks.length})</span>
         </button>
-
+ 
         <button
           onClick={() => {
             setSelectedPill("saved-later");
             setSelectedCategory("All");
           }}
-          className={`rounded-lg md:rounded-full px-3.5 md:px-6 py-2 md:py-3 text-[11px] md:text-xs font-bold uppercase tracking-wider border transition-all duration-300 flex items-center gap-1.5 md:gap-2.5 whitespace-nowrap cursor-pointer hover:scale-105 active:scale-95 select-none ${
+          className={`rounded-md md:rounded-lg px-2.5 md:px-4 py-1 md:py-1.5 text-[10px] md:text-[11px] font-medium uppercase tracking-wider border transition-all duration-202 flex items-center gap-1.5 whitespace-nowrap cursor-pointer hover:scale-[1.01] active:scale-95 select-none ${
             selectedPill === "saved-later"
-               ? "bg-gradient-to-r from-amber-500 to-amber-400 text-white border-transparent shadow-[0_0_20px_rgba(245,158,11,0.45)] font-extrabold"
-               : "bg-slate-100/40 dark:bg-white/5 backdrop-blur-md text-slate-600 dark:text-slate-400 border-slate-200/50 dark:border-white/10 hover:bg-slate-200/60 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100 shadow-sm"
+               ? "bg-amber-500/10 text-amber-400 border-amber-500/20 font-bold"
+               : "bg-[#09110e] text-slate-400 border-white/5 hover:bg-[#0c1713] hover:text-slate-200"
           }`}
         >
-          <span className={`text-xs md:text-base transition-transform duration-300 ${selectedPill === "saved-later" ? "scale-110" : ""}`}>💾</span> 
+          <span className="text-xs transition-transform duration-200">💾</span> 
           <span>Para Después ({savedLaterBooks.length})</span>
         </button>
       </div>
@@ -413,12 +412,12 @@ export const LibraryTab: React.FC = () => {
                 <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
                   Magia
                 </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Colección Legendaria: Harry Potter
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1">
+                  ⭐ Recomendados: Harry Potter
                 </h3>
               </div>
               <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Uuniverso fantástico de J. K. Rowling. Lee al instante los tomos emblemáticos de la saga mágica más querida.
+                Explora el fantástico universo de J. K. Rowling. Lee al instante los tomos emblemáticos de la saga mágica más querida.
               </p>
             </div>
           </div>

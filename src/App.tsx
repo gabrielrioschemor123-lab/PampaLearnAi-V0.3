@@ -7,6 +7,7 @@ import { CoursesTab } from "./components/CoursesTab";
 import { PaywallModal } from "./components/PaywallModal";
 import { CourseView } from "./components/CourseView";
 import { PampaLogo } from "./components/PampaLogo";
+import { VirtualMascot } from "./components/VirtualMascot";
 
 export default function App() {
   const [user, setUser] = useState<AppUser | null>(null);
@@ -321,6 +322,9 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Virtual Mascot Companion */}
+      <VirtualMascot onOpenTotalAccess={() => setIsTotalAccessPaywall(true)} />
     </div>
   );
 }

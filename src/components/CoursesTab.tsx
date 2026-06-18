@@ -79,54 +79,32 @@ export const CoursesTab: React.FC<CoursesTabProps> = ({
 
   return (
     <div className="space-y-6 md:space-y-10 animate-fade-in">
-      {/* 2. HERO BANNER (Card Central Principal) Pampa-themed */}
-      <div className="relative overflow-hidden rounded-2xl md:rounded-[32px] bg-gradient-to-br from-pampa-deep via-[#0A1A15] to-[#041410] border border-pampa-bright/25 p-4 md:p-14 text-left shadow-2xl shadow-black/60 font-sans">
-        <div className="absolute top-0 right-0 h-48 w-48 md:h-64 md:w-64 bg-pampa-bright/5 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 h-36 w-36 md:h-48 md:w-48 bg-pampa-gold/5 blur-[100px] pointer-events-none" />
+      {/* 2. HERO BANNER (Card Central Principal) Pampa-themed - Compact & Stylized */}
+      <div className="relative overflow-hidden rounded-xl md:rounded-2xl bg-gradient-to-br from-pampa-deep/95 via-[#0c1c18] to-[#04120f] border border-pampa-bright/30 p-3.5 md:py-6 md:px-8 text-left shadow-lg shadow-black/50 font-sans">
+        <div className="absolute top-0 right-0 h-32 w-32 md:h-48 md:w-48 bg-pampa-bright/5 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-24 w-24 md:h-36 md:w-36 bg-pampa-gold/5 blur-[70px] pointer-events-none" />
 
-        <div className="relative max-w-3xl space-y-1.5 md:space-y-6">
-          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-pampa-bright/10 px-3 py-1 text-[10px] md:px-4 md:py-1.5 md:text-xs font-bold text-pampa-bright border border-pampa-bright/20">
-            <GraduationCap className="h-4 w-4" /> 🎓 Programas Técnicos Certificados
+        <div className="relative max-w-3xl space-y-1.5 md:space-y-3.5">
+          <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-pampa-bright/10 px-3 py-1 text-[9px] md:px-3 text-xs font-bold text-pampa-bright border border-pampa-bright/20">
+            <GraduationCap className="h-3.5 w-3.5" /> 🎓 Programas Técnicos Certificados
           </span>
           
-          <h1 className="text-lg md:text-5xl text-white tracking-tight leading-tight uppercase font-extrabold">
-            <span className="md:hidden">Programas y Cursos</span>
-            <span className="hidden md:inline">
-              Desarrolla Competencias <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pampa-bright via-[#4ade80] to-pampa-gold animate-pulse font-extrabold">
-                Técnicas y Profesionales
+          <h1 className="text-[11px] sm:text-sm md:text-2xl lg:text-[26px] text-white tracking-wide leading-snug uppercase font-extrabold">
+            <span>
+              Aprendé habilidades reales <br className="hidden sm:block"/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pampa-bright via-[#4ade80] to-pampa-gold font-extrabold animate-pulse">
+                para trabajar y generar ingresos
               </span>
             </span>
           </h1>
-          <p className="hidden sm:block text-xs md:text-sm lg:text-base text-slate-300 leading-relaxed font-medium">
+          <p className="hidden sm:block text-xs md:text-xs lg:text-sm text-slate-400 leading-relaxed font-normal max-w-2xl">
             Adquiere capacitación especializada en oficios modernos, herramientas digitales e idiomas. 
             Potencia tus habilidades prácticas con metodologías orientadas al trabajo y el desarrollo independiente.
           </p>
         </div>
       </div>
 
-      {/* 2.5 BANNER "APOYO COMUNITARIO VOLUNTARIO" (Glow Banner) */}
-      <div 
-        id="donation-glow-banner"
-        className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#091512] border-2 border-rose-500/30 p-4 md:p-8 shadow-[0_0_20px_rgba(239,68,68,0.06)] flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 transition-all duration-300 hover:border-rose-500/50 hover:shadow-[0_0_30px_rgba(239,68,68,0.12)]"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-pampa-deep/10 via-rose-500/5 to-transparent pointer-events-none" />
-        <div className="relative space-y-2 text-left">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 px-2.5 py-0.5 text-[9px] md:px-3.5 md:py-1 md:text-[10px] font-extrabold text-rose-400 uppercase tracking-widest leading-none">
-            ★ PROYECTO 100% GRATUITO Y COMUNITARIO
-          </span>
-          <div className="text-xs md:text-sm font-semibold text-slate-200 leading-relaxed max-w-2xl">
-            <span className="text-white font-extrabold text-pampa-bright">¡Libre de Costos y Publicidad!</span> Si estas capacitaciones te sirven, considera realizar una <span className="font-extrabold text-rose-400">colaboración voluntaria</span> para ayudarnos a mantener los servidores independientes y seguir expandiendo el catálogo para todos.
-          </div>
-        </div>
-        <button
-          onClick={onOpenTotalAccessPaywall}
-          id="btn-open-donations"
-          className="relative shrink-0 overflow-hidden rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 px-4 md:px-6 py-2.5 md:py-4 text-[10px] md:text-xs font-black text-white uppercase tracking-wider shadow-lg shadow-rose-500/20 flex items-center gap-2 cursor-pointer w-full md:w-auto justify-center"
-        >
-          ❤️ Colaborar o Donar
-        </button>
-      </div>
+
 
       {/* 3. BARRA DE FILTRADO (Categorías Inferiores) */}
       <div className="flex flex-col space-y-2 md:space-y-4">
@@ -182,7 +160,7 @@ export const CoursesTab: React.FC<CoursesTabProps> = ({
           </button>
         </div>
       ) : (
-        <div className="grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex overflow-x-auto snap-x snap-mandatory pb-6 gap-5 scrollbar-none md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 md:pb-0">
           {filteredCourses.map((course) => {
             const owned = isCourseOwned(course.id);
             return (

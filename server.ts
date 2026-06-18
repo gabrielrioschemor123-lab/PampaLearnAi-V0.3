@@ -36,6 +36,13 @@ async function startServer() {
     return ai;
   }
 
+  // API Endpoint: Status check for configured API Keys
+  app.get("/api/gemini/status", (req, res) => {
+    const apiKey = process.env.GEMINI_API_KEY;
+    const isConfigured = !!apiKey && apiKey !== "" && apiKey !== "MY_GEMINI_API_KEY";
+    res.json({ configured: isConfigured });
+  });
+
   // API Endpoint: Intelligent AI Tutor endpoint
   app.post("/api/gemini/chat", async (req, res) => {
     try {
@@ -63,29 +70,81 @@ async function startServer() {
         - Mantén tus respuestas relativamente concisas y fáciles de leer en un chat de panel lateral de dispositivo móvil o web.
       `;
 
-      // Build contents schema for Gemini
-      const contentsList: any[] = [];
+      // Build contents schema for Gemini, ensuring we satisfy API constraints:
+      // 1. Must start with a 'user' turn.
+      // 2. Must strictly alternate 'user' and 'model' turns.
+      // 3. Contiguous turns of the same role must be merged.
+      const allMessages: { role: "user" | "model"; content: string }[] = [];
+      
       if (history && Array.isArray(history)) {
         history.forEach((h: any) => {
-          contentsList.push({
-            role: h.role === "user" ? "user" : "model",
-            parts: [{ text: h.content }]
-          });
+          if (h.content && h.content.trim()) {
+            allMessages.push({
+              role: h.role === "user" ? "user" : "model",
+              content: h.content,
+            });
+          }
         });
       }
-      contentsList.push({
+      
+      // Append newest user message
+      allMessages.push({
         role: "user",
-        parts: [{ text: message }]
+        content: message,
       });
 
-      const response = await client.models.generateContent({
-        model: "gemini-3.5-flash",
-        contents: contentsList,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
-        },
+      const cleanMessages: { role: "user" | "model"; content: string }[] = [];
+      allMessages.forEach((msg) => {
+        if (cleanMessages.length === 0) {
+          // Rule 1: First message in the sequence must be 'user'
+          if (msg.role === "user") {
+            cleanMessages.push({ ...msg });
+          }
+        } else {
+          const lastMsg = cleanMessages[cleanMessages.length - 1];
+          if (lastMsg.role === msg.role) {
+            // Rule 3: Merge consecutive messages of the same role
+            lastMsg.content += "\n\n" + msg.content;
+          } else {
+            // Rule 2: Alternate turn
+            cleanMessages.push({ ...msg });
+          }
+        }
       });
+
+      const contentsList = cleanMessages.map((m) => ({
+        role: m.role,
+        parts: [{ text: m.content }]
+      }));
+
+      let response: any = null;
+      let lastApiError: any = null;
+      const candidateModels = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.5-pro", "gemini-3.5-flash"];
+
+      for (const modelName of candidateModels) {
+        try {
+          console.log(`Trying model: ${modelName}`);
+          response = await client.models.generateContent({
+            model: modelName,
+            contents: contentsList,
+            config: {
+              systemInstruction,
+              temperature: 0.7,
+            },
+          });
+          if (response) {
+            console.log(`Successfully generated content using: ${modelName}`);
+            break;
+          }
+        } catch (mErr: any) {
+          console.warn(`Model ${modelName} call failed. Attempting next candidate. Error:`, mErr.message || mErr);
+          lastApiError = mErr;
+        }
+      }
+
+      if (!response) {
+        throw lastApiError || new Error("No se pudo obtener respuesta de ningún modelo de IA disponible.");
+      }
 
       const replyText = response.text || "Lo siento, no he podido procesar tu solicitud en este momento.";
       res.json({ reply: replyText });
