@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Book } from "../types";
-import { BookOpen, Share2, Check, Heart, Bookmark } from "lucide-react";
+import { BookOpen, Share2, Check, Heart, Bookmark, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 
 // Synchronized State Listeners for Multi-Row Instant Updates
@@ -110,12 +110,53 @@ interface BookGridProps {
   books: Book[];
   onSelectBook: (book: Book) => void;
   isLoading: boolean;
+  layout?: "grid" | "carousel";
 }
 
-export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoading }) => {
+export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoading, layout = "carousel" }) => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [favorites, toggleFavorite] = useFavoritesState();
   const [savedLater, toggleSavedLater] = useSavedLaterState();
+
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = useCallback(() => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 15);
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener("scroll", checkScroll, { passive: true });
+      // Run once immediately
+      checkScroll();
+      // Handle component re-renders and resizing
+      const timer = setTimeout(checkScroll, 100);
+
+      const observer = new ResizeObserver(() => checkScroll());
+      observer.observe(el);
+
+      return () => {
+        el.removeEventListener("scroll", checkScroll);
+        clearTimeout(timer);
+        observer.disconnect();
+      };
+    }
+  }, [books, checkScroll, isLoading]);
+
+  const scrollHorizontally = useCallback((direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const containerWidth = scrollRef.current.clientWidth;
+      const scrollAmount = direction === "left" ? -containerWidth * 0.75 : containerWidth * 0.75;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  }, []);
 
   const handleShareWhatsApp = useCallback((e: React.MouseEvent, book: Book) => {
     e.stopPropagation();
@@ -146,9 +187,9 @@ export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoadi
 
   if (isLoading) {
     return (
-      <div className="flex overflow-x-auto pb-4 gap-3 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:pb-0 md:overflow-visible md:snap-none w-full">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <div key={`shimmer-${i}`} className="w-[145px] shrink-0 snap-start md:w-auto md:shrink md:snap-none flex flex-col gap-2.5 md:gap-4 rounded-2xl bg-white border border-slate-200/60 shadow-sm dark:bg-[#090b11] dark:border-gray-900 animate-pulse p-2.5 md:p-4">
+      <div className="flex overflow-x-auto pb-4 gap-3.5 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={`shimmer-${i}`} className="w-[145px] md:w-[205px] shrink-0 snap-start flex flex-col gap-2.5 md:gap-4 rounded-2xl bg-white border border-slate-205/60 shadow-sm dark:bg-[#090b11] dark:border-gray-900 animate-pulse p-2.5 md:p-4">
             <div className="aspect-[3/4] w-full rounded-r-xl rounded-l-md bg-slate-100 dark:bg-gray-800/80" />
             <div className="h-4 w-2/3 bg-slate-200 dark:bg-gray-800 rounded" />
             <div className="h-3 w-1/2 bg-slate-200 dark:bg-gray-800 rounded" />
@@ -159,8 +200,60 @@ export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoadi
     );
   }
 
+  const isCarousel = layout === "carousel";
+
+  if (isCarousel) {
+    return (
+      <div className="group/carousel relative w-full overflow-visible">
+        {/* Left Scroll Button */}
+        {canScrollLeft && (
+          <button
+            onClick={() => scrollHorizontally("left")}
+            className="absolute left-[-16px] md:left-[-24px] top-[140px] md:top-[160px] -translate-y-1/2 z-30 flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full border border-slate-200 bg-white/95 dark:border-white/10 dark:bg-slate-900/90 text-slate-700 hover:text-emerald-500 dark:text-slate-300 dark:hover:text-emerald-400 shadow-xl hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md transition-all duration-200 md:opacity-0 md:group-hover/carousel:opacity-100"
+            aria-label="Desplazar a la izquierda"
+          >
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+        )}
+
+        {/* Scroll Container */}
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto overflow-y-hidden pb-4 pt-1 gap-3.5 md:gap-5 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth w-full"
+        >
+          {books.map((book) => (
+            <BookCard
+              key={book.id}
+              book={book}
+              onSelect={handleCardSelect}
+              onShare={handleShareWhatsApp}
+              copied={copiedId === book.id}
+              isFavorite={favorites.includes(book.id)}
+              isSavedLater={savedLater.includes(book.id)}
+              onToggleFavorite={toggleFavorite}
+              onToggleSavedLater={toggleSavedLater}
+              isCarousel={true}
+            />
+          ))}
+        </div>
+
+        {/* Right Scroll Button */}
+        {canScrollRight && (
+          <button
+            onClick={() => scrollHorizontally("right")}
+            className="absolute right-[-16px] md:right-[-24px] top-[140px] md:top-[160px] -translate-y-1/2 z-30 flex h-9 w-9 md:h-11 md:w-11 items-center justify-center rounded-full border border-slate-200 bg-white/95 dark:border-white/10 dark:bg-slate-900/90 text-slate-700 hover:text-emerald-500 dark:text-slate-300 dark:hover:text-emerald-400 shadow-xl hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md transition-all duration-200 md:opacity-0 md:group-hover/carousel:opacity-100"
+            aria-label="Desplazar a la derecha"
+          >
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  // Grid fallback layout (used in searches)
   return (
-    <div className="flex overflow-x-auto pb-4 gap-3 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:pb-0 md:overflow-visible md:snap-none w-full">
+    <div className="grid grid-cols-2 gap-3.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full">
       {books.map((book) => (
         <BookCard
           key={book.id}
@@ -172,6 +265,7 @@ export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoadi
           isSavedLater={savedLater.includes(book.id)}
           onToggleFavorite={toggleFavorite}
           onToggleSavedLater={toggleSavedLater}
+          isCarousel={false}
         />
       ))}
     </div>
@@ -187,9 +281,10 @@ interface BookCardProps {
   isSavedLater: boolean;
   onToggleFavorite: (bookId: string) => void;
   onToggleSavedLater: (bookId: string) => void;
+  isCarousel?: boolean;
 }
 
-const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, isFavorite, isSavedLater, onToggleFavorite, onToggleSavedLater }) => {
+const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, isFavorite, isSavedLater, onToggleFavorite, onToggleSavedLater, isCarousel = false }) => {
   const [imgLoading, setImgLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const coverUrl = book.coverUrl || book.cover_url;
@@ -209,7 +304,11 @@ const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, i
       layout
       whileHover={{ y: -6 }}
       onClick={handleSelectClick}
-      className="group relative w-[145px] shrink-0 snap-start md:w-auto md:shrink md:snap-none flex flex-col justify-between cursor-pointer rounded-2xl bg-white border border-slate-200/60 shadow-sm hover:shadow-md hover:bg-slate-50 dark:bg-slate-950/60 dark:backdrop-blur-md dark:border-slate-900 transition-all duration-300 p-2.5 md:p-4"
+      className={`group relative flex flex-col justify-between cursor-pointer rounded-2xl bg-white border border-slate-205/60 shadow-sm hover:shadow-md hover:bg-slate-50 dark:bg-slate-950/60 dark:backdrop-blur-md dark:border-slate-900 transition-all duration-300 p-2.5 md:p-4 ${
+        isCarousel
+          ? "w-[145px] md:w-[205px] shrink-0 snap-start"
+          : "w-full"
+      }`}
     >
       <div>
         {/* Book Spine 3:4 Shadow Cover Container with physical book aesthetics */}
@@ -321,9 +420,32 @@ const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, i
 
         {/* Text information */}
         <div className="mt-2.5 md:mt-4 text-left">
-          <span className="text-[9px] md:text-[10px] font-mono tracking-wide text-slate-750 dark:text-gray-500 font-medium uppercase">
-            {book.author}
-          </span>
+          <div className="flex items-center justify-between gap-1 flex-wrap min-h-[16px]">
+            <span className="text-[9px] md:text-[10px] font-mono tracking-wide text-slate-750 dark:text-gray-500 font-medium uppercase truncate max-w-[65%]">
+              {book.author}
+            </span>
+            {book.focusTag && (
+              <span className={`text-[6.5px] md:text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md border shrink-0 ${
+                book.focusTag === "Estoicismo y Vida"
+                  ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/15"
+                  : book.focusTag === "Filosofía Ilustrada / Manga"
+                  ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/15"
+                  : book.focusTag === "Romance Juvenil y Drama"
+                  ? "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/15"
+                  : book.focusTag === "Fantasía Erótica y Deseo"
+                  ? "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/15"
+                  : book.focusTag === "Romance Universitario"
+                  ? "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/15"
+                  : book.focusTag === "Romance de Época"
+                  ? "bg-yellow-600/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/15"
+                  : book.focusTag === "Romance Vampírico / Fantasía"
+                  ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/15"
+                  : "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/15"
+              }`}>
+                {book.focusTag}
+              </span>
+            )}
+          </div>
           <h3 className="mt-0.5 md:mt-1 line-clamp-1 text-xs md:text-base font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
             {book.title}
           </h3>

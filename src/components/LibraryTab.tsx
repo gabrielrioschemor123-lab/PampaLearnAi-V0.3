@@ -14,7 +14,21 @@ const removeAccents = (str: string): string => {
 /* -------------------------------------------------------------------------- */
 export const LibraryTab: React.FC = () => {
   const [books] = useState<Book[]>(() => {
-    return initialBooks.filter(
+    return initialBooks.map((b) => {
+      if (b.category === "50 Sombras") {
+        return { ...b, focusTag: "Fantasía Erótica y Deseo" };
+      }
+      if (b.category === "Kiss Me") {
+        return { ...b, focusTag: "Romance Universitario" };
+      }
+      if (b.category === "Bridgerton") {
+        return { ...b, focusTag: "Romance de Época" };
+      }
+      if (b.category === "Crepúsculo") {
+        return { ...b, focusTag: "Romance Vampírico / Fantasía" };
+      }
+      return b;
+    }).filter(
       (b) =>
         b.category === "Brian Tracy" ||
         b.category === "Colección Éxito: Brian Tracy" ||
@@ -27,7 +41,9 @@ export const LibraryTab: React.FC = () => {
         b.category === "Crepúsculo" ||
         b.category === "Juego de Tronos" ||
         b.category === "Narnia" ||
-        b.category === "Kiss Me"
+        b.category === "Kiss Me" ||
+        b.category === "Filosofía y Pensamiento" ||
+        b.category === "Novela Romántica y Fantasía Erótica"
     );
   });
   const [loading] = useState(false);
@@ -134,6 +150,20 @@ export const LibraryTab: React.FC = () => {
     return books.filter((b) => b.category === "Narnia");
   }, [books]);
 
+  const philosophyBooks = useMemo(() => {
+    return books.filter((b) => b.category === "Filosofía y Pensamiento");
+  }, [books]);
+
+  const romanceBooks = useMemo(() => {
+    return books.filter((b) => 
+      b.category === "Novela Romántica y Fantasía Erótica" ||
+      b.category === "50 Sombras" ||
+      b.category === "Kiss Me" ||
+      b.category === "Bridgerton" ||
+      b.category === "Crepúsculo"
+    );
+  }, [books]);
+
   const favoriteBooks = useMemo(() => {
     return books.filter((b) => favorites.includes(b.id));
   }, [books, favorites]);
@@ -142,7 +172,7 @@ export const LibraryTab: React.FC = () => {
     return books.filter((b) => savedLater.includes(b.id));
   }, [books, savedLater]);
 
-  const categories = useMemo(() => ["All", "Ventas y Negocios", "Brian Tracy", "Disney", "Sagas de Éxito Mundial", "Terror"], []);
+  const categories = useMemo(() => ["All", "Filosofía y Pensamiento", "Novela Romántica y Fantasía Erótica", "Ventas y Negocios", "Brian Tracy", "Disney", "Sagas de Éxito Mundial", "Terror"], []);
 
   // MEMOIZED FILTER MATCHES
   const filteredBooks = useMemo(() => {
@@ -180,17 +210,19 @@ export const LibraryTab: React.FC = () => {
       const matchesCategory =
         selectedCategory === "All" ||
         (selectedCategory === "Sagas de Éxito Mundial" &&
-          ["50 Sombras", "Bridgerton", "Harry Potter", "Crepúsculo", "Juego de Tronos", "Narnia", "Kiss Me"].includes(book.category)) ||
+          ["50 Sombras", "Bridgerton", "Harry Potter", "Crepúsculo", "Juego de Tronos", "Narnia", "Kiss Me", "Novela Romántica y Fantasía Erótica"].includes(book.category)) ||
+        (selectedCategory === "Novela Romántica y Fantasía Erótica" &&
+          ["Novela Romántica y Fantasía Erótica", "50 Sombras", "Bridgerton", "Crepúsculo", "Kiss Me"].includes(book.category)) ||
         book.category === selectedCategory ||
         (selectedCategory === "Brian Tracy" && book.category === "Colección Éxito: Brian Tracy");
       
       let matchesPill = true;
       if (selectedPill === "exito") {
-        matchesPill = book.category === "Brian Tracy" || book.category === "Colección Éxito: Brian Tracy" || book.category === "Ventas y Negocios";
+        matchesPill = book.category === "Brian Tracy" || book.category === "Colección Éxito: Brian Tracy" || book.category === "Ventas y Negocios" || (book.category === "Filosofía y Pensamiento" && book.focusTag === "Estoicismo y Vida");
       } else if (selectedPill === "magia") {
-        matchesPill = book.category === "Disney" || book.category === "Harry Potter" || book.category === "Narnia";
+        matchesPill = book.category === "Disney" || book.category === "Harry Potter" || book.category === "Narnia" || (book.category === "Filosofía y Pensamiento" && book.focusTag === "Filosofía Ilustrada / Manga");
       } else if (selectedPill === "interes") {
-        matchesPill = book.category === "50 Sombras" || book.category === "Bridgerton" || book.category === "Crepúsculo" || book.category === "Terror" || book.category === "Juego de Tronos" || book.category === "Kiss Me";
+        matchesPill = book.category === "50 Sombras" || book.category === "Bridgerton" || book.category === "Crepúsculo" || book.category === "Terror" || book.category === "Juego de Tronos" || book.category === "Kiss Me" || book.category === "Novela Romántica y Fantasía Erótica" || (book.category === "Filosofía y Pensamiento" && book.focusTag === "Introducción y Cultura Pop");
       } else if (selectedPill === "favorites") {
         matchesPill = favorites.includes(book.id);
       } else if (selectedPill === "saved-later") {
@@ -378,11 +410,11 @@ export const LibraryTab: React.FC = () => {
 
       {/* GUARDADOS PARA DESPUÉS - HIGH-FIDELITY ROW */}
       {searchTerm === "" && selectedCategory === "All" && selectedPill === "all" && savedLaterBooks.length > 0 && (
-        <div className="space-y-3 text-left">
+         <div className="space-y-3 text-left">
           <div className="flex items-center justify-between border-b border-amber-200/60 dark:border-amber-950/60 pb-1.5 transition-colors duration-300">
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-150 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
+                <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
                   Lectura Pendiente
                 </span>
                 <h3 className="text-xs md:text-[14px] font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-tight flex items-center gap-1">
@@ -403,195 +435,6 @@ export const LibraryTab: React.FC = () => {
         </div>
       )}
 
-      {/* HARRY POTTER COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "magia") && harryPotterBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Magia
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1">
-                  ⭐ Recomendados: Harry Potter
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Explora el fantástico universo de J. K. Rowling. Lee al instante los tomos emblemáticos de la saga mágica más querida.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={harryPotterBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* NARNIA COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "magia") && narniaBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-[#ecfdf5] dark:bg-emerald-500/10 border border-emerald-150 dark:border-emerald-500/20 text-[8px] md:text-[9px] font-extrabold text-emerald-600 dark:text-emerald-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Fantasía Clásica
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Saga de Éxito mundial: Las Crónicas de Narnia
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                El mágico universo de C. S. Lewis, Aslan y los hermanos Pevensie en sus inmortales aventuras.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={narniaBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* JUEGO DE TRONOS COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && juegoDeTronosBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Fantasía Épica
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Saga de Éxito mundial: Juego de Tronos
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Épica de fantasía medieval y batallas dinásticas de George R. R. Martin en el orden oficial.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={juegoDeTronosBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* CREPUSCULO COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && crepusculoBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-red-50 dark:bg-red-500/10 border border-red-155 dark:border-red-500/20 text-[8px] md:text-[9px] font-extrabold text-red-600 dark:text-red-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Fantasía Romántica
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Saga de Éxito Mundial: Crepúsculo
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Sigue la legendaria saga romántica de Stephenie Meyer de forma libre en el orden recomendado.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={crepusculoBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* BRIDGERTON COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && bridgertonBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-rose-50 dark:bg-rose-500/10 border border-rose-155 dark:border-rose-500/20 text-[8px] md:text-[9px] font-extrabold text-rose-600 dark:text-rose-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Histórico
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Saga de Éxito Mundial: Los Bridgerton
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Sigue la aclamada saga de Julia Quinn. Las 8 entregas correspondientes a cada uno de los hermanos de la familia.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={bridgertonBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* 50 SOMBRAS DE GREY COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && greyBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-rose-50 dark:bg-rose-500/10 border border-rose-155 dark:border-rose-500/20 text-[8px] md:text-[9px] font-extrabold text-rose-600 dark:text-rose-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Saga Romántica
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Saga de Éxito Mundial: 50 Sombras
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
-                Explora la exitosa e intensa trilogía escrita por E. L. James.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={greyBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
-      {/* KISS ME SAGA - HIGH-FIDELITY FEATURED ROW ON TOP */}
-      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && kissMeBooks.length > 0 && (
-        <div className="space-y-3 text-left">
-          <div className="flex items-center justify-between border-b border-rose-200/60 dark:border-rose-950/60 pb-1.5 transition-colors duration-300">
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="rounded bg-rose-50 dark:bg-rose-500/10 border border-rose-150 dark:border-rose-500/20 text-[8px] md:text-[9px] font-extrabold text-rose-600 dark:text-rose-400 px-1.5 py-0.5 uppercase tracking-wider">
-                  Saga de Romance
-                </span>
-                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-755 dark:text-gray-300 uppercase tracking-tight flex items-center gap-1">
-                  ❤️ Saga de Éxito Mundial: Kiss Me (Elle Kennedy)
-                </h3>
-              </div>
-              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal font-sans">
-                La adictiva serie de romance universitario y hockey sobre hielo de Elle Kennedy que conquistó corazones en todo el mundo.
-              </p>
-            </div>
-          </div>
-
-          <BookGrid
-            books={kissMeBooks}
-            onSelectBook={handleSelectBookInternal}
-            isLoading={false}
-          />
-        </div>
-      )}
-
       {/* BRIAN TRACY - HIGHLIGHTED ROW ON TOP (MEMOIZED GATES) */}
       {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "exito") && brianTracyBooks.length > 0 && (
         <div className="space-y-3 text-left">
@@ -602,7 +445,7 @@ export const LibraryTab: React.FC = () => {
                   Colección Especial
                 </span>
                 <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Colección Éxito: Brian Tracy
+                  📈 Colección Éxito: Brian Tracy
                 </h3>
               </div>
               <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
@@ -629,7 +472,7 @@ export const LibraryTab: React.FC = () => {
                   Negocios
                 </span>
                 <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Colección: Ventas y Negocios
+                  💼 Colección: Ventas y Negocios
                 </h3>
               </div>
               <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
@@ -646,6 +489,52 @@ export const LibraryTab: React.FC = () => {
         </div>
       )}
 
+      {/* SECCIÓN UNIFICADA: FILOSOFÍA Y PENSAMIENTO */}
+      {searchTerm === "" && (selectedCategory === "All" || selectedCategory === "Filosofía y Pensamiento") && (selectedPill === "all" || selectedPill === "exito" || selectedPill === "magia" || selectedPill === "interes") && philosophyBooks.length > 0 && (
+        <div className="space-y-3.5 text-left" id="filosofia-pensamiento-section">
+          {(() => {
+            const displayBooks = selectedPill === "exito"
+              ? philosophyBooks.filter(b => b.focusTag === "Estoicismo y Vida")
+              : selectedPill === "magia"
+              ? philosophyBooks.filter(b => b.focusTag === "Filosofía Ilustrada / Manga")
+              : selectedPill === "interes"
+              ? philosophyBooks.filter(b => b.focusTag === "Introducción y Cultura Pop")
+              : philosophyBooks;
+
+            if (displayBooks.length === 0) return null;
+
+            return (
+              <>
+                <div className="flex items-center justify-between border-b border-purple-200/60 dark:border-purple-950/40 pb-2 transition-colors duration-300">
+                  <div>
+                    <div className="flex items-center gap-1.5 md:gap-2">
+                      <span className="rounded bg-purple-50 dark:bg-purple-900/10 border border-purple-200/50 dark:border-purple-500/20 text-[8.5px] md:text-[9.5px] font-extrabold text-purple-600 dark:text-purple-400 px-2 py-0.5 uppercase tracking-wider">
+                        Colección Pensadores
+                      </span>
+                      <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1.5">
+                        🧠 Filosofía y Pensamiento
+                      </h3>
+                    </div>
+                    <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-1 transition-colors duration-300 font-normal">
+                      Explora las claves del estoicismo práctico, profundiza con adaptaciones manga ilustradas y descifra la cultura moderna.
+                    </p>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1.5 text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider">
+                    <span>{displayBooks.length} Títulos</span>
+                  </div>
+                </div>
+
+                <BookGrid
+                  books={displayBooks}
+                  onSelectBook={handleSelectBookInternal}
+                  isLoading={false}
+                />
+              </>
+            );
+          })()}
+        </div>
+      )}
+
       {/* DISNEY COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
       {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "magia") && disneyBooks.length > 0 && (
         <div className="space-y-3 text-left">
@@ -656,7 +545,7 @@ export const LibraryTab: React.FC = () => {
                   Creatividad
                 </span>
                 <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Colección Creativa: Disney
+                  🏰 Colección Creativa: Disney
                 </h3>
               </div>
               <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
@@ -673,6 +562,114 @@ export const LibraryTab: React.FC = () => {
         </div>
       )}
 
+      {/* HARRY POTTER COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
+      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "magia") && harryPotterBooks.length > 0 && (
+        <div className="space-y-3 text-left">
+          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-amber-55 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
+                  Magia
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1">
+                  ⭐ Recomendados: Harry Potter
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
+                Explora el fantástico universo de J. K. Rowling. Lee al instante los tomos emblemáticos de la saga mágica más querida.
+              </p>
+            </div>
+          </div>
+
+          <BookGrid
+            books={harryPotterBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* JUEGO DE TRONOS COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
+      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && juegoDeTronosBooks.length > 0 && (
+        <div className="space-y-3 text-left">
+          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-155 dark:border-amber-500/20 text-[8px] md:text-[9px] font-extrabold text-amber-600 dark:text-amber-400 px-1.5 py-0.5 uppercase tracking-wider">
+                  Fantasía Épica
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
+                  🐉 Saga de Éxito mundial: Juego de Tronos
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
+                Épica de fantasía medieval y batallas dinásticas de George R. R. Martin en el orden oficial.
+              </p>
+            </div>
+          </div>
+
+          <BookGrid
+            books={juegoDeTronosBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* NARNIA COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
+      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "magia") && narniaBooks.length > 0 && (
+        <div className="space-y-3 text-left">
+          <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-900/60 pb-1.5 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-[#ecfdf5] dark:bg-emerald-500/10 border border-emerald-150 dark:border-emerald-500/20 text-[8px] md:text-[9px] font-extrabold text-emerald-600 dark:text-emerald-400 px-1.5 py-0.5 uppercase tracking-wider">
+                  Fantasía Clásica
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
+                  🦁 Saga de Éxito mundial: Las Crónicas de Narnia
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
+                El mágico universo de C. S. Lewis, Aslan y los hermanos Pevensie en sus inmortales aventuras.
+              </p>
+            </div>
+          </div>
+
+          <BookGrid
+            books={narniaBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* UNIFIED ROMANCE & EROTIC FANTASY COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
+      {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && romanceBooks.length > 0 && (
+        <div className="space-y-3 text-left">
+          <div className="flex items-center justify-between border-b border-pink-200/60 dark:border-pink-950/60 pb-1.5 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-pink-50 dark:bg-pink-500/10 border border-pink-150 dark:border-pink-500/20 text-[8px] md:text-[9px] font-extrabold text-pink-600 dark:text-pink-400 px-1.5 py-0.5 uppercase tracking-wider animate-pulse">
+                  Colección Destacada
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-pink-300 uppercase tracking-tight flex items-center gap-1.5">
+                  💖 Novela Romántica y Fantasía Erótica
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal font-sans">
+                Explora las mejores novelas de romance juvenil, drama, relaciones universitarias, romance de época y romance de fantasía en un solo lugar.
+              </p>
+            </div>
+          </div>
+
+          <BookGrid
+            books={romanceBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
       {/* TERROR COLLECTION - HIGH-FIDELITY FEATURED ROW ON TOP */}
       {searchTerm === "" && selectedCategory === "All" && (selectedPill === "all" || selectedPill === "interes") && terrorBooks.length > 0 && (
         <div className="space-y-3 text-left">
@@ -683,7 +680,7 @@ export const LibraryTab: React.FC = () => {
                   Misterio & Suspenso
                 </span>
                 <h3 className="text-xs md:text-[14px] font-extrabold text-slate-700 dark:text-slate-300 uppercase tracking-tight">
-                  Colección de Suspenso: Terror
+                  👻 Colección de Suspenso: Terror
                 </h3>
               </div>
               <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-0.5 transition-colors duration-300 font-normal">
@@ -807,6 +804,7 @@ export const LibraryTab: React.FC = () => {
             books={filteredBooks}
             onSelectBook={handleSelectBookInternal}
             isLoading={false}
+            layout="grid"
           />
         )}
       </div>

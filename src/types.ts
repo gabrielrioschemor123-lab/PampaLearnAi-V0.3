@@ -24,6 +24,7 @@ export interface Book {
   author: string;
   pages?: number;
   keywords?: string[];
+  focusTag?: string;
 }
 
 export interface Lesson {
