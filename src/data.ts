@@ -1206,5 +1206,1199 @@ export const initialCourses: Course[] = [
         ]
       }
     ]
+  },
+  {
+    id: "microblading-cejas",
+    title: "Máster en Diseño, Perfilado y Microblading de Cejas",
+    headline: "Formación profesional paso a paso para dominar la técnica de microblading, perfilado híbrido, bioseguridad y resguardo jurídico.",
+    instructor: "Especialista Flor Cardozo (Master Aesthetician)",
+    difficulty: "Principiante",
+    description: "Conviértete en profesional de la estética de la ceja. Este máster cubre desde la bioseguridad higiénico-sanitaria y la anatomía de la dermis, hasta el diseño morfológico, anestésicos permitidos, práctica intensiva paso a paso en látex y modelo real de manera guiada.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 27,
+    syllabus: [
+      {
+        id: "micro-m1",
+        title: "Módulo 1: Introducción y Fundamentos",
+        lessons: [
+          {
+            id: "micro-1-1",
+            title: "Parte 1. Comenzando el curso de microblading",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/11oC-Q17iwrCjNRwvtnubyqiJmddYsAW7/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "micro-1-2",
+            title: "Parte 2. Introducción y definición de la técnica",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/13jV9ZhMOoGCa-jJroMfCTxLEHgstF3TH/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "micro-1-3",
+            title: "Parte 3. Introducción a la Bioseguridad (Clave)",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/15AnmZxzz8y1OiGn2QIKGFRyI46vkcQKI/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "micro-1-4",
+            title: "Parte 4. Anatomía de la piel",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1XTfuKpT5oUSUgrXwS4y3ImoJicnQS5_S/preview",
+            type: "video",
+            duration: "25 mins"
+          }
+        ]
+      },
+      {
+        id: "micro-m2",
+        title: "Módulo 2: Herramientas y Materiales",
+        lessons: [
+          {
+            id: "micro-2-1",
+            title: "Parte 5. Tipos y recomendaciones de pigmentos",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1ew2Gb8yVRenQBnQYbq_qKfQkVsrYrWaa/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "micro-2-2",
+            title: "Parte 6. Materiales de trabajo",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/1qoHXwtX9IMAhDJ6E66lQO9kkGRuMtbAr/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "micro-2-3",
+            title: "Parte 11. Tipos de aguja (Parte 1)",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1rhFO1pHsIofBxVJKLfOC3IPiC5uoY6n_/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "micro-2-4",
+            title: "Parte 12. Tipos de aguja (Parte 2)",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1Qzjurkln_J3cqM_cBLfNUmibkUH73TBa/preview",
+            type: "video",
+            duration: "14 mins"
+          },
+          {
+            id: "micro-2-5",
+            title: "Parte 13. Forma correcta de colocar la aguja en el inductor o tebori",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/1Q9btmeUIUD0VK00GHp8u3PjrpSpZeBQV/preview",
+            type: "video",
+            duration: "10 mins"
+          }
+        ]
+      },
+      {
+        id: "micro-m3",
+        title: "Módulo 3: Preparación, Diseño y Anestesia",
+        lessons: [
+          {
+            id: "micro-3-1",
+            title: "Parte 7. Anestésicos",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/1nlXiWRr49xtN3svG5ezXj1P6CLBr8Cm-/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "micro-3-2",
+            title: "Parte 8. Exfoliación de la piel y aplicación de la anestesia",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/1OF_hhM29VWRaMRKap67jzd5RPTnzV8QE/preview",
+            type: "video",
+            duration: "16 mins"
+          },
+          {
+            id: "micro-3-3",
+            title: "Parte 9. Lápiz dermográfico",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/1F_ySgWCkE3wnxEAi2TYdTTlJ5mtEPhph/preview",
+            type: "video",
+            duration: "12 mins"
+          },
+          {
+            id: "micro-3-4",
+            title: "Parte 10. Marcación, diseño y perfilado de cejas",
+            order: 13,
+            video_drive_url: "https://drive.google.com/file/d/1QIUkW-csm2ImtmG2e0hdWlp6gpn5x4aV/preview",
+            type: "video",
+            duration: "26 mins"
+          }
+        ]
+      },
+      {
+        id: "micro-m4",
+        title: "Módulo 4: Práctica y Técnica Práctica",
+        lessons: [
+          {
+            id: "micro-4-1",
+            title: "Parte 14. ¿Cómo practicar correctamente?",
+            order: 14,
+            video_drive_url: "https://drive.google.com/file/d/1tcjpQTweXOtnZKCsoDU65VZ2FWE7K7Dw/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "micro-4-2",
+            title: "Parte 15. Practicando marcación de cejas y marcado con pintura (Parte 1)",
+            order: 15,
+            video_drive_url: "https://drive.google.com/file/d/1OLV0mKDzu7QlWuz8VDAHKgiF-Y4eRQXs/preview",
+            type: "video",
+            duration: "21 mins"
+          },
+          {
+            id: "micro-4-3",
+            title: "Parte 16. Practicando marcación de cejas y marcado con pintura (Parte 2)",
+            order: 16,
+            video_drive_url: "https://drive.google.com/file/d/1BsYOyotI4zrNFmBG_uzfdnPhVjL4P2R_/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "micro-4-4",
+            title: "Parte 17. Profundidad correcta del corte en piel superficial",
+            order: 17,
+            video_drive_url: "https://drive.google.com/file/d/1f-QF663tB92du0VjqY4ttItQpvoM377I/preview",
+            type: "video",
+            duration: "16 mins"
+          },
+          {
+            id: "micro-4-5",
+            title: "Parte 18. Paso a paso de la técnica (teórico)",
+            order: 18,
+            video_drive_url: "https://drive.google.com/file/d/1am1911J6SW_FQ7wmgHL5MhvD4xbB9RfQ/preview",
+            type: "video",
+            duration: "20 mins"
+          }
+        ]
+      },
+      {
+        id: "micro-m5",
+        title: "Módulo 5: Aplicación Real en Modelo",
+        lessons: [
+          {
+            id: "micro-5-1",
+            title: "Parte 19. Retiro de la anestesia, marcado de cejas y primeros cortes (Parte 1)",
+            order: 19,
+            video_drive_url: "https://drive.google.com/file/d/1098Asu3jGiAEIaZPS9DiQ75YMqRbc7Nv/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "micro-5-2",
+            title: "Parte 20. Retiro de la anestesia, marcado de cejas y primeros cortes (Parte 2)",
+            order: 20,
+            video_drive_url: "https://drive.google.com/file/d/1kN130pJNGGn2XnEc0DEEVkvkWmo-kcWP/preview",
+            type: "video",
+            duration: "28 mins"
+          },
+          {
+            id: "micro-5-3",
+            title: "Parte 21. Retiro del pigmento, remarcado de cejas y cortes (varias veces) (Parte 1)",
+            order: 21,
+            video_drive_url: "https://drive.google.com/file/d/1UbwJqFxdtUHTLaFBqclYGeBwkef7wvK1/preview",
+            type: "video",
+            duration: "30 mins"
+          },
+          {
+            id: "micro-5-4",
+            title: "Parte 22. Retiro del pigmento, remarcado de cejas y cortes (varias veces) (Parte 2)",
+            order: 22,
+            video_drive_url: "https://drive.google.com/file/d/1iwyNrNvFSPZynheCT0c2kmJij0fpx811/preview",
+            type: "video",
+            duration: "26 mins"
+          }
+        ]
+      },
+      {
+        id: "micro-m6",
+        title: "Módulo 6: Finalización, Correcciones y Aspectos Legales",
+        lessons: [
+          {
+            id: "micro-6-1",
+            title: "Parte 23. Correcciones y relleno",
+            order: 23,
+            video_drive_url: "https://drive.google.com/file/d/17ECOMzc95n7nLc85O5ru322Dt_7T8QX-/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "micro-6-2",
+            title: "Parte 24. Rectificación de diseño",
+            order: 24,
+            video_drive_url: "https://drive.google.com/file/d/169FowKC0VbFOs4_EK9zprhKjG3XdN_X_/preview",
+            type: "video",
+            duration: "14 mins"
+          },
+          {
+            id: "micro-6-3",
+            title: "Parte 25. Cuidados post tratamiento",
+            order: 25,
+            video_drive_url: "https://drive.google.com/file/d/1ctSuzhzGdjzMQXjIn0-b3m9m4GZsOELi/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "micro-6-4",
+            title: "Parte 26. Contraindicaciones",
+            order: 26,
+            video_drive_url: "https://drive.google.com/file/d/1wfz4c0HiEhh7Ltbk6nAMFOCCO7rkBp33/preview",
+            type: "video",
+            duration: "12 mins"
+          },
+          {
+            id: "micro-6-5",
+            title: "Parte 27. Ficha técnica y resguardo jurídico (Fundamental)",
+            order: 27,
+            video_drive_url: "https://drive.google.com/file/d/1od7l_H28S7_WolH8fpfImo5bpjRHJwIY/preview",
+            type: "video",
+            duration: "21 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "peluqueria-estilismo",
+    title: "Curso Máster: Estilismo, Peluquería y Corte de Cabello",
+    headline: "Domina las técnicas de corte, peinado, cuidado capilar y herramientas profesionales del estilista desde cero.",
+    instructor: "Lucas Benítez (Estilista & Hair Designer)",
+    difficulty: "Principiante",
+    description: "Iníciate con confianza en el apasionante mundo del estilismo y la peluquería profesional. El curso abarca el estudio de la textura capilar, técnicas fundamentales de corte de cabello y el uso correcto de herramientas de precisión como tijera y navaja.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 2,
+    syllabus: [
+      {
+        id: "pelu-m1",
+        title: "Módulo 1: Fundamentos y Herramientas del Estilista",
+        lessons: [
+          {
+            id: "pelu-1-1",
+            title: "Parte 1: Introducción a la Peluquería y Estructura Capilar",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/13VOz7RkWjaHw7H_TaRm1-bRPRYYzoFne/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "pelu-1-2",
+            title: "Parte 2: Herramientas del Estilista y Técnicas de Corte",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1T0_Il05y8Qm05K2f7ws9wS8H3_-f_YLD/preview",
+            type: "video",
+            duration: "21 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "unas-manicuria",
+    title: "Curso Especialista en Uñas, Manicuría y Nail Art",
+    headline: "Formación profesional en cuidado de manos, preparación de la uña, esmaltado semipermanente y decoración creativa.",
+    instructor: "Sofía Valenzuela (Nail Master & Educator)",
+    difficulty: "Principiante",
+    description: "Inicia tu camino como manicurista profesional. Aprende a fondo la anatomía de las manos y uñas, la correcta preparación química de la lámina ungueal, técnicas avanzadas de limado, limpieza de cutículas y la aplicación perfecta de esmaltado semipermanente, esculpidos fundamentales y arte decorativo.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1604654894610-df490651e56c?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 3,
+    syllabus: [
+      {
+        id: "unas-m1",
+        title: "Módulo 1: Anatomía, Preparación y Manicuría Inicial",
+        lessons: [
+          {
+            id: "unas-1-1",
+            title: "Parte 1: Anatomía de la Uña y Preparación de la Lámina",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1NG9uH1PFzg3YTdyryxnKOa5FrDvSioAw/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "unas-1-2",
+            title: "Parte 2: Limpieza de Cutículas y Técnicas de Limado",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1Xv2VFO_pnD4zags3DnImC2EhyQEvPE7w/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "unas-1-3",
+            title: "Parte 3: Aplicación de Semi y Sellado de Cutícula",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1Yu_pFSDlL_l9JtpGAqhCYvoPmbtEGhg3/preview",
+            type: "video",
+            duration: "28 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "masoterapia-masajes",
+    title: "Curso Máster: Masoterapia e Iniciación al Masaje Corporal",
+    headline: "Aprende el arte del contacto terapéutico, masajes descontracturantes, relajantes y anatomía muscular para masajistas profesionales.",
+    instructor: "Clara Domínguez (Terapeuta Corporal & Kinesióloga)",
+    difficulty: "Principiante",
+    description: "Iníciate en la masoterapia y el bienestar físico corporal. Este máster introductorio te capacita en la anatomía del sistema muscular, técnicas fundamentales de deslizamiento, amasamiento, fricción, preparación del ambiente y maniobras descontracturantes de espalda.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 2,
+    syllabus: [
+      {
+        id: "masa-m1",
+        title: "Módulo 1: Fundamentos de la Masoterapia Corporal",
+        lessons: [
+          {
+            id: "masa-1-1",
+            title: "Parte 1: Introducción a la Masoterapia y Biomecánica Corporal",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1lQwctQbv3oHrYKVWd4xZUlNvEVtPlx68/preview",
+            type: "video",
+            duration: "26 mins"
+          },
+          {
+            id: "masa-1-2",
+            title: "Parte 2: Técnicas de Amasamiento y Masaje Descontracturante",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1O97viNClI9gcxIyr32j3WD1HsBgy0QMI/preview",
+            type: "video",
+            duration: "24 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "automaquillaje-completo",
+    title: "Curso Máster: Automaquillaje Completo y Diseño de Imagen",
+    headline: "Domina el arte del automaquillaje social de día y de noche, estudio morfológico, colorimetría y diseño de cejas.",
+    instructor: "Paula Mendoza (Beauty Creator & Make-Up Artist)",
+    difficulty: "Principiante",
+    description: "Aprende a resaltar tu belleza natural potenciando tus facciones únicas. Pasaremos desde el estudio morfológico de tu tipo de rostro y preparación de piel preliminar, hasta técnicas de contorno avanzado, difuminados de ojos de nivel intermedio y maquillaje para eventos de gala paso a paso.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 13,
+    syllabus: [
+      {
+        id: "maq-m1",
+        title: "Módulo 1: Preparación de la Piel y Paletas Cromáticas",
+        lessons: [
+          {
+            id: "maq-1-1",
+            title: "Parte 1: Tipos de Piel y Preparación Cutánea",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1u6hVIWbCkdb8UYRsahYhQECoJcY5Pb-b/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "maq-1-2",
+            title: "Parte 2: Teoría del Color y Selección de Paletas",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1e5eIO-GzHPbhhetYymglFgKX6cwB8UEF/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "maq-1-3",
+            title: "Parte 3: Bases, Correctores y Cobertura Profesional",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1GuVqY_4nGXFyZYfEks3Nylb6MoCg0cPM/preview",
+            type: "video",
+            duration: "22 mins"
+          }
+        ]
+      },
+      {
+        id: "maq-m2",
+        title: "Módulo 2: Perfilado de Rostro y Cejas",
+        lessons: [
+          {
+            id: "maq-2-1",
+            title: "Parte 4: Contorno y Puntos de Luz (Contouring & Strobing)",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1w-H-Rgo-zcxppVBhR_TZeoicBPvRJka3/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "maq-2-2",
+            title: "Parte 5: Diseño y Definición de Cejas en Maquillaje",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1RS5aEptDUAvcCCKSQhjI9UpY6Dq_kDu_/preview",
+            type: "video",
+            duration: "16 mins"
+          }
+        ]
+      },
+      {
+        id: "maq-m3",
+        title: "Módulo 3: Sombras, Delineado y Detalles del Rostro",
+        lessons: [
+          {
+            id: "maq-3-1",
+            title: "Parte 6: Preparación de Párpados y Sombras de Transición",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/12EuaV_B1pEmLo_IZQKIuFhpw-2Aj2LyE/preview",
+            type: "video",
+            duration: "14 mins"
+          },
+          {
+            id: "maq-3-2",
+            title: "Parte 7: Difuminados, Profundidad y Transición de Color",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1KMwT60vipt8mMwlhtAAtvalgh9un6LP5/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "maq-3-3",
+            title: "Parte 8: Delineados de Ojos de Precisión (Eyeliner)",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1bTmBYCL-yfMMFYExeFFtPHfHx1iWDElI/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "maq-3-4",
+            title: "Parte 9: Colocación de Pestañas y Máscara de Oestañas",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/1Jhnu5g33dUxSHc1GLj3qOTAUhl92yOLL/preview",
+            type: "video",
+            duration: "13 mins"
+          },
+          {
+            id: "maq-3-5",
+            title: "Parte 10: Técnicas de Delineado y Relleno de Labios",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/1xvUOKxMFZlmBHVFsfOXAfytblTOuBIGR/preview",
+            type: "video",
+            duration: "12 mins"
+          },
+          {
+            id: "maq-3-6",
+            title: "Parte 11: Sellado, Polvos y Fijación Final del Maquillaje",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/19Lzrj7ihwBeQFqXyVbsiiD5LQfWR0DzD/preview",
+            type: "video",
+            duration: "17 mins"
+          }
+        ]
+      },
+      {
+        id: "maq-m4",
+        title: "Módulo 4: Looks Especiales y Material Teórico de Estudio",
+        lessons: [
+          {
+            id: "maq-4-1",
+            title: "Parte 12: Look de Noche, Cut Crease y Brillos (Glam)",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/13zo5Bq19H6f9_0HUYjY10Q4YWVU-kvOY/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "maq-4-2",
+            title: "Material Extra Escrito: Manual y Presentación de Automaquillaje Completo",
+            order: 13,
+            video_drive_url: "https://docs.google.com/presentation/d/1IA7FSWaMLdvOqT06XyL6ZFDcstPgvZy7/preview",
+            type: "pdf",
+            duration: "Lectura de Apoyo"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "reparacion-tv",
+    title: "Curso Máster: Reparación de Smart TV, LCD y LED",
+    headline: "Formación integral paso a paso en electrónica aplicada, diagnóstico de fallas, fuentes conmutadas, retroiluminación LED y placas Main.",
+    instructor: "Prof. Alberto Silva (Técnico de Laboratorio Electrónico)",
+    difficulty: "Principiante",
+    description: "Aprende desde las bases teóricas y pragmáticas a diagnosticar y reparar televisores modernos LED, LCD y Smart TV de todas las marcas. El máster aborda de forma completa las mediciones y circuito de stand-by de fuentes commutadas, la comprobación de tiras de retroiluminación con probadores caseros e inductores modernos, cambio dinámico de diodos SMD defectuosos, reparaciones de panel con tarjeta T-CON y reprogramación de firmware.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1552975084-6e027cd345c2?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 19,
+    syllabus: [
+      {
+        id: "tv-m1",
+        title: "Módulo 1: Introducción y Electrónica Básica de TV",
+        lessons: [
+          {
+            id: "tv-1-1",
+            title: "Parte 1: Introducción y Desarmado Seguro de Cobertura",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1PlK0BCtl-auOpkQjICUkz2iExBDPXmHG/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "tv-1-2",
+            title: "Parte 2: Reconocimiento de Placas y Componentes Clave",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1YBj4uK0H3aoDJrOgT-wUXmbJLbAzj48A/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "tv-1-3",
+            title: "Parte 3: Herramientas de Medición e Instrumentos de Taller",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1ECQMH70tVVsGdNhqEMeeie4aVGboYdIp/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "tv-1-4",
+            title: "Parte 4: Arquitectura General de un TV Moderno (LED/LCD)",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1rVSLAYOSpZ5PkhR_hz0-ORm726ev4ymc/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "tv-1-5",
+            title: "Parte 5: Electrónica Aplicada e Identificación de Circuitos",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/17H12ySpgrNVZQ1A4dfdfqBid5Jku2vGn/preview",
+            type: "video",
+            duration: "21 mins"
+          }
+        ]
+      },
+      {
+        id: "tv-m2",
+        title: "Módulo 2: Fuentes de Alimentación y Mediciones",
+        lessons: [
+          {
+            id: "tv-2-1",
+            title: "Parte 6: Principio de Funcionamiento de Fuentes Conmutadas (SMPS)",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/1sKsvLhSiodL5veOXLrpK-Jp7dtWIkZHv/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "tv-2-2",
+            title: "Parte 7: Diagnóstico de Falla en Etapa Primaria de la Fuente (HOT)",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1SWELUH2vXoI5RBmsXAZjjrseQ5brpr4P/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "tv-2-3",
+            title: "Parte 8: Medición de Tensiones Secundarias (COLD) y Señal de Stand-By",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1n7BZofgyKRC4mpusI4cwbGbtGqM0U1va/preview",
+            type: "video",
+            duration: "19 mins"
+          },
+          {
+            id: "tv-2-4",
+            title: "Parte 9: Reemplazo de Componentes Críticos (Capacitores y Optoacopladores)",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/18k-3XytXotiSMZVq1p_eSs7z82LwRYze/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "tv-2-5",
+            title: "Parte 10: Placa Main o Única (Monoplaca) y Señales de Control",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/12X3-PQLM_jLwpZhvdVmgDsfGwkPqUD1q/preview",
+            type: "video",
+            duration: "21 mins"
+          }
+        ]
+      },
+      {
+        id: "tv-m3",
+        title: "Módulo 3: Retroiluminación LED y Pantallas",
+        lessons: [
+          {
+            id: "tv-3-1",
+            title: "Parte 11: Sistema de Retroiluminación LED (Backlight) y Drivers",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/15pLw8gWCvMrxgv-SXKLGUb5Ozv-yZf3y/preview",
+            type: "video",
+            duration: "23 mins"
+          },
+          {
+            id: "tv-3-2",
+            title: "Parte 12: Comprobación Dinámica de Tiras de LED con Probador Externo",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/1veJdm77udIKikr4o37Oi0iAlN96Dq5X6/preview",
+            type: "video",
+            duration: "17 mins"
+          },
+          {
+            id: "tv-3-3",
+            title: "Parte 13: Desarmado de Panel LCD y Reemplazo de Diodos LED Quemados",
+            order: 13,
+            video_drive_url: "https://drive.google.com/file/d/149yFpxeMh355ff3EC5XlxMVxyKfSwGHh/preview",
+            type: "video",
+            duration: "30 mins"
+          },
+          {
+            id: "tv-3-4",
+            title: "Parte 14: Reparación de Circuitos del Backlight Integrados en Placa",
+            order: 14,
+            video_drive_url: "https://drive.google.com/file/d/1K1pUCBp2uToV_NEnBEYJWNNof9yhSStU/preview",
+            type: "video",
+            duration: "26 mins"
+          },
+          {
+            id: "tv-3-5",
+            title: "Parte 15: Fallas de Pantalla y Comprobación con Tarjetas T-CON",
+            order: 15,
+            video_drive_url: "https://drive.google.com/file/d/1kMpS5ZC_5vxpsQdzN6anAz472Br5fN70/preview",
+            type: "video",
+            duration: "28 mins"
+          }
+        ]
+      },
+      {
+        id: "tv-m4",
+        title: "Módulo 4: Diagnósticos Avanzados y Fallas Comunes",
+        lessons: [
+          {
+            id: "tv-4-1",
+            title: "Parte 16: Flex de Pantalla y Anulación de Señales Defectuosas (Cof y Ckv)",
+            order: 16,
+            video_drive_url: "https://drive.google.com/file/d/1SnVbGIEdM1A19D4sjL6NyOfZCw9QKS7k/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "tv-4-2",
+            title: "Parte 17: Fallas Típicas de Encendido - Luz de Standby Destella o Parpadea",
+            order: 17,
+            video_drive_url: "https://drive.google.com/file/d/1Dx2XwsDNhaYJYj9Ze8n2CdzrR096cx_E/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "tv-4-3",
+            title: "Parte 18: Fallas Típicas de Pantalla - TV con Sonido pero sin Imagen (Pantalla Negra)",
+            order: 18,
+            video_drive_url: "https://drive.google.com/file/d/1inXZf_QTLX5imKSuCy_Nr-TD2Y08X1vv/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "tv-4-4",
+            title: "Parte 19: Caso de Éxito de Reparación Completa y Recomendaciones de Taller",
+            order: 19,
+            video_drive_url: "https://drive.google.com/file/d/1EkCxYH6E1uIM5H9EGZ_fgZeEiR7sAtpA/preview",
+            type: "video",
+            duration: "35 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "aire-acondicionado",
+    title: "Curso Máster: Instalación y Reparación de Aire Acondicionado",
+    headline: "Domina la instalación, mantenimiento, soldadura, vacío del circuito y carga de gas refrigerante de equipos de aire acondicionado split.",
+    instructor: "Ing. Néstor Gómez (Técnico HVAC Superior)",
+    difficulty: "Principiante",
+    description: "Iníciate profesionalmente en el rubro de la refrigeración y climatización. Aprenderás las bases teóricas de los ciclos frigoríficos, la colocación y montaje de unidades split internas y externas, el aborcardado de tuberías de cobre, la realización adecuada de vacío, pruebas de estanqueidad para resolver fugas y los procedimientos técnicos de carga de gas refrigerante.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 2,
+    syllabus: [
+      {
+        id: "ac-m1",
+        title: "Módulo 1: Montaje, Vacío y Carga de Gas del Sistema",
+        lessons: [
+          {
+            id: "ac-1-1",
+            title: "Parte 1: Fundamentos de Refrigeración e Instalación de Unidad Split",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/18K6ONwnXBfXEllz8-sixGKjoYL7QW2bx/preview",
+            type: "video",
+            duration: "28 mins"
+          },
+          {
+            id: "ac-1-2",
+            title: "Parte 2: Proceso de Vacío, Control de Presión y Carga de Gas",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1_2xNl_dLqf-wDTSrohJ5cJTugbX8q2Sq/preview",
+            type: "video",
+            duration: "25 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tatuaje-profesional",
+    title: "Curso Máster: Técnica, Arte e Iniciación al Tatuaje",
+    headline: "Domina la calibración de máquinas rotativas o bobinas, bioseguridad rigurosa, tipos de trazado con aguja y práctica sobre piel sintética.",
+    instructor: "Diego 'Gato' Romero (Tatuador Profesional)",
+    difficulty: "Principiante",
+    description: "Iníciate con solvencia en el mundo profesional de los tatuajes. En este curso especializado, aprenderás todo sobre la bioseguridad e higiene sanitaria, la correcta preparación de la mesa de trabajo, montaje de agujas tipo cartucho y tradicionales, calibración fina de voltajes y las técnicas esenciales de trazado lineal, sombras y relleno en superficies de prueba.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1598257006458-087169a1f08d?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 1,
+    syllabus: [
+      {
+        id: "tattoo-m1",
+        title: "Módulo 1: Equipos, Bioseguridad y Primeros Trazos",
+        lessons: [
+          {
+            id: "tattoo-1-1",
+            title: "Parte 1: Introducción al Tatuaje Profesional, Tipos de Agujas y Técnica de Línea",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1UJBp_SXq4t2XeG-P-1NtzgraRo8Z8v8K/preview",
+            type: "video",
+            duration: "22 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "astrologia-profesional",
+    title: "Curso Máster: Astrología, Carta Natal y Cosmos",
+    headline: "Aprende a interpretar cartas natales, planetas, casas astrológicas, signos y aspectos cósmicos desde cero.",
+    instructor: "Andrea Cassini (Astróloga & Investigadora)",
+    difficulty: "Principiante",
+    description: "Iníciate en es el fascinante lenguaje sagrado de los astros. Este curso te capacita para comprender e interpretar una carta natal de manera integral, analizando la energía y el significado profundo de los doce signos del zodíaco, los planetas personales y generacionales, y las doce casas terrestres.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 1,
+    syllabus: [
+      {
+        id: "astro-m1",
+        title: "Módulo 1: Fundamentos de la Astrología y Carta Natal",
+        lessons: [
+          {
+            id: "astro-1-1",
+            title: "Parte 1: Introducción a la Astrología, Signos Zodiacales y Estructura Cósmica",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/12i2_J_DaRphog_RWyuh3A3QFhmaeJKkz/preview",
+            type: "video",
+            duration: "25 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "corte-confeccion-n1",
+    title: "Curso Máster: Corte y Confección (Nivel 1)",
+    headline: "Aprende el arte del diseño textil, patronaje, toma de medidas y confección de prendas desde cero.",
+    instructor: "Lucía Fernández (Diseñadora de Moda & Modista)",
+    difficulty: "Principiante",
+    description: "Conviértete en profesional de la costura y el diseño textil. Este primer nivel te guiará paso a paso en el manejo de la máquina de coser, la identificación de tipos de telas, la elaboración de moldes y patrones básicos, hasta la confección de tus primeras prendas terminadas con acabados impecables.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 12,
+    syllabus: [
+      {
+        id: "corte-m1",
+        title: "Módulo 1: Introducción a la Costura, Herramientas y Puntadas",
+        lessons: [
+          {
+            id: "corte-1-1",
+            title: "Parte 1: Introducción al Corte y Confección y Máquina de Coser",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1vRNAHGIUu07kxK_Wn3LyaiQUILsIxrgO/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "corte-1-2",
+            title: "Parte 2: Herramientas de Costura y Materiales de Trabajo",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1D0lWCXhEzWv2C_suCBHDDyE3GNRCysy_/preview",
+            type: "video",
+            duration: "18 mins"
+          },
+          {
+            id: "corte-1-3",
+            title: "Parte 3: Tipos de Telas, Texturas y Selección Correcta",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/14veB0fPHuY4XFCRRP4bMOdkHB9Ln0xd2/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "corte-1-4",
+            title: "Parte 4: Técnicas Fundamentales de Enhebrado y Bobina",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1GvsGvwFpoD_IzEva8yUBl3MEt3PiBF3U/preview",
+            type: "video",
+            duration: "15 mins"
+          },
+          {
+            id: "corte-1-5",
+            title: "Parte 5: Prácticas de Costura Recta, Curva y Zigzag",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1zhi--p0XqzarJ_xGGExRF3Eb1-QwEck2/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "corte-1-6",
+            title: "Parte 6: Hilvanado, Costuras Invisibles y Terminaciones a Mano",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/1Ejcw0eOvski_RCKfaA2TfPOrNK3MfjHE/preview",
+            type: "video",
+            duration: "19 mins"
+          }
+        ]
+      },
+      {
+        id: "corte-m2",
+        title: "Módulo 2: Toma de Medidas, Patronaje y Confección",
+        lessons: [
+          {
+            id: "corte-2-1",
+            title: "Parte 7: Estudio de Siluetas y Toma de Medidas Antropométricas",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1Mjr1ZlFArV0ulI3jPma2vZpGzcn-ttyT/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "corte-2-2",
+            title: "Parte 8: Elaboración de Patrón o Molde Base Superior",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/14fY9SQ8eotNZFhzebQAn6LRfa7eInhiw/preview",
+            type: "video",
+            duration: "28 mins"
+          },
+          {
+            id: "corte-2-3",
+            title: "Parte 9: Trazado de Cuellos, Mangas y Sisas del Patrón",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/11sL1Dgne07ENY8rBKMVFLREacHWGaclp/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "corte-2-4",
+            title: "Parte 10: Corte de Tela y Distribución Eficiente del Patrón",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/1oiSF0yZNzys_0-OHyd9kw2k8fKe477PX/preview",
+            type: "video",
+            duration: "21 mins"
+          },
+          {
+            id: "corte-2-5",
+            title: "Parte 11: Ensamblado y Armado de la Primera Prenda",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/1h12An6YcB2iCISHsZrlBrbNrLQjt8ol8/preview",
+            type: "video",
+            duration: "30 mins"
+          },
+          {
+            id: "corte-2-6",
+            title: "Parte 12: Detalles Finales, Ojales, Botones y Planchado Profesional",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/1psC_UJOOwXY6jhzNTnH20s-V2F_D2WGp/preview",
+            type: "video",
+            duration: "26 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "corte-confeccion-n2",
+    title: "Curso Máster: Corte y Confección (Nivel 2 - Intermedio)",
+    headline: "Avanza en el diseño de modas, moldería compleja, transformaciones de pinzas, cuellos sastre, mangas avanzadas y técnicas de sastrería y forrado.",
+    instructor: "Lucía Fernández (Diseñadora de Moda & Modista)",
+    difficulty: "Intermedio",
+    description: "Levanta tus habilidades de costura y patronaje al siguiente nivel profesional. En este curso de nivel intermedio, aprenderás paso a paso el traslado y rotación de pinzas, confección de bolsillos avanzados, mangas reglán y de dos piezas (sastre), adaptaciones para moldería asimétrica y las bases del forrado integral de chaquetas y faldas.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 20,
+    syllabus: [
+      {
+        id: "corte2-m1",
+        title: "Módulo 1: Patronaje Avanzado y Rotación de Pinzas",
+        lessons: [
+          {
+            id: "corte2-1-1",
+            title: "Parte 1: Traslado de Pinzas de Busto y Talle (Teoría y Práctica)",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1IZgQSPeoDR1gzE_khcwYNZktT-zOlu7f/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "corte2-1-2",
+            title: "Parte 2: Rotación de Pinzas a Sisas, Costadillos y de Forma Asimétrica",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1guPpfarbOh03w2uQwNRKFE6Rn2rsgA1d/preview",
+            type: "video",
+            duration: "20 mins"
+          },
+          {
+            id: "corte2-1-3",
+            title: "Parte 3: Diseño de Tablas, Pliegues, Frunces y Drapeados en Escotes",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1nF3QkMukHnUZrSbl7R3OIaahY0ybzbtD/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "corte2-1-4",
+            title: "Parte 4: Moldería de Breteles, Escotes en V y Sisas de Sastrería",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1s6_Hw4ygs-G10hmYRJOoK0Qs0S8pmde1/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "corte2-1-5",
+            title: "Parte 5: Transformaciones de Korsetts y Corpiños con Estructura",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1AhJbv6crt3kMuibq9mhB4d6KBKIrIKgJ/preview",
+            type: "video",
+            duration: "28 mins"
+          }
+        ]
+      },
+      {
+        id: "corte2-m2",
+        title: "Módulo 2: Cuellos Complejos, Escotes y Bolsillos",
+        lessons: [
+          {
+            id: "corte2-2-1",
+            title: "Parte 6: Trazado de Cuello de Camisa con Pie de Cuello Integrado",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/1p8GYQBz-6kQDcaLxwuKzFH6H1zdOO9JR/preview",
+            type: "video",
+            duration: "21 mins"
+          },
+          {
+            id: "corte2-2-2",
+            title: "Parte 7: Moldería del Cuello Sastre y Solapas de Todo Tipo",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1iewixJjed1_P1xZwW2HFjkwsz6vlMFbj/preview",
+            type: "video",
+            duration: "26 mins"
+          },
+          {
+            id: "corte2-2-3",
+            title: "Parte 8: Elaboración del Cuello Smoking y Solapas Redondas",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1K7wj2Q92xXmQ4FnttPLHz7e2IsJNiZeV/preview",
+            type: "video",
+            duration: "23 mins"
+          },
+          {
+            id: "corte2-2-4",
+            title: "Parte 9: Bolsillos Placa, Bolsillos Ojal Simples y Bolsillos con Tapas",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/1TNyA3VEzc_khG-5aO6LK46YA1xJNTtxj/preview",
+            type: "video",
+            duration: "19 mins"
+          },
+          {
+            id: "corte2-2-5",
+            title: "Parte 10: Bolsillos Sastre e Inserción Limpia de Cremalleras Ocultas",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/12zcJuFv8erBFNGuIjc8CZjcDAoa3Ce7R/preview",
+            type: "video",
+            duration: "27 mins"
+          }
+        ]
+      },
+      {
+        id: "corte2-m3",
+        title: "Módulo 3: Mangas Avanzadas y Confección de Pantalón",
+        lessons: [
+          {
+            id: "corte2-3-1",
+            title: "Parte 11: Transformación de la Manga Base a Manga Ranglan (Reglán)",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/1_iVX9UXuWUvq8RKssa5pAOp3V8Ibg8mR/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "corte2-3-2",
+            title: "Parte 12: Trazado de Manga Globo, Manga Jamón y Variantes Drapeadas",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/12p-fr2bbuj5KcU0ly5qAylES77Tex8MI/preview",
+            type: "video",
+            duration: "21 mins"
+          },
+          {
+            id: "corte2-3-3",
+            title: "Parte 13: Manga Sastre de Dos Piezas (Trasera y Delantera)",
+            order: 13,
+            video_drive_url: "https://drive.google.com/file/d/1AyIHRf8UPLfD78Y1nxSAYI9AQjFGDfyg/preview",
+            type: "video",
+            duration: "29 mins"
+          },
+          {
+            id: "corte2-3-4",
+            title: "Parte 14: Trazado y Moldería del Pantalón Clásico Unisex",
+            order: 14,
+            video_drive_url: "https://drive.google.com/file/d/1UQShFVL3Orb7sMlWOkVpWcghFX-ZTxnB/preview",
+            type: "video",
+            duration: "30 mins"
+          },
+          {
+            id: "corte2-3-5",
+            title: "Parte 15: Confección de Bragueta, Botones y Pretinas de Pantalón",
+            order: 15,
+            video_drive_url: "https://drive.google.com/file/d/1uMc_wNABxc4mUXf_q1Gj1pidfd1x6ISZ/preview",
+            type: "video",
+            duration: "28 mins"
+          }
+        ]
+      },
+      {
+        id: "corte2-m4",
+        title: "Módulo 4: Sastrería Inicial, Forrados y Acabados de Élite",
+        lessons: [
+          {
+            id: "corte2-4-1",
+            title: "Parte 16: Bases de Estructuras y Entretelados de Sastrería",
+            order: 16,
+            video_drive_url: "https://drive.google.com/file/d/1rby-mSVwBus1Za5Iy5dEWpk07LsTdsrt/preview",
+            type: "video",
+            duration: "24 mins"
+          },
+          {
+            id: "corte2-4-2",
+            title: "Parte 17: Corte y Montaje de Vistas y Contravistas",
+            order: 17,
+            video_drive_url: "https://drive.google.com/file/d/1NXZjVPKy3IunTtHNF9NjuTMaNGezFu6_/preview",
+            type: "video",
+            duration: "22 mins"
+          },
+          {
+            id: "corte2-4-3",
+            title: "Parte 18: Técnica de Forrado Integral de Faldas y Vestidos",
+            order: 18,
+            video_drive_url: "https://drive.google.com/file/d/1YTLNQixUIo0Q0IrvhIujSnrnAD0CSZoW/preview",
+            type: "video",
+            duration: "32 mins"
+          },
+          {
+            id: "corte2-4-4",
+            title: "Parte 19: Forrado Completo en Sacos y Chaquetas Forradas paso a paso",
+            order: 19,
+            video_drive_url: "https://drive.google.com/file/d/1xifNzVXLIZVzi6ttoIfp7bGqcmycD3zv/preview",
+            type: "video",
+            duration: "35 mins"
+          },
+          {
+            id: "corte2-4-5",
+            title: "Parte 20: Costuras Francesas, Dobladillos Invisibles y Cierre de Proyecto",
+            order: 20,
+            video_drive_url: "https://drive.google.com/file/d/1JAY-nbxxqID_R31JofWxSMONMZs2YKGx/preview",
+            type: "video",
+            duration: "31 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "corte-confeccion-n3",
+    title: "Curso Máster: Corte y Confección (Nivel 3 - Alta Costura)",
+    headline: "Domina el arte de la alta costura, modelaje sobre maniquí (moulage), corsetería estructurada con ballenas y acabados artesanales.",
+    instructor: "Lucía Fernández (Diseñadora de Moda & Modista)",
+    difficulty: "Avanzado",
+    description: "Alcanza la cúspide del diseño de indumentaria con este máster avanzado en Alta Costura. Aprenderás las técnicas sagradas del Moulage (diseño tridimensional sobre maniquí), la confección paso a paso de corsetts con varillas y copas incorporadas, drapeados complejos, aplicación artesanal de encajes y bordado de pedrería fina para vestidos de gala y novia.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 6,
+    syllabus: [
+      {
+        id: "corte3-m1",
+        title: "Módulo 1: Alta Costura, Corsetería y Moulage Avanzado",
+        lessons: [
+          {
+            id: "corte3-1-1",
+            title: "Parte 1: Introducción a la Alta Costura y Diseño de Trajes de Gala",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1WjFAX0HmH1oKl7Z1XD2WizF8azSwSj3T/preview",
+            type: "video",
+            duration: "25 mins"
+          },
+          {
+            id: "corte3-1-2",
+            title: "Parte 2: Modelado sobre Maniquí (Moulage) de Corpiño de Noche",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1AijBAUH49FCWvCIS3zaNHQlDhq157q24/preview",
+            type: "video",
+            duration: "28 mins"
+          },
+          {
+            id: "corte3-1-3",
+            title: "Parte 3: Elaboración de Corsetería de Élite, Varillado y Copas",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1CQg7a6UPEEFu44YN-MfZ3sofMEgZVRk5/preview",
+            type: "video",
+            duration: "30 mins"
+          },
+          {
+            id: "corte3-1-4",
+            title: "Parte 4: Drapeados sobre Maniquí y Transformaciones Estructurales",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1kbFUvhXuVsM2b2AVgz-uZwahGO7zith5/preview",
+            type: "video",
+            duration: "26 mins"
+          },
+          {
+            id: "corte3-1-5",
+            title: "Parte 5: Aplicación de Encajes, Tul Ilusión y Bordado en Pedrería Fina",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/13ieVLAl8MY4ojEV58XW_KMi_bNNU-9C_/preview",
+            type: "video",
+            duration: "31 mins"
+          },
+          {
+            id: "corte3-1-6",
+            title: "Parte 6: Ensamblado Completo y Forrado de Vestidos de Gala Artesanales",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/13zd8AzWTk2NbKUtdIyfYoxlo4ymIGpSA/preview",
+            type: "video",
+            duration: "35 mins"
+          }
+        ]
+      }
+    ]
   }
 ];

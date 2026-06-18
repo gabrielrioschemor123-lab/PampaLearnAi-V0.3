@@ -191,6 +191,7 @@ export const CoursesTab: React.FC<CoursesTabProps> = ({
                 course={course}
                 isOwned={owned}
                 onOpenPaywall={onOpenPaywall}
+                onOpenTotalAccessPaywall={onOpenTotalAccessPaywall}
               />
             );
           })}
