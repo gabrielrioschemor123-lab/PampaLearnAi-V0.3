@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Course } from "../types";
 import { GeminiChat } from "./GeminiChat";
 import { 
@@ -14,7 +14,10 @@ import {
   Clock, 
   ShieldCheck, 
   User, 
-  Cpu
+  Cpu,
+  Smartphone,
+  X,
+  RotateCw
 } from "lucide-react";
 
 interface CourseViewProps {
@@ -37,46 +40,70 @@ export const CourseView: React.FC<CourseViewProps> = ({
 
   // Dynamic lesson resolution
   const getInitialVideos = () => {
+    let rawList: any[] = [];
     if (course.id === "mecanica-motos") {
-      return [
+      rawList = [
         { id: "clase-1", title: "Parte 1: El Corazón Mecánico y Motor", url: "https://drive.google.com/file/d/1Lp7wUgQTC-6nmtr_f3jRVc3aWdEE9oab/view?usp=drive_link" },
-        { id: "clase-2", title: "Parte 2: Sistemas Eléctricos y Chasis", url: "https://drive.google.com/file/d/1dhLROci5FfWKXkhPspudSkVdg-8j14Is/view?usp=drive_link" }
+        { id: "clase-2", title: "Parte 2: Systems Eléctricos y Chasis", url: "https://drive.google.com/file/d/1dhLROci5FfWKXkhPspudSkVdg-8j14Is/view?usp=drive_link" }
       ];
-    }
-    if (course.id === "frances-desde-cero") {
-      return [
+    } else if (course.id === "frances-desde-cero") {
+      rawList = [
         { id: "clase-1", title: "Parte 1: Fonética y Saludos Iniciales", url: "https://drive.google.com/file/d/1y2R-YgEuSJOx1yxAAxIituZHA7-5Cqq6/view?usp=drive_link" },
         { id: "clase-2", title: "Parte 2: Gramática y Estructura", url: "https://drive.google.com/file/d/1lefAkoL_Xfjuow8SydYcsdZcvfid4YqQ/view?usp=drive_link" },
         { id: "clase-3", title: "Parte 3: Conversación y Situaciones Reales", url: "https://drive.google.com/file/d/1GjSC3UNSz7tbRqvmaQa6Uwyi5U1GJh5k/view?usp=drive_link" }
       ];
-    }
-    if (course.id === "portugues-principiantes") {
-      return [
+    } else if (course.id === "portugues-principiantes") {
+      rawList = [
         { id: "clase-1", title: "Parte 1: Pronunciación y Vocabulario Esencial", url: "https://drive.google.com/file/d/15fuymagrM41jhpzOeRmgl7povwdLqw_a/view?usp=drive_link" }
       ];
-    }
-    if (course.id === "ingles-desde-cero") {
-      return [
+    } else if (course.id === "ingles-desde-cero") {
+      rawList = [
         { id: "clase-1", title: "Parte 1: Fundamentos y Estructura", url: "https://drive.google.com/file/d/1fGXkoYanCsRkc-mejMkJC5sWU7Fqs_lC/view?usp=drive_link" },
         { id: "clase-2", title: "Parte 2: Conversación y Fluidez", url: "https://drive.google.com/file/d/12KfyrtrlkvnGv2qiuR3s7Dov1kea8mtG/view?usp=drive_link" }
       ];
+    } else {
+      const list: any[] = [];
+      if (course.syllabus) {
+        course.syllabus.forEach(mod => {
+          mod.lessons.forEach(l => {
+            if (l.type === "video") {
+              list.push({
+                id: l.id,
+                title: l.title,
+                url: l.video_drive_url,
+                duration: l.duration
+              });
+            }
+          });
+        });
+      }
+      rawList = list.length > 0 ? list : [{ id: "clase-1", title: "Clase de Bienvenida", url: course.syllabus?.[0]?.lessons?.[0]?.video_drive_url || "", duration: course.syllabus?.[0]?.lessons?.[0]?.duration || "" }];
     }
 
-    const list: any[] = [];
-    if (course.syllabus) {
-      course.syllabus.forEach(mod => {
-        mod.lessons.forEach(l => {
-          if (l.type === "video") {
-            list.push({
-              id: l.id,
-              title: l.title,
-              url: l.video_drive_url
-            });
+    // Now, let's inject durations from the actual course syllabus matching by order, title or URL
+    return rawList.map((item, idx) => {
+      let syllabusLesson: any = null;
+      if (course.syllabus) {
+        for (const mod of course.syllabus) {
+          if (mod.lessons) {
+            const found = mod.lessons.find((l, lIdx) => 
+              (l.video_drive_url && item.url && l.video_drive_url.includes(item.url.split('?')[0])) ||
+              l.id === item.id ||
+              l.title.toLowerCase().trim() === item.title.toLowerCase().trim() ||
+              lIdx === idx
+            );
+            if (found) {
+              syllabusLesson = found;
+              break;
+            }
           }
-        });
-      });
-    }
-    return list.length > 0 ? list : [{ id: "clase-1", title: "Clase de Bienvenida", url: course.syllabus?.[0]?.lessons?.[0]?.video_drive_url || "" }];
+        }
+      }
+      return {
+        ...item,
+        duration: item.duration || (syllabusLesson ? syllabusLesson.duration : "")
+      };
+    });
   };
 
   const getInitialVideoUrl = () => {
@@ -87,6 +114,9 @@ export const CourseView: React.FC<CourseViewProps> = ({
     if (course.id === "frances-desde-cero") return "https://drive.google.com/file/d/1y2R-YgEuSJOx1yxAAxIituZHA7-5Cqq6/preview";
     if (course.id === "portugues-principiantes") return "https://drive.google.com/file/d/15fuymagrM41jhpzOeRmgl7povwdLqw_a/preview";
     if (course.id === "ingles-desde-cero") return "https://drive.google.com/file/d/1fGXkoYanCsRkc-mejMkJC5sWU7Fqs_lC/preview";
+    if (course.id === "muebles-palets") return "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview";
+    if (course.id === "adiestramiento-canino") return "https://drive.google.com/file/d/1u_8orWz2QrMyRvUusHMYI_4SThAidYQJ/preview";
+    if (course.id === "carpinteria-profesional") return "https://drive.google.com/file/d/1yIh6EB_mBPCLi_6KNoYVa4PV5ahSB-Kv/preview";
     return course.syllabus?.[0]?.lessons?.[0]?.video_drive_url || "";
   };
 
@@ -95,9 +125,12 @@ export const CourseView: React.FC<CourseViewProps> = ({
     if (course.id === "facebook-ads-2025") return "Aprende las estrategias de pauta publicitaria para el 2025. Configuración de campañas, segmentación avanzada con IA de Meta, y optimización de presupuestos para maximizar ventas.";
     if (course.id === "virtual-dj-basics") return "Domina el arte de la mezcla desde cero. Aprende a manejar decks, ecualización básica, beatmatching y efectos esenciales en Virtual DJ.";
     if (course.id === "mecanica-motos") return "Aprende el funcionamiento, desarme, diagnóstico y mantenimiento de motores y sistemas de motocicletas desde cero.";
-    if (course.id === "frances-desde-cero") return "Aprende el idioma del amor y los negocios desde las bases. Fonética, gramática esencial y conversación fluida en 3 niveles detallados.";
+    if (course.id === "frances-desde-cero") return "Aprende el idioma del amor y los negocios desde las bases. Fonética, gramática esencial and conversación fluida en 3 niveles detallados.";
     if (course.id === "portugues-principiantes") return "Iníciate en el idioma más alegre del mundo. Aprende fonética, saludos, verbos básicos y evita las trampas del portuñol en una sola Masterclass.";
     if (course.id === "ingles-desde-cero") return "El curso definitivo para hablar inglés. Desde los sonidos básicos hasta conversaciones fluidas. Aprende gramática, listening y speaking con soporte de IA.";
+    if (course.id === "muebles-palets") return "Aprende ideas ingeniosas, técnicas de carpintería y planos detallados para construir tus propios muebles reutilizando palets.";
+    if (course.id === "adiestramiento-canino") return "Educa a tu perro desde cero: obediencia básica, psicología canina, modificación de conductas destructivas o ladridos, estimulación mental y divertidos trucos.";
+    if (course.id === "carpinteria-profesional") return "Domina la madera: aprende carpintería clásica y ebanistería. Herramientas manuales/eléctricas, ensamble, cortes de precisión, cepillado, lijado, armado de muebles y terminaciones profesionales.";
     return course.headline || course.description;
   };
 
@@ -109,6 +142,9 @@ export const CourseView: React.FC<CourseViewProps> = ({
     if (course.id === "frances-desde-cero") return "Eres un tutor de francés nativo y paciente. Tu misión es ayudar al alumno con el contenido de los 3 videos del curso. Responde dudas sobre pronunciación, conjugación de verbos (être, avoir, etc.), vocabulario y cultura francesa. Responde siempre de forma amable, proporcionando ejemplos bilingües (Francés/Español) y transcripciones fonéticas si es necesario.";
     if (course.id === "portugues-principiantes") return "Eres un tutor nativo de Brasil, alegre, paciente y experto en enseñanza para hispanohablantes. Tu misión es ayudar al alumno con el video de Portugués. Enfócate en corregir errores comunes de 'Portuñol', explicar la pronunciación de las vocales nasales y enseñar frases útiles para viajes o negocios. Responde de forma motivadora y usa expresiones brasileñas reales.";
     if (course.id === "ingles-desde-cero") return "Eres un tutor de inglés nativo, amable y dinámico. Tu misión es ayudar al alumno con el contenido de los dos videos del curso. Responde dudas sobre gramática, vocabulario, modismos y pronunciación. Proporciona ejemplos claros y, cuando el alumno escriba en inglés, corrígelo de forma constructiva. Fomenta que el alumno intente escribir sus dudas en inglés si se siente capaz.";
+    if (course.id === "muebles-palets") return "Eres un Maestro Ecodiseñador y Carpintero experto en la confección de muebles utilizando palets de madera reciclados. Brinda excelentes ideas de diseño, consejos de lijado, tratamiento de maderas, pintura e impermeabilización para exteriores, así como lecturas de planos para que el estudiante pueda realizar sus propios muebles eco-sustentables.";
+    if (course.id === "adiestramiento-canino") return "Eres Pampito Adiestrador, un experto en etología canina, psicología del aprendizaje canino y modificación de conducta basada en el refuerzo positivo y la empatía. Responde dudas del contenido en los videos, cómo enseñar comandos idóneos (sentado, frotar pata, quieto, llamado, caminar junto), manejo de ladridos excesivos, ansiedad por separación y juegos de estimulación cognitiva. Sé súper paciente, amigable y utiliza metáforas de peludos alegres.";
+    if (course.id === "carpinteria-profesional") return "Eres el Profesor Fernando, un Maestro Ebanista y Carpintero de altísima experiencia. Tu misión es guiar al estudiante de este curso online en la lección actual. Responde dudas sobre selección de maderas (duras, blandas, tableros), técnicas de corte, ensamble o juntas (caja y espiga, ingletes, colas de milano), lijado, encolado, prensado y asombrosos acabados transparentes o de laca protectora. Sé súper práctico, explica paso a paso e infunde amor por el oficio.";
     return `Eres un tutor de Inteligencia Artificial experto del curso "${course.title}". Guía y asiste al estudiante.`;
   };
 
@@ -118,6 +154,22 @@ export const CourseView: React.FC<CourseViewProps> = ({
   const [playlistVideos] = useState<any[]>(getInitialVideos());
   const [selectedVideoId, setSelectedVideoId] = useState<string>(getInitialVideos()[0]?.id || "clase-1");
   const [mobileTab, setMobileTab] = useState<"temario" | "tutor" | "recursos" | "info">("temario");
+  const [showRotationHint, setShowRotationHint] = useState(true);
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsLandscape(window.innerWidth > window.innerHeight);
+    };
+    checkOrientation();
+    window.addEventListener("resize", checkOrientation);
+    return () => window.removeEventListener("resize", checkOrientation);
+  }, []);
+
+  // Show rotation tip again when video changes
+  useEffect(() => {
+    setShowRotationHint(true);
+  }, [selectedVideoId]);
 
   const finalBriefInfo = briefInfo || course.headline || course.description;
   const activePlaylistVideo = playlistVideos.length > 0 ? playlistVideos.find(v => v.id === selectedVideoId) : null;
@@ -137,7 +189,14 @@ export const CourseView: React.FC<CourseViewProps> = ({
   }
 
   // Related PDF URL download fallback
-  const pdfDownloadUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+  let pdfDownloadUrl = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+  if (course.id === "muebles-palets") {
+    pdfDownloadUrl = "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/view?usp=drive_link";
+  } else if (course.id === "adiestramiento-canino") {
+    pdfDownloadUrl = "https://drive.google.com/file/d/1u_8orWz2QrMyRvUusHMYI_4SThAidYQJ/view?usp=drive_link";
+  } else if (course.id === "carpinteria-profesional") {
+    pdfDownloadUrl = "https://drive.google.com/file/d/1yIh6EB_mBPCLi_6KNoYVa4PV5ahSB-Kv/view?usp=drive_link";
+  }
 
   // Style customization matching the course brand
   let accentColor = "text-green-400";
@@ -192,10 +251,34 @@ export const CourseView: React.FC<CourseViewProps> = ({
     accentColor = "text-fuchsia-400";
     accentBg = "bg-fuchsia-500/10";
     borderGlow = "hover:border-fuchsia-500/50 hover:shadow-[0_0_30px_rgba(217,70,239,0.15)]";
-    activeBorder = "border-fuchsia-500 bg-fuchsia-500/10 text-white";
+         activeBorder = "border-fuchsia-500 bg-fuchsia-500/10 text-white";
     iconBg = "bg-fuchsia-500/10 border-fuchsia-500/20 text-fuchsia-400";
     badgeTheme = "badge-corte3";
     topBarText = "ALTA COSTURA · NIVEL AVANZADO";
+  } else if (course.id === "muebles-palets") {
+    accentColor = "text-amber-400";
+    accentBg = "bg-amber-500/10";
+    borderGlow = "hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]";
+    activeBorder = "border-amber-500 bg-amber-500/10 text-white";
+    iconBg = "bg-amber-500/10 border-amber-500/20 text-amber-500";
+    badgeTheme = "badge-standard";
+    topBarText = "PROYECTO ECO-DISEÑO & CARPINTERÍA";
+  } else if (course.id === "adiestramiento-canino") {
+    accentColor = "text-sky-400";
+    accentBg = "bg-sky-500/10";
+    borderGlow = "hover:border-sky-500/50 hover:shadow-[0_0_30px_rgba(56,189,248,0.15)]";
+    activeBorder = "border-sky-500 bg-sky-500/10 text-white";
+    iconBg = "bg-sky-500/10 border-sky-500/20 text-sky-400";
+    badgeTheme = "badge-standard";
+    topBarText = "ENTRENAMIENTO Y PSICOLOGÍA CANINA";
+  } else if (course.id === "carpinteria-profesional") {
+    accentColor = "text-amber-500";
+    accentBg = "bg-amber-500/10";
+    borderGlow = "hover:border-amber-550/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]";
+    activeBorder = "border-amber-500 bg-amber-500/10 text-white";
+    iconBg = "bg-amber-500/10 border-amber-500/20 text-amber-500";
+    badgeTheme = "badge-standard";
+    topBarText = "MAESTRÍA EN CARPINTERÍA Y EBANISTERÍA";
   }
 
   // Customize tutor instructions
@@ -278,14 +361,14 @@ export const CourseView: React.FC<CourseViewProps> = ({
               <div className="max-w-md space-y-2">
                 <h3 className="text-lg font-bold text-white">Línea de Transmisión Bloqueada</h3>
                 <p className="text-xs leading-relaxed text-slate-400">
-                  Aún no cuentas con este programa en tu catálogo activo de estudio. Registra tu matrícula gratuita de forma vitalicia para reproducir las lecciones de {course.instructor} y contar con soporte de Tutoría IA personalizada.
+                  Aún no has activado este programa de estudio. Desbloquéalo gratis de inmediato para reproducir las lecciones de {course.instructor} y contar con soporte de Tutoría IA personalizada.
                 </p>
               </div>
               <button
                 onClick={() => onBuy(course.id)}
                 className="rounded-xl hover:scale-[1.02] active:scale-95 px-6 py-3.5 text-xs font-black bg-green-500 hover:bg-green-600 text-slate-950 transition-all flex items-center gap-2 shadow-lg shadow-green-500/20 cursor-pointer"
               >
-                <Play className="h-4 w-4 fill-current" /> Matricularse Gratis y Activar
+                <Play className="h-4 w-4 fill-current" /> Activar Curso Gratis
               </button>
             </div>
           ) : (
@@ -302,7 +385,10 @@ export const CourseView: React.FC<CourseViewProps> = ({
                       title={activePlaylistVideo ? activePlaylistVideo.title : course.title}
                       allow="autoplay; encrypted-media; picture-in-picture"
                       allowFullScreen
-                      className="h-full w-full border-0 absolute inset-0 rounded-2xl"
+                      className="absolute inset-0 w-full h-full border-0 rounded-2xl"
+                      width="100%"
+                      height="100%"
+                      style={{ width: "100%", height: "100%", border: 0 }}
                     />
                   ) : (
                     <div className="flex flex-col items-center justify-center h-full text-slate-500 text-xs p-6">
@@ -334,6 +420,19 @@ export const CourseView: React.FC<CourseViewProps> = ({
               <span className={`text-[10px] font-mono font-bold uppercase border px-2 py-0.5 rounded-lg ${accentBg} ${accentColor} border-current/20`}>
                 PDFs Y DESPIECES
               </span>
+            </div>
+
+            {/* Coming Soon Notice */}
+            <div className="flex items-start gap-3 p-3.5 rounded-xl border border-emerald-500/10 bg-emerald-500/5 text-left md:p-4">
+              <Sparkles className="h-4.5 w-4.5 text-emerald-400 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-xs font-bold text-emerald-400">
+                  ¡Próximamente más materiales descargables!
+                </h4>
+                <p className="text-[11px] text-slate-350 mt-1 leading-relaxed">
+                  Estamos elaborando y diagramando activamente guías adicionales en PDF, manuales extendidos interactivos y diagramas técnicos optimizados. Se añadirán automáticamente a esta lista a medida que se completen.
+                </p>
+              </div>
             </div>
 
             {/* Resources list */}
@@ -423,6 +522,33 @@ export const CourseView: React.FC<CourseViewProps> = ({
                   file_name: "Pack_Samplers_VirtualDJ_Basicos.zip",
                   type: "zip"
                 }
+              ] : course.id === "muebles-palets" ? [
+                {
+                  id: "palet-res-1",
+                  title: "Planos y Diseños Oficiales (PDF)",
+                  description: "Manual completo con las 5 ideas, esquemas y planos acotados de muebles con palets.",
+                  download_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/view?usp=drive_link",
+                  file_name: "Guia_Construir_Muebles_Palets.pdf",
+                  type: "pdf"
+                }
+              ] : course.id === "adiestramiento-canino" ? [
+                {
+                  id: "dog-res-1",
+                  title: "Manual del Adiestrador Canino (PDF)",
+                  description: "Guía ilustrada oficial con técnicas de obediencia, autocontrol y trucos divertidos.",
+                  download_url: "https://drive.google.com/file/d/1u_8orWz2QrMyRvUusHMYI_4SThAidYQJ/view?usp=drive_link",
+                  file_name: "Guia_Adiestramiento_Canino.pdf",
+                  type: "pdf"
+                }
+              ] : course.id === "carpinteria-profesional" ? [
+                {
+                  id: "carp-res-1",
+                  title: "Guía de Carpintería y Ebanistería (PDF)",
+                  description: "Manual práctico del maestro con planos de uniones, tipos de maderas, acabados de laca y trucos de taller.",
+                  download_url: "https://drive.google.com/file/d/1yIh6EB_mBPCLi_6KNoYVa4PV5ahSB-Kv/view?usp=drive_link",
+                  file_name: "Guia_Carpinteria_y_Ebanisteria.pdf",
+                  type: "pdf"
+                }
               ] : course.id === "facebook-ads-2025" ? [
                 {
                   id: "fb-res-1",
@@ -452,32 +578,31 @@ export const CourseView: React.FC<CourseViewProps> = ({
               ]).map((resource) => (
                 <div 
                   key={resource.id} 
-                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-slate-800/80 bg-slate-900/40 hover:bg-[#0c1221] transition-all hover:border-slate-700/80 gap-4"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-slate-800/40 bg-slate-950/20 opacity-75 gap-4 select-none"
                 >
                   <div className="flex items-start gap-3.5 text-left">
-                    <div className={`p-3 rounded-lg border ${iconBg} shrink-0`}>
-                      <FileText className="h-5 w-5" />
+                    <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/50 shrink-0 text-slate-550">
+                      <Lock className="h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white leading-snug">
-                        {resource.title}
-                      </h4>
-                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h4 className="text-sm font-bold text-slate-400 leading-snug">
+                          {resource.title}
+                        </h4>
+                        <span className="inline-flex items-center text-[9px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          En Preparación
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                         {resource.description}
                       </p>
                     </div>
                   </div>
 
-                  <a
-                    href={resource.download_url}
-                    download={resource.file_name}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1.5 shrink-0 rounded-xl px-4 py-2.5 text-xs font-bold bg-[#0d1527] hover:bg-[#131f3a] border border-slate-800/80 text-slate-200 transition-colors w-full sm:w-auto justify-center cursor-pointer"
-                  >
-                    <Download className="h-4 w-4 text-slate-400" />
-                    Descargar
-                  </a>
+                  <div className="flex items-center gap-1.5 shrink-0 rounded-xl px-4 py-2.5 text-xs font-bold bg-slate-900/20 border border-slate-800/80 text-slate-500 w-full sm:w-auto justify-center cursor-not-allowed">
+                    <Lock className="h-3.5 w-3.5" />
+                    Próximamente
+                  </div>
                 </div>
               ))}
             </div>
@@ -540,9 +665,9 @@ export const CourseView: React.FC<CourseViewProps> = ({
                           </span>
                         </div>
                       </div>
-                      <div className="shrink-0 flex items-center justify-center">
-                        <ShieldCheck className={`h-4.5 w-4.5 ${
-                          isSelected ? "text-white" : "text-slate-700"
+                      <div className="shrink-0 flex items-center gap-2">
+                        <ShieldCheck className={`h-4.5 w-4.5 shrink-0 ${
+                          isSelected ? "text-white" : "text-slate-755"
                         }`} />
                       </div>
                     </button>
@@ -617,19 +742,67 @@ export const CourseView: React.FC<CourseViewProps> = ({
           <div className="space-y-2">
             <div className={`relative aspect-video w-full overflow-hidden rounded-xl bg-black border border-slate-800 shadow-lg ${borderGlow}`}>
               {embedVideoUrl ? (
-                <iframe
-                  src={embedVideoUrl}
-                  title={activePlaylistVideo ? activePlaylistVideo.title : course.title}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  className="h-full w-full border-0 absolute inset-0 rounded-xl"
-                />
+                <>
+                  <iframe
+                    src={embedVideoUrl}
+                    title={activePlaylistVideo ? activePlaylistVideo.title : course.title}
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full border-0 rounded-xl"
+                    width="100%"
+                    height="100%"
+                    style={{ width: "100%", height: "100%", border: 0 }}
+                  />
+
+                  {/* Mobile Screen Rotation Hint Overlay (Pornhub Style Educational Adaptation) */}
+                  {!isLandscape && showRotationHint && (
+                    <div className="absolute inset-x-3 bottom-3 z-20 flex items-center justify-between gap-3 bg-slate-950/95 backdrop-blur-md border border-amber-500/40 rounded-xl p-3 shadow-2xl animate-bounce md:hidden">
+                      <div className="flex items-center gap-2.5">
+                        {/* Animated Phone Rotation Emblem */}
+                        <div className="relative flex items-center justify-center shrink-0 w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-405">
+                          <Smartphone className="h-4 w-4 animate-[spin_4s_ease-in-out_infinite]" />
+                          <RotateCw className="absolute h-2.5 w-2.5 top-0.5 right-0.5 animate-spin" style={{ animationDuration: '3s' }} />
+                        </div>
+                        <div className="text-left">
+                          <p className="text-[10px] font-bold text-amber-400 flex items-center gap-1 leading-tight">
+                            ¡Rotar Pantalla! <span className="animate-pulse">🔄</span>
+                          </p>
+                          <p className="text-[9px] text-slate-350 leading-tight">
+                            Gira tu celular horizontalmente para acoplar y expandir el reproductor.
+                          </p>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={() => setShowRotationHint(false)}
+                        className="p-1 hover:bg-slate-800 rounded-md text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0"
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="flex flex-col items-center justify-center h-full text-slate-500 text-[10px] p-4 text-center">
                   Cargando transmisión...
                 </div>
               )}
             </div>
+
+            {/* Mobile-only landscape guide trigger */}
+            {!isLandscape && embedVideoUrl && (
+              <div className="flex items-center justify-between text-[9px] text-slate-400 md:hidden px-1 bg-slate-950/20 p-2 rounded-lg border border-slate-900">
+                <span className="flex items-center gap-1.5">
+                  <Smartphone className="h-3 w-3 text-amber-450 animate-pulse" />
+                  <span>¿El video se corta o se ve pequeño? Gira tu celular</span>
+                </span>
+                <button 
+                  onClick={() => setShowRotationHint(true)}
+                  className="text-amber-400 font-bold underline hover:text-amber-350 cursor-pointer"
+                >
+                  Ver guía
+                </button>
+              </div>
+            )}
             <div className="flex items-center justify-between p-2 rounded-lg border border-slate-800/60 bg-[#0d1527]/40 text-[10px] gap-2">
               <span className="text-slate-300 truncate">
                 Viendo: <strong className="text-white font-medium">{activePlaylistVideo ? activePlaylistVideo.title : "Clase Inicial"}</strong>
@@ -726,7 +899,9 @@ export const CourseView: React.FC<CourseViewProps> = ({
                             <span className="block text-[9px] leading-tight truncate text-slate-300 font-semibold">{restT}</span>
                           </div>
                         </div>
-                        <ShieldCheck className={`h-4 w-4 shrink-0 ${isSelected ? "text-white" : "text-slate-755"}`} />
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <ShieldCheck className={`h-4 w-4 shrink-0 ${isSelected ? "text-white" : "text-slate-755"}`} />
+                        </div>
                       </button>
                     );
                   })}
@@ -747,7 +922,20 @@ export const CourseView: React.FC<CourseViewProps> = ({
             )}
 
             {mobileTab === "recursos" && (
-              <div className="space-y-2">
+              <div className="space-y-3">
+                {/* Coming Soon Notice in Mobile */}
+                <div className="flex items-start gap-2.5 p-3 rounded-xl border border-emerald-500/15 bg-emerald-500/5 text-left">
+                  <Sparkles className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5 animate-pulse" />
+                  <div>
+                    <h4 className="text-[11px] font-bold text-emerald-400">
+                      ¡Más guías en desarrollo!
+                    </h4>
+                    <p className="text-[9px] text-slate-300 mt-0.5 leading-relaxed">
+                      El equipo pedagógico se encuentra diseñando más manuales prácticos en PDF que aparecerán de manera continua y automática.
+                    </p>
+                  </div>
+                </div>
+
                 <div className="rounded-xl border border-slate-800 bg-[#0d1527]/40 p-4 space-y-3">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                     <h3 className="text-[10px] font-bold text-white uppercase tracking-wider">Materiales Suplementarios</h3>
@@ -792,6 +980,27 @@ export const CourseView: React.FC<CourseViewProps> = ({
                         description: "Estructuras rápidas y sencillas.",
                         download_url: pdfDownloadUrl
                       }
+                    ] : course.id === "muebles-palets" ? [
+                      {
+                        id: "palet-res-1",
+                        title: "Planos y Guía de Construcción (PDF)",
+                        description: "Detalle completo con las 5 ideas y manual paso a paso.",
+                        download_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/view?usp=drive_link"
+                      }
+                    ] : course.id === "adiestramiento-canino" ? [
+                      {
+                        id: "dog-res-1",
+                        title: "Manual Completísimo de Adiestramiento (PDF)",
+                        description: "Glosario de comandos, métodos de refuerzo y trucos paso a paso.",
+                        download_url: "https://drive.google.com/file/d/1u_8orWz2QrMyRvUusHMYI_4SThAidYQJ/view?usp=drive_link"
+                      }
+                    ] : course.id === "carpinteria-profesional" ? [
+                      {
+                        id: "carp-res-1",
+                        title: "Guía de Carpintería y Ebanistería (PDF)",
+                        description: "Manual práctico del maestro con esquemas de ensamble y acabados.",
+                        download_url: "https://drive.google.com/file/d/1yIh6EB_mBPCLi_6KNoYVa4PV5ahSB-Kv/view?usp=drive_link"
+                      }
                     ] : isPortugues ? [
                       {
                         id: "pt-res-1",
@@ -807,19 +1016,17 @@ export const CourseView: React.FC<CourseViewProps> = ({
                         download_url: pdfDownloadUrl
                       }
                     ]).map((res) => (
-                      <div key={res.id} className="p-3 rounded-lg border border-slate-800 bg-slate-900/60 flex items-center justify-between gap-2">
+                      <div key={res.id} className="p-3 rounded-lg border border-slate-800/40 bg-slate-950/20 opacity-75 flex items-center justify-between gap-2 select-none">
                         <div className="min-w-0 flex-1 text-left">
-                          <h4 className="text-[10px] font-bold text-white truncate">{res.title}</h4>
-                          <p className="text-[8px] text-slate-400 truncate mt-0.5">{res.description}</p>
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <Lock className="h-3 w-3 text-slate-500 shrink-0" />
+                            <h4 className="text-[10px] font-bold text-slate-400 truncate">{res.title}</h4>
+                          </div>
+                          <p className="text-[8px] text-slate-500 truncate mt-0.5">{res.description}</p>
                         </div>
-                        <a
-                          href={res.download_url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex items-center gap-1 shrink-0 rounded-lg bg-green-500/10 border border-green-500/20 px-2.5 py-1.5 text-[8px] font-bold text-green-400 hover:bg-green-500/20 cursor-pointer"
-                        >
-                          <Download className="h-3 w-3" /> Descargar
-                        </a>
+                        <div className="flex items-center gap-1 shrink-0 rounded-lg bg-slate-900/40 border border-slate-800 px-2 py-1 text-[8px] font-bold text-slate-500 cursor-not-allowed">
+                          <Lock className="h-2.5 w-2.5" /> Próximamente
+                        </div>
                       </div>
                     ))}
                   </div>

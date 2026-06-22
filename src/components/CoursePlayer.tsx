@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Course, Lesson, ChatMessage } from "../types";
-import { ChevronLeft, Send, Sparkles, AlertCircle, RotateCcw, Video, List, MessagesSquare, CheckCircle, ArrowRight } from "lucide-react";
+import { ChevronLeft, Send, Sparkles, AlertCircle, RotateCcw, Video, List, MessagesSquare, CheckCircle, ArrowRight, Smartphone, X, RotateCw } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface CoursePlayerProps {
@@ -13,6 +13,37 @@ export const CoursePlayer: React.FC<CoursePlayerProps> = ({ course, onBack }) =>
   const firstLesson = course.syllabus[0]?.lessons[0];
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(firstLesson || null);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [showRotationHint, setShowRotationHint] = useState(true);
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsLandscape(window.innerWidth > window.innerHeight);
+    };
+    checkOrientation();
+    window.addEventListener("resize", checkOrientation);
+    return () => window.removeEventListener("resize", checkOrientation);
+  }, []);
+
+  // Show rotation tip again when lesson changes
+  useEffect(() => {
+    setShowRotationHint(true);
+  }, [currentLesson]);
+  
+  // Sanitize Google Drive links for cleaner embed rendering
+  let embedVideoUrl = "";
+  if (currentLesson?.video_drive_url) {
+    embedVideoUrl = currentLesson.video_drive_url;
+    if (embedVideoUrl.includes("/view")) {
+      embedVideoUrl = embedVideoUrl.split("/view")[0] + "/preview";
+    } else if (embedVideoUrl.includes("drive.google.com/file/d/")) {
+      const parts = embedVideoUrl.split("/file/d/");
+      if (parts.length > 1) {
+        const fileId = parts[1].split("/")[0];
+        embedVideoUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+    }
+  }
   
   // Chat state
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -162,16 +193,62 @@ Para garantizar que tu experiencia continúe perfecta, aquí tienes una respuest
           <div className="space-y-4">
             <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black border border-gray-800 shadow-2xl">
               {/* Overlay styling for top control clipping */}
-              <div className="absolute top-0 inset-x-0 h-1 z-10 bg-gradient-to-b from-[#0d0f14] to-transparent pointer-events-none" />
+              <div className="absolute top-0 inset-x-0 h-1 z-10 bg-gradient-to-[#0d0f14] to-transparent pointer-events-none" />
               
               <iframe
-                src={currentLesson.video_drive_url}
+                src={embedVideoUrl}
                 title={currentLesson.title}
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
-                className="h-full w-full border-0 absolute inset-0"
+                className="absolute inset-0 w-full h-full border-0 rounded-2xl"
+                width="100%"
+                height="100%"
+                style={{ width: "100%", height: "100%", border: 0 }}
               />
+
+              {/* Mobile Screen Rotation Hint Overlay */}
+              {!isLandscape && showRotationHint && (
+                <div className="absolute inset-x-3 bottom-3 z-20 flex items-center justify-between gap-3 bg-slate-950/95 backdrop-blur-md border border-amber-500/40 rounded-xl p-3 shadow-2xl animate-bounce md:hidden">
+                  <div className="flex items-center gap-2.5">
+                    {/* Animated Phone Rotation Emblem */}
+                    <div className="relative flex items-center justify-center shrink-0 w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-405">
+                      <Smartphone className="h-4 w-4 animate-[spin_4s_ease-in-out_infinite]" />
+                      <RotateCw className="absolute h-2.5 w-2.5 top-0.5 right-0.5 animate-spin" style={{ animationDuration: '3s' }} />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] font-bold text-amber-400 flex items-center gap-1 leading-tight">
+                        ¡Rotar Celular! <span className="animate-pulse">🔄</span>
+                      </p>
+                      <p className="text-[9px] text-slate-300 leading-tight">
+                        Gira tu celular de forma horizontal para ampliar la visualización a pantalla completa.
+                      </p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => setShowRotationHint(false)}
+                    className="p-1 hover:bg-slate-800 rounded-md text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              )}
             </div>
+
+            {/* Mobile-only landscape guide trigger */}
+            {!isLandscape && (
+              <div className="flex items-center justify-between text-[9px] text-slate-400 md:hidden px-1 bg-slate-950/20 p-2 rounded-lg border border-slate-900">
+                <span className="flex items-center gap-1.5">
+                  <Smartphone className="h-3 w-3 text-amber-450" />
+                  <span>¿El video se ve pequeño? Gira de lado tu celular</span>
+                </span>
+                <button 
+                  onClick={() => setShowRotationHint(true)}
+                  className="text-amber-400 font-bold underline hover:text-amber-3font hover:underline cursor-pointer"
+                >
+                  Ver recomendación
+                </button>
+              </div>
+            )}
 
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-2 border-b border-gray-850">
               <div>

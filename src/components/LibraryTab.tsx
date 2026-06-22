@@ -43,7 +43,10 @@ export const LibraryTab: React.FC = () => {
         b.category === "Narnia" ||
         b.category === "Kiss Me" ||
         b.category === "Filosofía y Pensamiento" ||
-        b.category === "Novela Romántica y Fantasía Erótica"
+        b.category === "Novela Romántica y Fantasía Erótica" ||
+        b.category === "Ciencias Exactas e Ingeniería" ||
+        b.category === "Nutrición, Dietas y Cocina" ||
+        b.category === "Anatomía, Biomecánica y Entrenamiento"
     );
   });
   const [loading] = useState(false);
@@ -172,7 +175,31 @@ export const LibraryTab: React.FC = () => {
     return books.filter((b) => savedLater.includes(b.id));
   }, [books, savedLater]);
 
-  const categories = useMemo(() => ["All", "Filosofía y Pensamiento", "Novela Romántica y Fantasía Erótica", "Ventas y Negocios", "Brian Tracy", "Disney", "Sagas de Éxito Mundial", "Terror"], []);
+  const cienciasExactasBooks = useMemo(() => {
+    return books.filter((b) => b.category === "Ciencias Exactas e Ingeniería");
+  }, [books]);
+
+  const nutritionBooks = useMemo(() => {
+    return books.filter((b) => b.category === "Nutrición, Dietas y Cocina");
+  }, [books]);
+
+  const fitnessBooks = useMemo(() => {
+    return books.filter((b) => b.category === "Anatomía, Biomecánica y Entrenamiento");
+  }, [books]);
+
+  const categories = useMemo(() => [
+    "All",
+    "Nutrición, Dietas y Cocina",
+    "Anatomía, Biomecánica y Entrenamiento",
+    "Ciencias Exactas e Ingeniería",
+    "Filosofía y Pensamiento",
+    "Novela Romántica y Fantasía Erótica",
+    "Ventas y Negocios",
+    "Brian Tracy",
+    "Disney",
+    "Sagas de Éxito Mundial",
+    "Terror"
+  ], []);
 
   // MEMOIZED FILTER MATCHES
   const filteredBooks = useMemo(() => {
@@ -483,6 +510,96 @@ export const LibraryTab: React.FC = () => {
 
           <BookGrid
             books={ventasNegociosBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* SECCIÓN UNIFICADA: CIENCIAS EXACTAS E INGENIERÍA */}
+      {searchTerm === "" && (selectedCategory === "All" || selectedCategory === "Ciencias Exactas e Ingeniería") && selectedPill === "all" && cienciasExactasBooks.length > 0 && (
+        <div className="space-y-3.5 text-left" id="ciencias-exactas-ingenieria-section">
+          <div className="flex items-center justify-between border-b border-indigo-200/60 dark:border-indigo-950/40 pb-2 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5 md:gap-2">
+                <span className="rounded bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-250 dark:border-indigo-550/20 text-[8.5px] md:text-[9.5px] font-extrabold text-indigo-600 dark:text-indigo-400 px-2 py-0.5 uppercase tracking-wider">
+                  Estudios Técnicos
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1.5">
+                  📐 Ciencias Exactas e Ingeniería
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-1 transition-colors duration-300 font-normal">
+                Colección completa de manuales, textos académicos y guías teóricas de Matemática, Física, Química e Ingeniería.
+              </p>
+            </div>
+            <div className="hidden sm:flex items-center gap-1.5 text-[10px] text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-wider">
+              <span>{cienciasExactasBooks.length} Títulos</span>
+            </div>
+          </div>
+
+          <BookGrid
+            books={cienciasExactasBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* SECCIÓN UNIFICADA: NUTRICIÓN, DIETAS Y COCINA */}
+      {searchTerm === "" && (selectedCategory === "All" || selectedCategory === "Nutrición, Dietas y Cocina") && selectedPill === "all" && nutritionBooks.length > 0 && (
+        <div className="space-y-3.5 text-left" id="nutrition-diets-kitchen-section">
+          <div className="flex items-center justify-between border-b border-emerald-250/60 dark:border-emerald-950/40 pb-2 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5 md:gap-2">
+                <span className="rounded bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-250 dark:border-emerald-550/20 text-[8.5px] md:text-[9.5px] font-extrabold text-emerald-600 dark:text-emerald-400 px-2 py-0.5 uppercase tracking-wider">
+                  Vida Saludable
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1.5">
+                  🥗 Nutrición, Dietas y Cocina
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-1 transition-colors duration-300 font-normal">
+                Colección completa de guías de nutrición deportiva, dietas científicas, rutinas iniciales y recetas de cocina.
+              </p>
+            </div>
+            <div className="hidden sm:flex items-center gap-1.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">
+              <span>{nutritionBooks.length} Títulos</span>
+            </div>
+          </div>
+
+          <BookGrid
+            books={nutritionBooks}
+            onSelectBook={handleSelectBookInternal}
+            isLoading={false}
+          />
+        </div>
+      )}
+
+      {/* SECCIÓN UNIFICADA: ANATOMÍA, BIOMECÁNICA Y ENTRENAMIENTO */}
+      {searchTerm === "" && (selectedCategory === "All" || selectedCategory === "Anatomía, Biomecánica y Entrenamiento") && selectedPill === "all" && fitnessBooks.length > 0 && (
+        <div className="space-y-3.5 text-left" id="anatomy-biomechanics-training-section">
+          <div className="flex items-center justify-between border-b border-rose-250/60 dark:border-rose-950/40 pb-2 transition-colors duration-300">
+            <div>
+              <div className="flex items-center gap-1.5 md:gap-2">
+                <span className="rounded bg-rose-50 dark:bg-rose-900/10 border border-rose-250 dark:border-rose-550/20 text-[8.5px] md:text-[9.5px] font-extrabold text-rose-600 dark:text-rose-400 px-2 py-0.5 uppercase tracking-wider">
+                  Rendimiento y Anatomía
+                </span>
+                <h3 className="text-xs md:text-[14px] font-extrabold text-slate-800 dark:text-white uppercase tracking-tight flex items-center gap-1.5">
+                  💪 Anatomía, Biomecánica y Entrenamiento
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 mt-1 transition-colors duration-300 font-normal">
+                Enciclopedias de anatomía muscular, sistemas de entrenamiento funcional y de fuerza, y manuales de recuperación terapéutica.
+              </p>
+            </div>
+            <div className="hidden sm:flex items-center gap-1.5 text-[10px] text-rose-600 dark:text-rose-400 font-bold uppercase tracking-wider">
+              <span>{fitnessBooks.length} Títulos</span>
+            </div>
+          </div>
+
+          <BookGrid
+            books={fitnessBooks}
             onSelectBook={handleSelectBookInternal}
             isLoading={false}
           />

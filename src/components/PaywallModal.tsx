@@ -145,7 +145,7 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
             </div>
             <div className="rounded-lg bg-black/20 border border-pampa-dark-border/45 p-2">
               <Heart className="h-3 w-3 mx-auto text-rose-400 mb-0.5 animate-pulse" />
-              <p className="text-slate-400">100% Sostenido por Alumnos</p>
+              <p className="text-slate-400">100% Sostenido por la Comunidad</p>
             </div>
           </div>
 

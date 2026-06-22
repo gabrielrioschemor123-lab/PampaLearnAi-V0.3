@@ -17,7 +17,9 @@ export const VirtualMascot: React.FC<VirtualMascotProps> = ({ onOpenTotalAccess 
     "¡Pssst! Recuerda que tienes tutoría por Inteligencia Artificial integrada en cada curso para sacarte cualquier duda en tiempo real. 🧠✨",
     "¿Sabías que puedes descargar manuales de diagramas técnicos en PDF completamente gratis dentro de cada plan? 📂🛠️",
     "¡Tómate un respiro! Estudiar 25 minutos y descansar 5 (método Pomodoro) es ideal para fijar conceptos. 🍅⏱️",
-    "La constancia vence al talento. ¡Cada clase completada te forma como un profesional! 🔥"
+    "La constancia vence al talento. ¡Cada clase completada te forma como un profesional! 🔥",
+    "🔋 ¿Sumando hábitos saludables? En la pestaña de Biblioteca tienes guías completas de nutrición, recetas y entrenamiento para potenciar tu salud diaria. 🥗💪",
+    "💡 Tip pro: Utiliza la función de 'Guardar para después' en tus lecturas para estructurar tu propio plan de estudio personalizado. 🎯📚"
   ];
 
   // Auto-trigger a gentle greeting bubble after a brief loading period
@@ -199,39 +201,44 @@ export const VirtualMascot: React.FC<VirtualMascotProps> = ({ onOpenTotalAccess 
       {/* Floating Interactive Mascot Character Trigger */}
       <motion.button
         onClick={handleMascotClick}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
-        className="pointer-events-auto flex items-center justify-center h-14 w-14 rounded-full bg-gradient-to-br from-green-500 via-[#447413] to-slate-900 border border-green-500/40 text-white shadow-[0_4px_24px_rgba(34,197,94,0.35)] relative group cursor-pointer"
-        title="Pampito, Asistente Amigo"
+        whileHover={{ scale: 1.05, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+        className="pointer-events-auto flex items-center justify-center gap-2 h-12 md:h-14 px-4 md:px-5 rounded-full bg-slate-900/95 dark:bg-slate-950 border border-emerald-500/40 text-white shadow-[0_6px_28px_rgba(16,185,129,0.25)] relative group cursor-pointer select-none"
+        title="Pampito, Tutor Virtual"
       >
         {/* Glow pulsing ring around mascot */}
-        <span className="absolute inset-x-0 inset-y-0 rounded-full border border-green-400/40 animate-ping opacity-40 group-hover:scale-110 pointer-events-none" />
+        <span className="absolute inset-0 rounded-full border border-emerald-400/30 animate-[ping_3s_ease-in-out_infinite] opacity-30 pointer-events-none" />
 
         {/* Mascot Face Icon / Indicator */}
         <motion.div
-          animate={{ y: [0, -3, 0] }}
+          animate={{ y: [0, -2, 0] }}
           transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-          className="relative text-2xl font-bold font-mono tracking-tight"
+          className="relative text-lg md:text-xl"
         >
           🦙
         </motion.div>
 
+        {/* Visual clear explanation of what this button does */}
+        <span className="text-[11px] md:text-xs font-bold font-sans tracking-wide text-emerald-400">
+          Tutoría IA
+        </span>
+
         {/* Small subtle visual crown / spark */}
-        <div className="absolute -top-1 -right-1 bg-green-400 text-slate-950 p-0.5 rounded-full border border-slate-900 shadow animate-pulse">
-          <Sparkles className="h-3 w-3 text-slate-950 fill-current" />
+        <div className="absolute -top-1 right-1 bg-green-400 text-slate-950 p-0.5 rounded-full border border-slate-900 shadow animate-pulse">
+          <Sparkles className="h-2.5 w-2.5 text-slate-950 fill-current" />
         </div>
 
         {/* Notification indicator dot */}
         {hasNewNotification && !isOpen && (
-          <span className="absolute top-1 right-1 flex h-3.5 w-3.5">
+          <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-rose-500 border border-slate-950 flex items-center justify-center text-[7px] font-black text-white">1</span>
           </span>
         )}
 
         {/* Floating Tooltip Label */}
-        <span className="absolute -left-32 scale-0 group-hover:scale-100 transition-all duration-200 bg-slate-950 border border-slate-800 text-slate-100 text-[10px] font-bold px-2.5 py-1.5 rounded-lg select-none whitespace-nowrap shadow-xl">
-          ¿Te gusta Pampalearn? Ask me! 💬
+        <span className="absolute -left-36 scale-0 group-hover:scale-100 transition-all duration-200 bg-slate-950 border border-slate-800 text-slate-100 text-[10px] font-bold px-2.5 py-1.5 rounded-lg select-none whitespace-nowrap shadow-xl">
+          ¿Dudas sobre el curso? ¡Pregúntame! 💬
         </span>
       </motion.button>
 

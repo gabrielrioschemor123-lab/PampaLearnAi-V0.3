@@ -27,97 +27,63 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 
   return (
     <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border transition-all duration-300 shadow-xl cursor-pointer bg-[#0d1527] border-slate-800 hover:border-green-500/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.18)] w-[82vw] sm:w-[75vw] md:w-auto shrink-0 snap-start"
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer bg-white dark:bg-pampa-dark-card border-slate-150 dark:border-pampa-dark-border/80 hover:border-slate-300 dark:hover:border-slate-700 w-[275px] xs:w-[305px] sm:w-[340px] md:w-auto shrink-0 snap-start"
       onClick={handleCardClick}
       id={`course-card-${course.id}`}
     >
       {/* Thumbnail with Rounded Corners and Soft Shadow */}
-      <div className="relative aspect-video w-full overflow-hidden bg-slate-900 border-b border-slate-800/60">
+      <div className="relative aspect-video w-full overflow-hidden bg-slate-900 border-b border-slate-100 dark:border-pampa-dark-border/40">
         <img
           src={course.thumbnail}
           alt={course.title}
           referrerPolicy="no-referrer"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-102"
         />
         
-        {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none" />
-
         {/* Category Badges Group */}
-        <div className="absolute top-4 left-4 flex flex-wrap gap-1.5 z-10">
-          <span className="rounded bg-black/85 border border-slate-800/80 px-2.5 py-1 text-[9px] font-extrabold text-slate-300 uppercase tracking-wider backdrop-blur-sm">
+        <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+          <span className="rounded bg-black/85 border border-slate-800/80 px-2.5 py-1 text-[9px] font-extrabold text-slate-200 uppercase tracking-wider backdrop-blur-sm shadow-sm">
             {course.category}
           </span>
-          {isMetaAds && (
-            <span className="rounded bg-gradient-to-r from-emerald-600 to-emerald-950 border border-emerald-500/40 px-2 py-1 text-[9px] font-extrabold text-white flex items-center gap-1 shadow-md">
-              <TrendingUp className="h-3 w-3 text-white" /> +ROI Target
-            </span>
-          )}
-          {isDJ && (
-            <span className="rounded bg-gradient-to-r from-emerald-600 to-slate-900 border border-green-500/30 px-2 py-1 text-[9px] font-extrabold text-white flex items-center gap-1 shadow-md">
-              <Headphones className="h-3 w-3 text-white" /> +BPM Booth
-            </span>
-          )}
-          {isMotos && (
-            <span className="rounded bg-gradient-to-r from-amber-600 to-orange-950 border border-amber-500/30 px-2 py-1 text-[9px] font-extrabold text-white flex items-center gap-1 shadow-md">
-              <Wrench className="h-3 w-3 text-white" /> +Garage Tech
-            </span>
-          )}
-        </div>
-
-        {/* Format Badge & Gratuito Label */}
-        <div className="absolute top-4 right-4 flex flex-col items-end gap-1.5 z-10">
-          <span className="flex items-center gap-1 rounded bg-[#091512]/90 border border-green-500/30 px-2.5 py-1 text-[9px] font-extrabold text-green-400 uppercase tracking-widest shadow-sm backdrop-blur-md">
-            🎥 CURSO EN VIDEO
-          </span>
-          <span className="flex items-center gap-1 rounded bg-green-500/10 border border-green-500/40 px-2.5 py-1 text-[8px] font-extrabold text-green-400 uppercase tracking-wider shadow-sm backdrop-blur-md">
-            <Sparkles className="h-2.5 w-2.5 text-green-400 animate-pulse" />
-            100% Gratis
-          </span>
-        </div>
-
-        {/* Footer info inside thumbnail */}
-        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-slate-300 font-medium">
-          <div className="flex items-center gap-1 bg-[#0d1527]/75 px-2 py-1 rounded border border-slate-800 backdrop-blur-xs text-[9px] font-mono">
-            <span>{course.difficulty}</span>
-          </div>
-          <div className="flex items-center gap-1 bg-[#0d1527]/75 px-2 py-1 rounded border border-slate-800 backdrop-blur-xs text-[9px] font-mono">
-            <span>{course.total_lessons} Clases</span>
-          </div>
         </div>
       </div>
 
       {/* Main Text Content */}
-      <div className="p-6 text-left flex-1 flex flex-col justify-between">
-        <div className="space-y-3">
-          <h3 className="text-xl font-bold text-white transition-colors leading-snug flex items-center gap-2 group-hover:text-green-400">
-            {isMetaAds && <Megaphone className="h-5 w-5 text-green-400 flex-shrink-0" />}
-            {isDJ && <Headphones className="h-5 w-5 text-green-400 flex-shrink-0" />}
-            {isMotos && <Wrench className="h-5 w-5 text-amber-500 flex-shrink-0" />}
+      <div className="p-4 sm:p-5 text-left flex-1 flex flex-col justify-between">
+        <div className="space-y-2">
+          {/* Metadata Row */}
+          <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase font-mono">
+            <span className="bg-slate-100 dark:bg-slate-800/60 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] text-[#0d9488] dark:text-[#2dd4bf]">{course.difficulty}</span>
+            <span className="text-slate-300 dark:text-slate-800">•</span>
+            <span>{course.total_lessons} Clases</span>
+          </div>
+
+          <h3 className="text-base sm:text-lg font-bold text-slate-800 dark:text-white transition-colors leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
             {course.title}
           </h3>
 
           {/* Instructor Block (Jerarquía Visual) */}
-          <div className="flex items-center gap-1.5 text-sm text-slate-400">
-            <div className="h-5 w-5 rounded-full bg-slate-800/40 border border-slate-700/50 flex items-center justify-center">
-              <User className="h-3 w-3 text-slate-400" />
+          <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
+            <div className="h-5 w-5 rounded-full bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+              <User className="h-3 w-3 text-slate-550" />
             </div>
-            <span>Tutor: {course.instructor}</span>
+            <span className="truncate">Tutor: {course.instructor}</span>
           </div>
 
-          <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
             {course.description}
           </p>
         </div>
 
         {/* Trigger and Price Block at very bottom */}
-        <div className="mt-6 flex items-center justify-between border-t border-slate-800/60 pt-4">
+        <div className="mt-5 flex items-center justify-between border-t border-slate-100 dark:border-pampa-dark-border/40 pt-4">
           <div className="text-left">
-            <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest leading-none">Matrícula</p>
-            <p className="text-xs font-bold text-green-400 mt-1">
-              Libre / Gratuito
+            <p className="text-[9px] font-mono text-slate-400 dark:text-slate-550 uppercase tracking-widest leading-none">Matrícula</p>
+            <p className="text-xs font-bold text-emerald-600 dark:text-emerald-450 mt-1">
+              Gratuito
             </p>
           </div>
 
@@ -127,9 +93,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold bg-slate-105 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-700 dark:text-white border border-transparent transition-all cursor-pointer"
             >
-              <Play className="h-3 w-3 fill-current text-green-400" /> Ingresar
+              <Play className="h-3 w-3 fill-current text-slate-605 dark:text-slate-300" /> Ingresar
             </button>
           </div>
         </div>

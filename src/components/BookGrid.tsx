@@ -187,9 +187,9 @@ export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoadi
 
   if (isLoading) {
     return (
-      <div className="flex overflow-x-auto pb-4 gap-3.5 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full">
+      <div className="flex overflow-x-auto pb-4 gap-3 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={`shimmer-${i}`} className="w-[145px] md:w-[205px] shrink-0 snap-start flex flex-col gap-2.5 md:gap-4 rounded-2xl bg-white border border-slate-205/60 shadow-sm dark:bg-[#090b11] dark:border-gray-900 animate-pulse p-2.5 md:p-4">
+          <div key={`shimmer-${i}`} className="w-[155px] xs:w-[165px] sm:w-[145px] md:w-[205px] shrink-0 snap-start flex flex-col gap-2.5 md:gap-4 rounded-2xl bg-white border border-slate-205/60 shadow-sm dark:bg-[#090b11] dark:border-gray-900 animate-pulse p-2.5 md:p-4">
             <div className="aspect-[3/4] w-full rounded-r-xl rounded-l-md bg-slate-100 dark:bg-gray-800/80" />
             <div className="h-4 w-2/3 bg-slate-200 dark:bg-gray-800 rounded" />
             <div className="h-3 w-1/2 bg-slate-200 dark:bg-gray-800 rounded" />
@@ -219,7 +219,7 @@ export const BookGrid: React.FC<BookGridProps> = ({ books, onSelectBook, isLoadi
         {/* Scroll Container */}
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto overflow-y-hidden pb-4 pt-1 gap-3.5 md:gap-5 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth w-full"
+          className="flex overflow-x-auto overflow-y-hidden pb-4 pt-1 gap-3 px-4 -mx-4 md:mx-0 md:px-0 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth w-full"
         >
           {books.map((book) => (
             <BookCard
@@ -303,10 +303,11 @@ const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, i
     <motion.div
       layout
       whileHover={{ y: -6 }}
+      whileTap={{ scale: 0.97 }}
       onClick={handleSelectClick}
       className={`group relative flex flex-col justify-between cursor-pointer rounded-2xl bg-white border border-slate-205/60 shadow-sm hover:shadow-md hover:bg-slate-50 dark:bg-slate-950/60 dark:backdrop-blur-md dark:border-slate-900 transition-all duration-300 p-2.5 md:p-4 ${
         isCarousel
-          ? "w-[145px] md:w-[205px] shrink-0 snap-start"
+          ? "w-[155px] xs:w-[165px] sm:w-[145px] md:w-[205px] shrink-0 snap-start"
           : "w-full"
       }`}
     >
@@ -425,8 +426,14 @@ const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, i
               {book.author}
             </span>
             {book.focusTag && (
-              <span className={`text-[6.5px] md:text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md border shrink-0 ${
-                book.focusTag === "Estoicismo y Vida"
+               <span className={`text-[6.5px] md:text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md border shrink-0 ${
+                book.focusTag === "Matemática"
+                  ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/15"
+                  : book.focusTag === "Física y Química"
+                  ? "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/15"
+                  : book.focusTag === "Ingeniería Técnica"
+                  ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/15"
+                  : book.focusTag === "Estoicismo y Vida"
                   ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/15"
                   : book.focusTag === "Filosofía Ilustrada / Manga"
                   ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/15"
@@ -440,6 +447,18 @@ const BookCard = React.memo<BookCardProps>(({ book, onSelect, onShare, copied, i
                   ? "bg-yellow-600/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/15"
                   : book.focusTag === "Romance Vampírico / Fantasía"
                   ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/15"
+                  : book.focusTag === "Nutrición y Dietas Deportivas"
+                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/15"
+                  : book.focusTag === "Recetas y Cocina"
+                  ? "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/15"
+                  : book.focusTag === "Rutinas Iniciales"
+                  ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/15"
+                  : book.focusTag === "Anatomía y Biomecánica"
+                  ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/15"
+                  : book.focusTag === "Sistemas de Entrenamiento"
+                  ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/15"
+                  : book.focusTag === "Salud y Recuperación"
+                  ? "bg-lime-500/10 text-lime-600 dark:text-lime-400 border-lime-500/15"
                   : "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/15"
               }`}>
                 {book.focusTag}

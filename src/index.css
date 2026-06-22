@@ -1,3 +1,31 @@
+:root {
+  /* High contrast colors for Light Mode */
+  --color-pampa-deep: #033c32;       /* Ultra deep, elegant emerald */
+  --color-pampa-bright: #047857;     /* High contrast emerald */
+  --color-pampa-gold: #b45309;       /* Solid dark amber */
+  --color-pampa-dark: #f8fafc;       /* Clean sky-slate-50 background */
+  --color-pampa-dark-card: #ffffff;  /* Solid white cards */
+  --color-pampa-dark-border: #cbd5e1; /* Clear slate border */
+  
+  --color-neon-lime: #047857;
+  --color-neon-cyan: #0284c7;        /* Stable high contrast blue */
+  --color-neon-orange: #c2410c;      /* Defined dark orange */
+}
+
+.dark {
+  /* Immersive slate Cosmic Theme for Dark Mode - remains fully untouched */
+  --color-pampa-deep: #064e40;
+  --color-pampa-bright: #10b981;
+  --color-pampa-gold: #d97706;
+  --color-pampa-dark: #090d16;
+  --color-pampa-dark-card: #151e2e;
+  --color-pampa-dark-border: #1e293b;
+  
+  --color-neon-lime: #10b981;
+  --color-neon-cyan: #0ea5e9;
+  --color-neon-orange: #f97316;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
@@ -6,18 +34,18 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  /* PampaLearn AI Color Palette */
-  --color-pampa-deep: #0F3D2E;
-  --color-pampa-bright: #22C55E;
-  --color-pampa-gold: #F59E0B;
-  --color-pampa-dark: #070F0D;
-  --color-pampa-dark-card: #0D1B18;
-  --color-pampa-dark-border: #142E28;
+  /* PampaLearn Premium Color Palette mapped to theme-dependent variables */
+  --color-pampa-deep: var(--color-pampa-deep);
+  --color-pampa-bright: var(--color-pampa-bright);
+  --color-pampa-gold: var(--color-pampa-gold);
+  --color-pampa-dark: var(--color-pampa-dark);
+  --color-pampa-dark-card: var(--color-pampa-dark-card);
+  --color-pampa-dark-border: var(--color-pampa-dark-border);
   
-  /* Energizing sports and modern trades color palettes */
-  --color-neon-lime: #22C55E; /* vibrant action green */
-  --color-neon-cyan: #06b6d4; /* sharp electric cyan */
-  --color-neon-orange: #f97316; /* energetic athletic orange */
+  /* Unified premium action colors */
+  --color-neon-lime: var(--color-neon-lime);
+  --color-neon-cyan: var(--color-neon-cyan);
+  --color-neon-orange: var(--color-neon-orange);
 }
 
 @variant dark (&:where(.dark, .dark *));
@@ -26,7 +54,7 @@
 body {
   font-family: var(--font-sans);
   background-color: #f8fafc;
-  color: #0f172a;
+  color: #1e293b; /* Deep slate, very close to black, for excellent contrast in Light Mode */
   overflow-x: hidden;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -34,7 +62,7 @@ body {
 }
 
 body:where(.dark, .dark *) {
-  background-color: #070F0D;
+  background-color: #090d16;
   color: #f1f5f9;
 }
 
@@ -42,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
 }
 
-/* Custom visual styling */
+/* Custom scrollbar styling */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }
@@ -55,5 +83,140 @@ h1, h2, h3, h4, h5, h6 {
 }
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: #374151;
+}
+
+/* 
+  =========================================
+  LIGHT MODE HIGH-CONTRAST ACCESSIBILITY OVERRIDES
+  =========================================
+  Apply exclusively when .dark is NOT present on the html tag to safeguard the Dark theme.
+*/
+html:not(.dark) {
+  color-scheme: light;
+
+  /* Upgrade general texts for maximum legibility */
+  .text-slate-400, .text-gray-400, .text-zinc-400, .text-slate-450 {
+    color: #475569 !important; /* Dark Slate-600 */
+  }
+  .text-slate-500, .text-gray-500, .text-zinc-500, .text-slate-550 {
+    color: #1e293b !important; /* Deep Slate-800, perfectly legible */
+  }
+  .text-slate-300, .text-gray-300, .text-zinc-300 {
+    color: #334155 !important; /* Dark Slate-700 */
+  }
+  .text-slate-200, .text-gray-200, .text-zinc-200 {
+    color: #0f172a !important; /* Real Deep Charcoal-900 */
+  }
+  .text-slate-100, .text-gray-100, .text-zinc-100, .text-slate-50 {
+    color: #0f172a !important; /* Darkest Slate */
+  }
+  .text-rose-400, .text-rose-450 {
+    color: #9f1239 !important; /* Rose-800 */
+  }
+  .text-amber-400, .text-amber-450 {
+    color: #b45309 !important; /* Amber-700 */
+  }
+  .text-emerald-400, .text-emerald-405, .text-neon-lime {
+    color: #047857 !important; /* Solid emerald green */
+  }
+  .text-neon-cyan {
+    color: #0369a1 !important; /* Sky-700 */
+  }
+
+  /* Redefine hardcoded dark blocks into crisp high-contrast elements */
+  *[class*="bg-[#0d1527]"],
+  *[class*="bg-[#090f1e]"],
+  *[class*="bg-[#11141d]"],
+  *[class*="bg-[#151925]"],
+  *[class*="bg-[#151a26]"],
+  *[class*="bg-slate-900/40"],
+  *[class*="bg-[#0d1527]/90"],
+  *[class*="bg-[#0d1527]/40"] {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Special focus wrappers */
+  *[class*="bg-[#0d1527]/50"],
+  *[class*="bg-[#090f1e]/60"],
+  *[class*="bg-[#161c28]/90"] {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Chat areas & containers */
+  *[class*="bg-[#141822]"],
+  *[class*="bg-[#090b11]"],
+  *[class*="bg-[#161c28]/90"] {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Inputs customization (Search engine and prompts) */
+  input[class*="bg-[#090b11]"],
+  input[class*="bg-[#0d1527]"],
+  input[class*="bg-[#0f172a]"] {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #94a3b8 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+  }
+  input[class*="bg-[#090b11]"]::placeholder,
+  input[class*="bg-[#0d1527]"]::placeholder,
+  input[class*="bg-[#0f172a]"]::placeholder {
+    color: #64748b !important;
+  }
+
+  /* Button hovers */
+  *[class*="bg-[#131f3a]"],
+  *[class*="bg-[#0c1221]"] {
+    background-color: #e2e8f0 !important;
+    color: #0f172a !important;
+    border-color: #94a3b8 !important;
+  }
+
+  /* Category pills (bg-[#09110e]) on LibraryTab */
+  button[class*="bg-[#09110e]"],
+  div[class*="bg-[#09110e]"] {
+    background-color: #f1f5f9 !important;
+    color: #1e293b !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+  }
+  button[class*="bg-[#09110e]"]:hover {
+    background-color: #cbd5e1 !important;
+    color: #0f172a !important;
+    border-color: #94a3b8 !important;
+  }
+
+  /* Border color standardisation for all high-contrast cards */
+  *[class*="border-slate-800"],
+  *[class*="border-slate-805"],
+  *[class*="border-slate-850"],
+  *[class*="border-slate-900"],
+  *[class*="border-gray-800"],
+  *[class*="border-white/5"] {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Fixes text on custom details overlays */
+  p[class*="text-slate-400"],
+  p[class*="text-gray-400"] {
+    color: #334155 !important;
+  }
+
+  /* Make lucide icons a bit thicker for high readability */
+  .lucide {
+    stroke-width: 2.1 !important;
+  }
+
+  /* Form dropdown selections fallback list */
+  option, select {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+  }
 }
 

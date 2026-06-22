@@ -115,6 +115,39 @@ export const GeminiChat: React.FC<GeminiChatProps> = ({
           accentText: "text-purple-500 font-extrabold",
           accentBorder: "border-purple-200 dark:border-purple-900/40",
         };
+      case "muebles-palets":
+        return {
+          name: "Pampito Carpintero",
+          avatar: "🦙🪚🔨",
+          subtitle: "Maestro Ecodiseñador",
+          welcome: `¡Qué tal, colega! Soy **Pampito Carpintero** 🦙🪚🔨 listo con mi delantal de lona y mi lápiz de carpintero. Vamos a lijar las dudas y ensamblar excelentes ideas en esta lección sobre *"${currentLessonTitle}"*. ¿Querés consultarme sobre tipos de maderas, lijas, cortes angulares, pinturas o cómo armar este plano? ¡Preguntame y lo resolvemos!`,
+          bubbleBg: "bg-amber-50/90 dark:bg-amber-950/20 text-slate-800 dark:text-amber-100",
+          pampitoBg: "bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 border-amber-200 dark:border-amber-900/30",
+          accentText: "text-amber-500 font-extrabold",
+          accentBorder: "border-amber-200 dark:border-amber-900/40",
+        };
+      case "adiestramiento-canino":
+        return {
+          name: "Pampito Adiestrador",
+          avatar: "🦙🐕🎾",
+          subtitle: "Etólogo y Adiestrador Felino-Canino",
+          welcome: `¡Hola amigo perruno! Soy **Pampito Adiestrador** 🦙🐕🎾 listo con mis premios de hígado y mi clicker preparado. Vamos a descifrar la lingüística perruna y perfeccionar los comandos en la clase de *"${currentLessonTitle}"*. ¿Tu peludo tira de la correa, ladra de más, o querés enseñarle a dar la patita hoy? ¡Contame su caso y logremos esa obediencia con mucho cariño y refuerzo positivo!`,
+          bubbleBg: "bg-sky-50/90 dark:bg-sky-950/20 text-slate-800 dark:text-sky-100",
+          pampitoBg: "bg-sky-100 dark:bg-sky-950/60 text-sky-600 dark:text-sky-300 border-sky-200 dark:border-sky-900/30",
+          accentText: "text-sky-500 font-extrabold",
+          accentBorder: "border-sky-200 dark:border-sky-900/40",
+        };
+      case "carpinteria-profesional":
+        return {
+          name: "Pampito Ebanista",
+          avatar: "🦙🪵📐",
+          subtitle: "Maestro Carpintero y Ebanista",
+          welcome: `¡Buen día colega! Soy **Pampito Ebanista** 🦙🪵📐 para guiarte en el taller. Ya tengo listos el cepillo de desbastar y la escuadra para la clase de *"${currentLessonTitle}"*. ¿Qué dudas tenés sobre ensambles, tipos de veta de la madera, cortes con sierra de inglete o cómo lijar para lograr un acabado espejo? ¡Contame y lo resolvemos en la mesa de trabajo!`,
+          bubbleBg: "bg-amber-50/90 dark:bg-amber-950/20 text-slate-800 dark:text-amber-100",
+          pampitoBg: "bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 border-amber-200 dark:border-amber-900/30",
+          accentText: "text-amber-500 font-extrabold",
+          accentBorder: "border-amber-200 dark:border-amber-900/40",
+        };
       default:
         return {
           name: "Profesor Pampito",

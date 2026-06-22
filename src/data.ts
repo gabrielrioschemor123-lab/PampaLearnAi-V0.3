@@ -1072,6 +1072,396 @@ export const initialBooks: Book[] = [
     description: "Explora los secretos y la perspectiva de Hardin Scott sobre los orígenes de su pasión y tormento antes de conocer a Tessa.",
     pages: 352,
     keywords: ["after", "anna todd", "hardin", "tessa", "romance", "drama", "antes de ella"]
+  },
+  {
+    id: "stewart-calculo-1",
+    title: "Cálculo de una variable, trascendentes tempranas",
+    author: "James Stewart",
+    driveId: "1eWBEEf3MQFeFcmf_TTZ5ITk1jaUO3KkZ",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRT0dcnNUYSANCkt_yOHOIPsEroiJlyY1HfLhti_SG7WDqvjKR2VbyNDs&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRT0dcnNUYSANCkt_yOHOIPsEroiJlyY1HfLhti_SG7WDqvjKR2VbyNDs&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Matemática",
+    description: "La obra de referencia definitiva para el aprendizaje del cálculo en una variable. Con explicaciones claras y problemas idóneos para ingeniería.",
+    pages: 864,
+    keywords: ["matematica", "calculo", "stewart", "ingenieria", "analisis", "derivadas", "integrales"]
+  },
+  {
+    id: "stewart-calculo-2",
+    title: "Cálculo de varias variables. Trascendentes tempranas",
+    author: "James Stewart",
+    driveId: "1eC0_qlPbTVLIb5MFn-FX-w_o2ucFqEn7",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19oQbn1ygN2O_Wbzs9la5AJ-Ctm6sjzVdsyUlt1HGJA&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19oQbn1ygN2O_Wbzs9la5AJ-Ctm6sjzVdsyUlt1HGJA&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Matemática",
+    description: "Siguiente nivel de cálculo multivariable y vectorial. Ideal para estudiantes de ingeniería y ciencias exactas.",
+    pages: 928,
+    keywords: ["matematica", "stewart", "calculo", "vectorial", "integrales multiples", "gradiente"]
+  },
+  {
+    id: "serway-fisica-1",
+    title: "Física para ciencias e ingeniería, Volumen 1",
+    author: "Serway & Jewett",
+    driveId: "1hSaABotdDtPhbm2_ewEYaDISfBepV1a3",
+    coverUrl: "https://http2.mlstatic.com/D_NQ_NP_975239-MLA44170970319_112020-O.webp",
+    cover_url: "https://http2.mlstatic.com/D_NQ_NP_975239-MLA44170970319_112020-O.webp",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Física y Química",
+    description: "El estándar de oro para comprender la física mecánica clásica, dinámica de sistemas y oscilaciones con rigor técnico.",
+    pages: 784,
+    keywords: ["fisica", "serway", "mecanica", "cinematica", "leyes de newton", "dinamica"]
+  },
+  {
+    id: "sears-fisica-u",
+    title: "Física Universitaria",
+    author: "Sears & Zemansky",
+    driveId: "1Chq2KoX2YVB-CSz2keoQGWd1dO2hpm6l",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRNyXZxREkxXIgP4qEip5fZR7vsraSZq84vSvexJUc4w&s",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRNyXZxREkxXIgP4qEip5fZR7vsraSZq84vSvexJUc4w&s",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Física y Química",
+    description: "Un pilar de la física universitaria clásica y moderna, caracterizado por su enfoque conceptual y ejercicios prácticos.",
+    pages: 820,
+    keywords: ["fisica", "sears", "termodinamica", "electromagnetismo", "mecanica electromagnetica"]
+  },
+  {
+    id: "resnick-fisica-1",
+    title: "Física, vol. 1",
+    author: "Resnick, Halliday, Krane",
+    driveId: "11d3uISwHi9vdncG3Js_JpkoeeBa5dgb6",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGY1_cWqdpH1_w_GCrhEtsB66qbOlfMSH2GD1qciQFahln0blkNU_9e93R&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGY1_cWqdpH1_w_GCrhEtsB66qbOlfMSH2GD1qciQFahln0blkNU_9e93R&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Física y Química",
+    description: "La obra clásica con el análisis más riguroso y detallado de las leyes del movimiento y termodinámica básica.",
+    pages: 640,
+    keywords: ["fisica", "resnick", "gravedad", "cinematica", "termodinamica"]
+  },
+  {
+    id: "chang-quimica",
+    title: "Química",
+    author: "Chang Raymond & Goldsby Kenneth",
+    driveId: "1WdF_ndvBbcqPJyP4VqlW487PAX6GPNpF",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tkbCyinrFYOb6dV69AQyNyrwvxjRpZjSe6aBM9Fkzw&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tkbCyinrFYOb6dV69AQyNyrwvxjRpZjSe6aBM9Fkzw&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Física y Química",
+    description: "El texto introductorio de química más claro y completo, abarcando desde la estructura atómica hasta reacciones termoquímicas sofisticadas.",
+    pages: 1168,
+    keywords: ["quimica", "chang", "gases", "atomos", "reacciones", "soluciones"]
+  },
+  {
+    id: "shigley-maquinas",
+    title: "Teoría de máquinas y mecanismos",
+    author: "Joseph Edward Shigley",
+    driveId: "1G9faFp1b5W6KhkKKMoxAU13k-w96lgxm",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwQxgbmJvSEuMQHTFqEiAIftJZ1VpHIwuTqIuUy5vIJomUrmrI8ReOts-J&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwQxgbmJvSEuMQHTFqEiAIftJZ1VpHIwuTqIuUy5vIJomUrmrI8ReOts-J&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Ingeniería Técnica",
+    description: "El manual técnico primordial para el análisis Cinemático, diseño de engranajes y síntesis de mecanismos mecánicos complejos.",
+    pages: 420,
+    keywords: ["ingenieria", "mecanica", "shigley", "maquinas", "mecanismos", "diseño mecanico"]
+  },
+  {
+    id: "cengel-termo",
+    title: "Termodinámica",
+    author: "Yunus A. Cengel & Michael A. Boles",
+    driveId: "1i0oxNeEH7lQAFpZY6naWNJxv-429SfGW",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSByyh8Gi34iamu5fXpz6eio913qX0kSF6_-P8CwynZN3vJAWSx9XOO0czh&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSByyh8Gi34iamu5fXpz6eio913qX0kSF6_-P8CwynZN3vJAWSx9XOO0czh&s=10",
+    category: "Ciencias Exactas e Ingeniería",
+    focusTag: "Ingeniería Técnica",
+    description: "El recurso de aprendizaje líder en termodinámica e ingeniería térmica, conocido por sus explicaciones intuitivas y aplicaciones del mundo real.",
+    pages: 1008,
+    keywords: ["termodinamica", "cengel", "energia", "calor", "ciclos de potencia"]
+  },
+  {
+    id: "gran-libro-nutricion-deportiva",
+    title: "1.El gran libro de la nutrición deportiva.pdf",
+    author: "Nutrición Deportiva",
+    driveId: "1cqKT1zW4NTzXu8UIXKfRF6u_sY3N68EC",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcLZsaoPsD_Fx62M8xWlqjqtgJmR4Y7NRjCP3LnaWiIw&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcLZsaoPsD_Fx62M8xWlqjqtgJmR4Y7NRjCP3LnaWiIw&s=10",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Todo sobre el impacto de la alimentación y suplementación en el rendimiento físico y deportivo de alta competencia.",
+    pages: 280,
+    keywords: ["nutricion", "deporte", "fitness", "alimentacion", "dietas"]
+  },
+  {
+    id: "guia-alimentacion-runners",
+    title: "1.Guía de alimentación para runners-1ra edición 2015.pdf",
+    author: "Runners",
+    driveId: "1XLyLi9GgV3oUiQPEaNefeynZbFnqEvVF",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRxo86E-vLdJ8UVB6eK5K5q4IhijCczZJ139wbIpM-He7rLQuNJtSMt8A&s=10",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRxo86E-vLdJ8UVB6eK5K5q4IhijCczZJ139wbIpM-He7rLQuNJtSMt8A&s=10",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Nutrición específica para optimizar el rendimiento, la resistencia y los tiempos de recuperación en corredores.",
+    pages: 150,
+    keywords: ["runners", "corredores", "alimentacion", "nutricion"]
+  },
+  {
+    id: "alimentacion-pre-post-entreno",
+    title: "2.Alimentación en pre y post entreno.pdf",
+    author: "Entrenamiento",
+    driveId: "1XAF6OQl8AexdY3la6AX7FrpXZhtJbK1b",
+    coverUrl: "https://imgv2-2-f.scribdassets.com/img/document/923766501/298x396/bce7f7d250/1758924948?v=1",
+    cover_url: "https://imgv2-2-f.scribdassets.com/img/document/923766501/298x396/bce7f7d250/1758924948?v=1",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Estrategias nutricionales precisas para ingerir antes y después de cada sesión de entrenamiento para maximizar ganancias y recuperación.",
+    pages: 45,
+    keywords: ["pre-entreno", "post-entreno", "nutricion", "energia", "proteina"]
+  },
+  {
+    id: "aumento-masa-muscular-vegetariano",
+    title: "4.Aumento de masa muscular VEGETARIANO.pdf",
+    author: "Vegetariano",
+    driveId: "1GqrBUHHRl_PmE5k5HRu_u4Is51eTHNye",
+    coverUrl: "https://cdn.slidesharecdn.com/ss_thumbnails/veganismo-120817161927-phpapp02-thumbnail.jpg?width=640&height=640&fit=bounds",
+    cover_url: "https://cdn.slidesharecdn.com/ss_thumbnails/veganismo-120817161927-phpapp02-thumbnail.jpg?width=640&height=640&fit=bounds",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Plan integral de entrenamiento e ingesta hiperproteica basada en plantas para la ganancia de masa magra vegetal.",
+    pages: 95,
+    keywords: ["vegetariano", "vegano", "masa muscular", "proteina vegetal"]
+  },
+  {
+    id: "dieta-definitiva",
+    title: "4.Dieta definitiva.pdf",
+    author: "Dieta",
+    driveId: "1Z8yxjcMHRl0b9MrmK5aPb7KdjJag8xtY",
+    coverUrl: "https://www.ecolectura.cl/Content/Images/Libros/La_Dieta_Definitiva__240255437.jpg",
+    cover_url: "https://www.ecolectura.cl/Content/Images/Libros/La_Dieta_Definitiva__240255437.jpg",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Una guía científica paso a paso para la pérdida de grasa y mantenimiento saludable a largo plazo.",
+    pages: 320,
+    keywords: ["dieta", "grasa", "adelgazar", "nutricion", "salud"]
+  },
+  {
+    id: "60-dietas-a-prueba",
+    title: "60 dietas a prueba.pdf",
+    author: "Dietas",
+    driveId: "1Prr1mQNhyS8FIT_4N2j_jUxpE8nFC800",
+    coverUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT06hc55Y6AegaVoSkh7VzB2fYqM8llx5qrIj3SOjUsag&s",
+    cover_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT06hc55Y6AegaVoSkh7VzB2fYqM8llx5qrIj3SOjUsag&s",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Nutrición y Dietas Deportivas",
+    description: "Análisis exhaustivo clínico y práctico de las 60 dietas de moda más populares del mundo.",
+    pages: 210,
+    keywords: ["dietas", "nutricion", "salud", "ayuno", "keto"]
+  },
+  {
+    id: "195-recetas-cocina",
+    title: "195 recetas de cocina.pdf",
+    author: "Recetas",
+    driveId: "1bdj8zQTgX8mwIl1bLdDZ-NHfaWF21ICI",
+    coverUrl: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=400&q=80",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Recetas y Cocina",
+    description: "Compendio práctico de platos cotidianos fáciles y saludables perfectamente ilustrados.",
+    pages: 195,
+    keywords: ["recetas", "cocina", "platos", "saludable"]
+  },
+  {
+    id: "1080-recetas-cocina",
+    title: "1080 recetas de cocina.pdf",
+    author: "Simone Ortega",
+    driveId: "1V8WNCUozAngDPlrLxW0qNyqsuLetyTaJ",
+    coverUrl: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=400&q=80",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Recetas y Cocina",
+    description: "La gran enciclopedia gastronómica, un clásico definitivo de la cocina hogareña e internacional.",
+    pages: 1080,
+    keywords: ["recetas", "cocina", "enciclopedia", "platos", "gastronomia"]
+  },
+  {
+    id: "rutina-gym-principiantes",
+    title: "2.Rutina de gym para principiantes.pdf",
+    author: "Gimnasio",
+    driveId: "1SrhKsaYah35yw_W9QYg6ZRSMjzbNDgl8",
+    coverUrl: "https://m.media-amazon.com/images/I/61NGX8AamTL._AC_UF1000,1000_QL80_.jpg",
+    cover_url: "https://m.media-amazon.com/images/I/61NGX8AamTL._AC_UF1000,1000_QL80_.jpg",
+    category: "Nutrición, Dietas y Cocina",
+    focusTag: "Rutinas Iniciales",
+    description: "Planificación paso a paso para personas que inician su recorrido en el gimnasio de fuerza libre.",
+    pages: 44,
+    keywords: ["principiantes", "rutina", "gimnasio", "fuerza", "fitness"]
+  },
+  {
+    id: "anatomia-musculacion-guia-visual-mujeres",
+    title: "Anatomía y musculación guía visual completa mujeres.pdf",
+    author: "Guía Visual",
+    driveId: "1okAXvywcg1pADOimnDx9yEiR_mGmXXBU",
+    coverUrl: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Anatomía y Biomecánica",
+    description: "Análisis anatómico ilustrado de los ejercicios de fuerza y musculación específicos para el cuerpo femenino.",
+    pages: 160,
+    keywords: ["anatomia", "mujeres", "musculacion", "fuerza", "guia visual"]
+  },
+  {
+    id: "anatomia-musculacion-guia-visual-completa",
+    title: "Anatomia y musculación guía visual completa.pdf",
+    author: "Guía Visual",
+    driveId: "10H67t1Sz4E42aaIOzp6FhsJztNV58u_3",
+    coverUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Anatomía y Biomecánica",
+    description: "La guía ilustrada de referencia sobre cómo trabaja cada grupo muscular durante los ejercicios biomecánicos.",
+    pages: 192,
+    keywords: ["anatomia", "musculacion", "ejercicios", "isometrico", "fuerza"]
+  },
+  {
+    id: "enciclopedia-anatomia-ejercicio",
+    title: "Enciclopedia de anatomía del ejercicio.pdf",
+    author: "Anatomía",
+    driveId: "1ICYVMBeGY9MrOy24KPrZ6BgERIjzDcua",
+    coverUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Anatomía y Biomecánica",
+    description: "Tomo enciclopédico de biomecánica humana que disecciona el movimiento de los ejercicios de fuerza.",
+    pages: 320,
+    keywords: ["enciclopedia", "anatomia", "ejercicio", "biomecanica", "fuerza"]
+  },
+  {
+    id: "manual-anatomia-ejercicio",
+    title: "Manual de anatomía del ejercicio.pdf",
+    author: "Anatomía",
+    driveId: "13atP7GZlIKw2MFWPS8RbaGGZxpJMLlPg",
+    coverUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Anatomía y Biomecánica",
+    description: "Manual compacto de consulta rápida sobre inserciones musculares, función motora y articulaciones aplicadas al deporte.",
+    pages: 180,
+    keywords: ["manual", "anatomia", "articulaciones", "movimiento"]
+  },
+  {
+    id: "entrenamiento-funcional-planificacion",
+    title: "-1.Entrenamiento funcional planificación.pdf",
+    author: "Funcional",
+    driveId: "1MWIT1b-szRZgGdPRI5YyHQZmGa8BSyOZ",
+    coverUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "La planificación científica de circuitos funcionales para optimizar capacidades cardiovasculares y motricidad general.",
+    pages: 145,
+    keywords: ["entrenamiento", "funcional", "planificacion", "fuerza", "circuitos"]
+  },
+  {
+    id: "musculacion-deportiva-estetica",
+    title: "1.Musculación deportiva y estetica.pdf",
+    author: "Musculación",
+    driveId: "1cH7fqooW-e3nE2Hz9onctQh48xH8Wgul",
+    coverUrl: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "Principios avanzados de fuerza deportiva y desarrollo hipertrófico simétrico con fines estéticos.",
+    pages: 210,
+    keywords: ["musculacion", "deportiva", "estetica", "hipertrofia", "fuerza"]
+  },
+  {
+    id: "principios-entrenamiento-fuerza",
+    title: "1.Principios del entrenamiento de la fuerza y del acondicionamiento físico.pdf",
+    author: "Fuerza",
+    driveId: "1EwHob4MW30KoN-m8ZgWYC3aEjxhWee1-",
+    coverUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "La biblia académica de acondicionamiento de fuerza con respaldo científico de la NSCA.",
+    pages: 650,
+    keywords: ["principios", "fuerza", "acondicionamiento", "nsca", "fisiologia"]
+  },
+  {
+    id: "1000-ejercicios-musculacion",
+    title: "1000 ejercicios de musculación.pdf",
+    author: "Musculación",
+    driveId: "1VFA7j2MFbW8DaJjGTF45I7dVmUIhyH3-",
+    coverUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "La mayor recopilación gráfica de variantes y ejercicios específicos para la musculación de todo el cuerpo.",
+    pages: 380,
+    keywords: ["1000 ejercicios", "ejercicios", "musculacion", "rutinas", "fuerza"]
+  },
+  {
+    id: "entrenamiento-funcional-aplicado-deportes",
+    title: "El entrenamiento funcional aplicado a los deportes.pdf",
+    author: "Michael Boyle",
+    driveId: "1KJeknxgbeu2S5voaEoSAcmWvYzREuRkJ",
+    coverUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "Metodología líder para mejorar el atletismo, reducir lesiones y potenciar el rendimiento de velocidad y agilidad.",
+    pages: 256,
+    keywords: ["boyle", "funcional", "deportes", "atletismo", "prevencion"]
+  },
+  {
+    id: "entrenamiento-eficiente",
+    title: "Entrenamiento eficiente explota tus limites.pdf",
+    author: "Entrenamiento",
+    driveId: "1srjRrxZ9FQhv5m_yRrt7Ugcex6xR1_pz",
+    coverUrl: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "Técnicas modernas y optimización del tiempo de entreno para exprimir el potencial neuromuscular.",
+    pages: 200,
+    keywords: ["eficiente", "neuro", "fuerza", "limites", "rendimiento"]
+  },
+  {
+    id: "metodos-modernos-musculacion",
+    title: "Los métodos modernos de musculación.pdf",
+    author: "Gilles Cometti",
+    driveId: "1ouSCwJGWVDpj7SKa_fZ-_-tO-AFAzBlA",
+    coverUrl: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Sistemas de Entrenamiento",
+    description: "El libro científico clásico de Cometti sobre las metodologías avanzadas de contracción de las fibras musculares.",
+    pages: 280,
+    keywords: ["cometti", "metodos", "musculacion", "contraccion", "isometria"]
+  },
+  {
+    id: "ejercicio-fisico-salud-poblaciones-especiales",
+    title: "Ejercicio físico y salud en poblaciones especiales.pdf",
+    author: "Salud",
+    driveId: "1xGBUli5lYIra_bH94H2KMYir9gHF9wGX",
+    coverUrl: "https://images.unsplash.com/photo-1571019615042-887e5b128f72?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1571019615042-887e5b128f72?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Salud y Recuperación",
+    description: "Prescripción de la actividad física saludable en personas de edad avanzada o con patologías clínicas específicas.",
+    pages: 340,
+    keywords: ["poblaciones especiales", "salud", "patologias", "ejercicio terapeutico"]
+  },
+  {
+    id: "ejercicio-terapeutico-recuperacion",
+    title: "Ejercicio terapéutico y recuperación funcional.pdf",
+    author: "Recuperación",
+    driveId: "1GDCt7X0qGlWxKOh46GXXf-1Jnt-M8flN",
+    coverUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80",
+    cover_url: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80",
+    category: "Anatomía, Biomecánica y Entrenamiento",
+    focusTag: "Salud y Recuperación",
+    description: "Protocolos de kinesiología y ejercicio correctivo para la rehabilitación integral de lesiones osteoarticulares.",
+    pages: 290,
+    keywords: ["terapeutico", "recuperacion", "lesiones", "kinesiologia", "correctivo"]
   }
 ];
 
@@ -1084,7 +1474,7 @@ export const initialCourses: Course[] = [
     difficulty: "Intermedio",
     description: "Aprende el sistema paso a paso que utilizan las principales marcas personales del mundo para crear ganchos de alta retención, videos virales de TikTok/Reels, y automatizaciones vía DM para vender de forma constante.",
     price: 19.99,
-    thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1675352161918-2dc701738691?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Oficios",
     total_lessons: 1,
     syllabus: [
@@ -1107,12 +1497,12 @@ export const initialCourses: Course[] = [
   {
     id: "facebook-ads-2025",
     title: "Facebook Ads 2025: Dominando el ROI",
-    headline: "Domina la inteligencia artificial de Meta, optimiza tus presupuestos en escala y maximiza el retorno de tus campañas pautadas.",
+    headline: "Domina la inteligencia artificial de Meta, optimiza tus presupuestos en escala and maximiza el retorno de tus campañas pautadas.",
     instructor: "Carlos Baez (Performance Analyst)",
     difficulty: "Avanzado",
     description: "Aprende las estrategias de pauta publicitaria para el 2025. Configuración de campañas, segmentación avanzada con IA de Meta, y optimización de presupuestos para maximizar ventas.",
     price: 24.99,
-    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1537731121640-bc1c4aba9b80?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2Vib29rJTIwYWRzfGVufDB8fDB8fHww",
     category: "Marketing Digital / Ventas",
     total_lessons: 1,
     syllabus: [
@@ -1168,7 +1558,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Aprende el funcionamiento, desarme, diagnóstico y mantenimiento de motores y sistemas de motocicletas de forma práctica.",
     price: 29.99,
-    thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://plus.unsplash.com/premium_photo-1664299577623-8c7ef6d2b42b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVjYW5pY2ElMjBkZSUyMG1vdG9zfGVufDB8fDB8fHww",
     category: "Mecánica",
     total_lessons: 2,
     syllabus: [
@@ -1312,7 +1702,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Conviértete en profesional de la estética de la ceja. Este máster cubre desde la bioseguridad higiénico-sanitaria y la anatomía de la dermis, hasta el diseño morfológico, anestésicos permitidos, práctica intensiva paso a paso en látex y modelo real de manera guiada.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1735151225764-eac694642dbf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2VqYXMlMjBtaWNyb2JsYXNpbmd8ZW58MHx8MHx8fDA%3D",
     category: "Oficios",
     total_lessons: 27,
     syllabus: [
@@ -1578,7 +1968,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Iníciate con confianza en el apasionante mundo del estilismo y la peluquería profesional. El curso abarca el estudio de la textura capilar, técnicas fundamentales de corte de cabello y el uso correcto de herramientas de precisión como tijera y navaja.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ydGUlMjBkZSUyMHBlbG98ZW58MHx8MHx8fDA%3D",
     category: "Oficios",
     total_lessons: 2,
     syllabus: [
@@ -1614,7 +2004,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Inicia tu camino como manicurista profesional. Aprende a fondo la anatomía de las manos y uñas, la correcta preparación química de la lámina ungueal, técnicas avanzadas de limado, limpieza de cutículas y la aplicación perfecta de esmaltado semipermanente, esculpidos fundamentales y arte decorativo.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1604654894610-df490651e56c?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1700760933910-d3c03aa18b65?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGN1cnNvJTIwZGUlMjB1JUMzJUIxYXN8ZW58MHx8MHx8fDA%3D",
     category: "Oficios",
     total_lessons: 3,
     syllabus: [
@@ -1694,7 +2084,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Aprende a resaltar tu belleza natural potenciando tus facciones únicas. Pasaremos desde el estudio morfológico de tu tipo de rostro y preparación de piel preliminar, hasta técnicas de contorno avanzado, difuminados de ojos de nivel intermedio y maquillaje para eventos de gala paso a paso.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXV0b21hcXVpbGxhamV8ZW58MHx8MHx8fDA%3D",
     category: "Oficios",
     total_lessons: 13,
     syllabus: [
@@ -2026,7 +2416,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Iníciate profesionalmente en el rubro de la refrigeración y climatización. Aprenderás las bases teóricas de los ciclos frigoríficos, la colocación y montaje de unidades split internas y externas, el aborcardado de tuberías de cobre, la realización adecuada de vacío, pruebas de estanqueidad para resolver fugas y los procedimientos técnicos de carga de gas refrigerante.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://plus.unsplash.com/premium_photo-1683134512538-7b390d0adc9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWlyZSUyMGFjb25kaWNpb25hZG8lMjByZXBhcmFjaW9ufGVufDB8fDB8fHww",
     category: "Oficios",
     total_lessons: 2,
     syllabus: [
@@ -2062,7 +2452,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Iníciate con solvencia en el mundo profesional de los tatuajes. En este curso especializado, aprenderás todo sobre la bioseguridad e higiene sanitaria, la correcta preparación de la mesa de trabajo, montaje de agujas tipo cartucho y tradicionales, calibración fina de voltajes y las técnicas esenciales de trazado lineal, sombras y relleno en superficies de prueba.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1598257006458-087169a1f08d?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y3Vyc28lMjB0YXR1YWplc3xlbnwwfHwwfHx8MA%3D%3D",
     category: "Oficios",
     total_lessons: 1,
     syllabus: [
@@ -2118,7 +2508,7 @@ export const initialCourses: Course[] = [
     difficulty: "Principiante",
     description: "Conviértete en profesional de la costura y el diseño textil. Este primer nivel te guiará paso a paso en el manejo de la máquina de coser, la identificación de tipos de telas, la elaboración de moldes y patrones básicos, hasta la confección de tus primeras prendas terminadas con acabados impecables.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1718184021018-d2158af6b321?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ydGUlMjB5JTIwY29uZmVjY2lvbnxlbnwwfHwwfHx8MA%3D%3D",
     category: "Oficios",
     total_lessons: 12,
     syllabus: [
@@ -2438,7 +2828,7 @@ export const initialCourses: Course[] = [
     difficulty: "Avanzado",
     description: "Alcanza la cúspide del diseño de indumentaria con este máster avanzado en Alta Costura. Aprenderás las técnicas sagradas del Moulage (diseño tridimensional sobre maniquí), la confección paso a paso de corsetts con varillas y copas incorporadas, drapeados complejos, aplicación artesanal de encajes y bordado de pedrería fina para vestidos de gala y novia.",
     price: 0,
-    thumbnail: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "https://images.unsplash.com/photo-1628565663674-de1c8161d72c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvcnRlJTIweSUyMGNvbmZlY2Npb258ZW58MHx8MHx8fDA%3D",
     category: "Oficios",
     total_lessons: 6,
     syllabus: [
@@ -2493,6 +2883,412 @@ export const initialCourses: Course[] = [
             video_drive_url: "https://drive.google.com/file/d/13zd8AzWTk2NbKUtdIyfYoxlo4ymIGpSA/preview",
             type: "video",
             duration: "35 mins"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "muebles-palets",
+    title: "Eco-Muebles con Palets: Manual de Planos e Ideas",
+    headline: "Aprende a transformar palets de descarte en muebles hermosos y funcionales con planos prácticos paso a paso.",
+    instructor: "Carpintero Alfonso (Eco-Diseñador)",
+    difficulty: "Principiante",
+    description: "Una guía práctica ilustrada para recolectar, tratar, cortar y ensamblar palets de madera en muebles residenciales y de jardín. Incluye esquemas detallados con medidas para construir una mesa con bancos, una jardinera, una silla plegable de dos plazas, un semillero y una compostadora completa.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 5,
+    syllabus: [
+      {
+        id: "palet-m1",
+        title: "Manuales, Medidas y Planos de Construcción",
+        lessons: [
+          {
+            id: "palet-1-1",
+            title: "Parte 1: Esquema para construir mesa con bancos",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview",
+            type: "video",
+            duration: "Lectura"
+          },
+          {
+            id: "palet-1-2",
+            title: "Parte 2: Esquema para construir una jardinera",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview",
+            type: "video",
+            duration: "Lectura"
+          },
+          {
+            id: "palet-1-3",
+            title: "Parte 3: Esquema para construir una silla de dos plazas plegable",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview",
+            type: "video",
+            duration: "Lectura"
+          },
+          {
+            id: "palet-1-4",
+            title: "Parte 4: Esquema para construir un semillero",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview",
+            type: "video",
+            duration: "Lectura"
+          },
+          {
+            id: "palet-1-5",
+            title: "Parte 5: Cómo construir una compostadora ecológica",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1htrEJXRtqNclGcdHRNXsVAJXbXECWr1K/preview",
+            type: "video",
+            duration: "Lectura"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "adiestramiento-canino",
+    title: "Adiestramiento Canino Profesional",
+    headline: "Educa a tu perro desde cero: obediencia básica, psicología canina, modificación de conductas y trucos divertidos.",
+    instructor: "Tomás Rosas (Etólogo y Adiestrador Canino)",
+    difficulty: "Principiante",
+    description: "Un curso integral diseñado por expertos en comportamiento canino. Aprende desde cómo piensa y aprende tu perro, el uso del equipamiento correcto, la enseñanza detallada de comandos básicos de obediencia, técnicas profesionales para modificar conductas destructivas y ladridos, estimulación cognitiva y juegos de olfato, y trucos divertidos para fortalecer el vínculo.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80",
+    category: "Oficios",
+    total_lessons: 20,
+    syllabus: [
+      {
+        id: "dog-m1",
+        title: "Modulo 1 - Introducción al Adiestramiento",
+        lessons: [
+          {
+            id: "dog-1-1",
+            title: "Clase 1: Introducción y Primeros Pasos",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1u_8orWz2QrMyRvUusHMYI_4SThAidYQJ/view?usp=drive_link",
+            type: "video",
+            duration: "12:15"
+          }
+        ]
+      },
+      {
+        id: "dog-m2",
+        title: "Modulo 2 - Comportamiento, Psicología y Claves del Aprendizaje",
+        lessons: [
+          {
+            id: "dog-2-1",
+            title: "Clase 2.1: Psicología del Aprendizaje Canino (Refuerzo Positivo)",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1CDgzA0jXkV8_HPkJ2leMMmpsNuRyd2fo/view?usp=drive_link",
+            type: "video",
+            duration: "14:20"
+          },
+          {
+            id: "dog-2-2",
+            title: "Clase 2.2: Instinto, Motivación y Premios Eficaces",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1tFx86lag6NMa2ScuIWUpFSCNFnnZT9ET/view?usp=drive_link",
+            type: "video",
+            duration: "10:45"
+          },
+          {
+            id: "dog-2-3",
+            title: "Clase 2.3: Comunicación No Verbal del Perro y Señales de Calma",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1eFWeTp8a3lN1qIw19BYtO0CtYnPEdb3z/view?usp=drive_link",
+            type: "video",
+            duration: "13:10"
+          }
+        ]
+      },
+      {
+        id: "dog-m3",
+        title: "Modulo 3 - Equipamiento Esencial",
+        lessons: [
+          {
+            id: "dog-3-1",
+            title: "Clase 3.1: Herramientas del Adiestrador y su Uso Correcto",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/1kgCSlL6We9d5DaU25kXTVYUSxLA7AxYG/view?usp=drive_link",
+            type: "video",
+            duration: "11:55"
+          }
+        ]
+      },
+      {
+        id: "dog-m4",
+        title: "Modulo 4 - Obediencia Básica y Comandos Clave",
+        lessons: [
+          {
+            id: "dog-4-1",
+            title: "Clase 4.1: Comando 'Sentado' (Sit) - Paso a Paso",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/12FtQLgAtoY5jTna-keqg1uTBoyP2mAIo/view?usp=drive_link",
+            type: "video",
+            duration: "09:40"
+          },
+          {
+            id: "dog-4-2",
+            title: "Clase 4.2: Comando 'Echado' (Down) y Permanencia",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1Wo-msCDZbn_la4RHSl84bqyW7_8dxaB6/view?usp=drive_link",
+            type: "video",
+            duration: "11:05"
+          },
+          {
+            id: "dog-4-3",
+            title: "Clase 4.3: El Comando de 'Llamado' Exitoso (Come/Aquí)",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1PzHvwL04hgvimST-Ko5UPxuD3EyCk1P2/view?usp=drive_link",
+            type: "video",
+            duration: "14:50"
+          },
+          {
+            id: "dog-4-4",
+            title: "Clase 4.4: Caminar con Correa sin Tirar (Heel/Junto)",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/15sTZtKz1Rtygs3-v9B8L5Pd7t56h8ZwY/view?usp=drive_link",
+            type: "video",
+            duration: "15:25"
+          },
+          {
+            id: "dog-4-5",
+            title: "Clase 4.5: Control de Impulsos - Comando 'Quieto/Lugar'",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/1qJLsqKNgPdWbatlpby2UHXpNF9kSeQKG/view?usp=drive_link",
+            type: "video",
+            duration: "12:18"
+          }
+        ]
+      },
+      {
+        id: "dog-m5",
+        title: "Modulo 5 - Modificación de Conductas No Deseadas",
+        lessons: [
+          {
+            id: "dog-5-1",
+            title: "Clase 5.1: Cómo Manejar los Ladridos Excesivos en Casa",
+            order: 11,
+            video_drive_url: "https://drive.google.com/file/d/1PfkCQ9iNBO_SCImQE2l6NKLZqDqoUFG0/view?usp=drive_link",
+            type: "video",
+            duration: "16:40"
+          },
+          {
+            id: "dog-5-2",
+            title: "Clase 5.2: Ansiedad por Separación, Masticación y Destructividad",
+            order: 12,
+            video_drive_url: "https://drive.google.com/file/d/1LbxzWLBXki2_ScQXqTZQUWNxIv_Rv1nc/view?usp=drive_link",
+            type: "video",
+            duration: "18:15"
+          },
+          {
+            id: "dog-5-3",
+            title: "Clase 5.3: Reactividad, Excitación Excesiva e Iniciación a la Socialización",
+            order: 13,
+            video_drive_url: "https://drive.google.com/file/d/1_MaSq56YDmxZI-5_X08lzK72OAqPnzTI/view?usp=drive_link",
+            type: "video",
+            duration: "14:10"
+          }
+        ]
+      },
+      {
+        id: "dog-m6",
+        title: "Modulo 6 - Estimulación Mental y Socialización",
+        lessons: [
+          {
+            id: "dog-6-1",
+            title: "Clase 6.1: Socialización Temprana y Adecuada en Cachorros",
+            order: 14,
+            video_drive_url: "https://drive.google.com/file/d/16yo0EU5ppnHVN5MVUo2DS3qeLtEDbgNH/view?usp=drive_link",
+            type: "video",
+            duration: "13:30"
+          },
+          {
+            id: "dog-6-2",
+            title: "Clase 6.2: Juegos de Olfato y Estimulación Cognitiva",
+            order: 15,
+            video_drive_url: "https://drive.google.com/file/d/1-mf-OVXzZMtAq09kgYTq51saM8PjzEtK/view?usp=drive_link",
+            type: "video",
+            duration: "11:25"
+          },
+          {
+            id: "dog-6-3",
+            title: "Clase 6.3: El Enriquecimiento Ambiental en el Hogar",
+            order: 16,
+            video_drive_url: "https://drive.google.com/file/d/1kYNPaCNGHKPm4BWniFiS40tHkq1iEZE1/view?usp=drive_link",
+            type: "video",
+            duration: "12:50"
+          }
+        ]
+      },
+      {
+        id: "dog-m7",
+        title: "Modulo 7 - Trucos y Habilidades Divertidas",
+        lessons: [
+          {
+            id: "dog-7-1",
+            title: "Clase 7.1: Truco: Dar la pata e interactuar cordialmente",
+            order: 17,
+            video_drive_url: "https://drive.google.com/file/d/1NSD_1Pb2WmgPZyeuhpEs5BLu3xqBJkU3/view?usp=drive_link",
+            type: "video",
+            duration: "09:15"
+          },
+          {
+            id: "dog-7-2",
+            title: "Clase 7.2: Truco: Dar la vuelta y hacerse el 'Muerto'",
+            order: 18,
+            video_drive_url: "https://drive.google.com/file/d/1Jn4ZL7a3Y0QKEUgTHhfQl0OPEcOb_65A/view?usp=drive_link",
+            type: "video",
+            duration: "10:30"
+          },
+          {
+            id: "dog-7-3",
+            title: "Clase 7.3: Habilidades de Agilidad Básica y Saltos en Casa",
+            order: 19,
+            video_drive_url: "https://drive.google.com/file/d/1DSt2oT-BbwDQ9r_-OyTDExggrN3sjqzU/view?usp=drive_link",
+            type: "video",
+            duration: "12:45"
+          }
+        ]
+      },
+      {
+        id: "dog-m8",
+        title: "Modulo 8 - Planificación de Práctica",
+        lessons: [
+          {
+            id: "dog-8-1",
+            title: "Clase 8.1: Diseñando la Rutina de Práctica Diaria Obligatoria de 15 Minutos",
+            order: 20,
+            video_drive_url: "https://drive.google.com/file/d/1qW7eqiEJNPkuXYmwHMzaPI7FstqaPyyr/view?usp=drive_link",
+            type: "video",
+            duration: "15:10"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "carpinteria-profesional",
+    title: "Carpintería Profesional y Ebanistería",
+    headline: "Aprende el arte de la carpintería clásica: de la madera en bruto a la creación de muebles sofisticados paso a paso.",
+    instructor: "Fernando Ruiz (Maestro Ebanista)",
+    difficulty: "Principiante",
+    description: "Domina las herramientas manuales y eléctricas, técnicas profesionales de ensamble, cortes de absoluta precisión, cepillado, lijado y acabados que resaltan la veta de la madera. Aprende a construir, ensamblar y proteger tus propios muebles residenciales o de taller.",
+    price: 0,
+    thumbnail: "https://images.unsplash.com/photo-1608613304899-ea8098577e38?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNhcnBpbnRlcmlhfGVufDB8fDB8fHww",
+    category: "Oficios",
+    total_lessons: 10,
+    syllabus: [
+      {
+        id: "carp-m1",
+        title: "Modulo 1 - Introducción y Herramientas del Taller",
+        lessons: [
+          {
+            id: "carp-1-1",
+            title: "Clase 1: Introducción a la Carpintería y Herramientas Básicas",
+            order: 1,
+            video_drive_url: "https://drive.google.com/file/d/1yIh6EB_mBPCLi_6KNoYVa4PV5ahSB-Kv/view?usp=drive_link",
+            type: "video",
+            duration: "10:15"
+          },
+          {
+            id: "carp-1-2",
+            title: "Clase 2: Seguridad en el Taller y Equipamiento de Protección",
+            order: 2,
+            video_drive_url: "https://drive.google.com/file/d/1YQTrO11lefXt9BhXaCpr_F2paSAQMjiH/view?usp=drive_link",
+            type: "video",
+            duration: "08:40"
+          }
+        ]
+      },
+      {
+        id: "carp-m2",
+        title: "Modulo 2 - Materiales y Técnicas de Corte",
+        lessons: [
+          {
+            id: "carp-2-1",
+            title: "Clase 3: Selección de Maderas (Blandas, Duras y Derivados)",
+            order: 3,
+            video_drive_url: "https://drive.google.com/file/d/1TiELToEbs_2HDe1PiVBuVvqPpSkYCQFT/view?usp=drive_link",
+            type: "video",
+            duration: "11:20"
+          },
+          {
+            id: "carp-2-2",
+            title: "Clase 4: Técnicas de Marcado, Medición y Cortes de Precisión",
+            order: 4,
+            video_drive_url: "https://drive.google.com/file/d/1rqjOFfYQLxDQYgrICZBQbxULJqKh4IJr/view?usp=drive_link",
+            type: "video",
+            duration: "12:50"
+          }
+        ]
+      },
+      {
+        id: "carp-m3",
+        title: "Modulo 3 - Ensambles, Uniones y Adhesivos",
+        lessons: [
+          {
+            id: "carp-3-1",
+            title: "Clase 5: Tipos de Ensamble y Uniones de Madera",
+            order: 5,
+            video_drive_url: "https://drive.google.com/file/d/12XwUGgW33IVG_EyyHdeq5VUuC6HT7cia/view?usp=drive_link",
+            type: "video",
+            duration: "13:15"
+          },
+          {
+            id: "carp-3-2",
+            title: "Clase 6: Uso Correcto de Adhesivos de Carpintería y Prensado",
+            order: 6,
+            video_drive_url: "https://drive.google.com/file/d/1fTF-aAwoCuFv4XQ1QEeXsrAjxJIoHMie/view?usp=drive_link",
+            type: "video",
+            duration: "09:55"
+          }
+        ]
+      },
+      {
+        id: "carp-m4",
+        title: "Modulo 4 - Tratamiento de Superficie y Acabados",
+        lessons: [
+          {
+            id: "carp-4-1",
+            title: "Clase 7: Técnicas Profesionales de Cepillado y Lijado",
+            order: 7,
+            video_drive_url: "https://drive.google.com/file/d/1_ur8x_pLnQqtO1Zw3MNdMls7lHo2gn31/view?usp=drive_link",
+            type: "video",
+            duration: "14:10"
+          },
+          {
+            id: "carp-4-2",
+            title: "Clase 8: Tintes, Barnices y Lacas: Protección Duradera",
+            order: 8,
+            video_drive_url: "https://drive.google.com/file/d/1gFj4VkucAm6H_D4tDgmcuiB1oMjL-zcp/view?usp=drive_link",
+            type: "video",
+            duration: "15:20"
+          }
+        ]
+      },
+      {
+        id: "carp-m5",
+        title: "Modulo 5 - Proyecto Final y Restauración",
+        lessons: [
+          {
+            id: "carp-5-1",
+            title: "Clase 9: Armado Final de un Mueble: Puertas y Cajones",
+            order: 9,
+            video_drive_url: "https://drive.google.com/file/d/1K9NkRwhDKEJ4Ni5f5jyaXQUsmpTwXPLD/view?usp=drive_link",
+            type: "video",
+            duration: "18:30"
+          },
+          {
+            id: "carp-5-2",
+            title: "Clase 10: Restauración y Reparación de Muebles de Madera",
+            order: 10,
+            video_drive_url: "https://drive.google.com/file/d/1-EpVDK0o0VwE8jdVVAPGISHzfSiQcTyP/view?usp=drive_link",
+            type: "video",
+            duration: "16:45"
           }
         ]
       }
