@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { AppUser, Course, UserProfile } from "./types";
 import { initialCourses, initialBooks } from "./data";
 import { Header } from "./components/Header";
@@ -325,6 +326,9 @@ export default function App() {
 
       {/* Floating Virtual Mascot Companion */}
       <VirtualMascot onOpenTotalAccess={() => setIsTotalAccessPaywall(true)} />
+      
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
